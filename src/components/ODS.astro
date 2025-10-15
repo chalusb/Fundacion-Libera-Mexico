@@ -1,0 +1,67 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardBackgroundColor?: string;
+}
+
+const {
+  backgroundColor = "bg-white",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+  cardBackgroundColor = "bg-gray-50",
+} = Astro.props;
+
+const ods = [
+  { number: "1", title: "Fin de la pobreza", color: "bg-red-500" },
+  { number: "3", title: "Salud y bienestar", color: "bg-green-500" },
+  { number: "4", title: "Educación de calidad", color: "bg-red-500" },
+  { number: "5", title: "Igualdad de género", color: "bg-orange-500" },
+  { number: "8", title: "Trabajo decente y crecimiento económico", color: "bg-red-600" },
+  { number: "10", title: "Reducción de las desigualdades", color: "bg-pink-500" },
+  { number: "16", title: "Paz, justicia e instituciones sólidas", color: "bg-blue-500" },
+  { number: "17", title: "Alianzas para lograr los objetivos", color: "bg-blue-600" },
+];
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        ODS Alineados
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Nuestro trabajo contribuye directamente a los Objetivos de Desarrollo Sostenible de la ONU
+      </p>
+    </div>
+
+    <!-- ODS grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {ods.map((odsItem) => (
+        <div class={`${cardBackgroundColor} rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group`}>
+          <div class="text-center">
+            <!-- ODS Number Circle -->
+            <div class={`${odsItem.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <span class="text-white font-bold text-xl">{odsItem.number}</span>
+            </div>
+            
+            <!-- ODS Title -->
+            <h3 class={`${titleColor} text-sm font-semibold leading-tight`}>
+              {odsItem.title}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional info -->
+    <div class="mt-12 text-center">
+      <p class={`${textColor} text-lg max-w-4xl mx-auto`}>
+        Al trabajar en la prevención y erradicación de la trata de personas, contribuimos directamente 
+        a estos objetivos globales, creando un impacto positivo que trasciende nuestras fronteras.
+      </p>
+    </div>
+  </div>
+</section>

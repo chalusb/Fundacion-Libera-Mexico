@@ -1,0 +1,55 @@
+/* Fuentes personalizadas */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos base */
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  color: #111827;
+  background-color: #ffffff;
+}
+
+/* Componentes personalizados */
+.btn-primary {
+  background-color: #E74699;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background-color: #2A4B9B;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.btn-secondary:hover {
+  opacity: 0.9;
+}
+
+.text-primary {
+  color: #E74699;
+}
+
+.text-secondary {
+  color: #E74699;
+}
+
+.text-accent {
+  color: #E74699;
+}

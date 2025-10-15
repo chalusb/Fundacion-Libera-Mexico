@@ -1,0 +1,187 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  numberColor?: string;
+  textColor?: string;
+}
+
+const {
+  backgroundColor = "bg-white",
+  titleColor = "text-gray-900",
+  numberColor = "text-foundation-primary",
+  textColor = "text-gray-700",
+} = Astro.props;
+---
+
+<section
+  class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}
+  id="achievements-section"
+>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        Nuestros Logros
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        En más de 12 meses de actividades operativas hemos logrado:
+      </p>
+    </div>
+
+    <!-- Achievements grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      <!-- Achievement 1 -->
+      <div class="text-center group">
+        <div
+          class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
+        >
+          <div
+            class={`${numberColor} text-4xl sm:text-5xl lg:text-6xl font-black leading-none tracking-tight mb-4`}
+            id="number-1"
+          >
+            +0
+          </div>
+          <p class={`${textColor} text-lg leading-relaxed font-medium`}>
+            comidas servidas a nuestros usuarios y usuarias
+          </p>
+        </div>
+      </div>
+
+      <!-- Achievement 2 -->
+      <div class="text-center group">
+        <div
+          class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
+        >
+          <div
+            class={`${numberColor} text-4xl sm:text-5xl lg:text-6xl font-black leading-none tracking-tight mb-4`}
+            id="number-2"
+          >
+            +0
+          </div>
+          <p class={`${textColor} text-lg leading-relaxed font-medium`}>
+            servicios de asistencia y apoyo jurídico
+          </p>
+        </div>
+      </div>
+
+      <!-- Achievement 3 -->
+      <div class="text-center group">
+        <div
+          class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
+        >
+          <div
+            class={`${numberColor} text-4xl sm:text-5xl lg:text-6xl font-black leading-none tracking-tight mb-4`}
+            id="number-3"
+          >
+            +0
+          </div>
+          <p class={`${textColor} text-lg leading-relaxed font-medium`}>
+            terapias psicológicas y psiquiátricas
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Configuración de los números objetivo
+  const targetNumbers = {
+    "number-1": 56000,
+    "number-2": 500,
+    "number-3": 1300,
+  };
+
+  // Función para formatear números con comas
+  function formatNumber(num: number): string {
+    return num.toLocaleString("es-MX");
+  }
+
+  // Función para animar un número
+  function animateNumber(
+    elementId: string,
+    targetValue: number,
+    duration: number = 2000
+  ): void {
+    const element = document.getElementById(elementId);
+    if (!element) {
+      console.log(`Elemento ${elementId} no encontrado`);
+      return;
+    }
+
+    const startTime = performance.now();
+    const startValue = 0;
+
+    function updateNumber(currentTime: number): void {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Usar easing para una animación más suave
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = Math.floor(
+        startValue + (targetValue - startValue) * easeOutQuart
+      );
+
+      if (element) {
+        element.textContent = `+${formatNumber(currentValue)}`;
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(updateNumber);
+      } else {
+        if (element) {
+          element.textContent = `+${formatNumber(targetValue)}`;
+        }
+      }
+    }
+
+    requestAnimationFrame(updateNumber);
+  }
+
+  // Intersection Observer para activar la animación cuando la sección sea visible
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Animar cada número con un pequeño delay para efecto escalonado
+          setTimeout(() => {
+            animateNumber("number-1", targetNumbers["number-1"]);
+          }, 100);
+          setTimeout(() => {
+            animateNumber("number-2", targetNumbers["number-2"]);
+          }, 300);
+          setTimeout(() => {
+            animateNumber("number-3", targetNumbers["number-3"]);
+          }, 500);
+
+          // Desconectar el observer después de la primera animación
+          observer.disconnect();
+        }
+      });
+    },
+    {
+      threshold: 0.1, // Activar cuando el 10% de la sección sea visible
+      rootMargin: "0px", // Sin margen adicional
+    }
+  );
+
+  // Función para inicializar el observer
+  function initObserver() {
+    const achievementsSection = document.getElementById("achievements-section");
+    if (achievementsSection) {
+      console.log("Sección de logros encontrada, iniciando observer");
+      observer.observe(achievementsSection);
+    } else {
+      console.log("No se encontró la sección de logros");
+    }
+  }
+
+  // Intentar inicializar inmediatamente
+  initObserver();
+
+  // También intentar cuando el DOM esté listo (por si acaso)
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initObserver);
+  }
+</script>

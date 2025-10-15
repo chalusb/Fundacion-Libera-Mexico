@@ -1,0 +1,180 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardBackgroundColor?: string;
+}
+
+const {
+  backgroundColor = "bg-gray-50",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+  cardBackgroundColor = "bg-white",
+} = Astro.props;
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        Recursos y Apoyo
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Información adicional y recursos para víctimas y familiares
+      </p>
+    </div>
+
+    <!-- Resources grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Emergency contacts -->
+      <div
+        class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg border border-gray-100`}
+      >
+        <div class="text-center mb-6">
+          <div
+            class="bg-red-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class={`${titleColor} text-xl font-bold mb-2`}>Emergencias</h3>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class={`${textColor} font-medium`}>Emergencias</span>
+            <a href="tel:911" class="text-red-600 font-bold text-lg">911</a>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class={`${textColor} font-medium`}>Línea Nacional</span>
+            <a href="tel:018005533000" class="text-red-600 font-bold"
+              >01 800 5533 000</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- What to do -->
+      <div
+        class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg border border-gray-100`}
+      >
+        <div class="text-center mb-6">
+          <div
+            class="bg-blue-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class={`${titleColor} text-xl font-bold mb-2`}>¿Qué hacer?</h3>
+        </div>
+        <ul class={`${textColor} space-y-2 text-sm`}>
+          <li class="flex items-start">
+            <span class="text-foundation-primary mr-2">•</span>
+            Mantén la calma y busca un lugar seguro
+          </li>
+          <li class="flex items-start">
+            <span class="text-foundation-primary mr-2">•</span>
+            Llama inmediatamente a los números de emergencia
+          </li>
+          <li class="flex items-start">
+            <span class="text-foundation-primary mr-2">•</span>
+            No te acerques al agresor
+          </li>
+          <li class="flex items-start">
+            <span class="text-foundation-primary mr-2">•</span>
+            Busca ayuda de personas de confianza
+          </li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div
+        class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg border border-gray-100`}
+      >
+        <div class="text-center mb-6">
+          <div
+            class="bg-green-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <svg
+              class="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class={`${titleColor} text-xl font-bold mb-2`}>Apoyo</h3>
+        </div>
+        <p class={`${textColor} text-sm leading-relaxed mb-4`}>
+          No estás solo/a. Existen múltiples organizaciones y personas
+          dispuestas a ayudarte.
+        </p>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <span class="text-foundation-primary mr-2">✓</span>
+            <span class={`${textColor} text-sm`}>Asesoría legal gratuita</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-foundation-primary mr-2">✓</span>
+            <span class={`${textColor} text-sm`}>Apoyo psicológico</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-foundation-primary mr-2">✓</span>
+            <span class={`${textColor} text-sm`}>Acompañamiento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="mt-16 text-center">
+      <div
+        class="bg-gradient-to-r from-foundation-primary/10 to-foundation-primary/5 rounded-2xl p-8 lg:p-12"
+      >
+        <h3 class={`${titleColor} text-2xl font-bold mb-4`}>
+          ¿Necesitas más información?
+        </h3>
+        <p
+          class={`${textColor} text-lg leading-relaxed max-w-3xl mx-auto mb-8`}
+        >
+          Si tienes dudas sobre cómo proceder o necesitas orientación
+          específica, no dudes en contactarnos. Estamos aquí para ayudarte.
+        </p>
+        <a
+          href="mailto:contacto@liberamexico.org"
+          class="inline-flex items-center bg-foundation-primary hover:bg-foundation-primary/90 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+        >
+          Contáctanos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

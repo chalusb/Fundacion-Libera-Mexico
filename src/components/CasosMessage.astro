@@ -1,0 +1,93 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+}
+
+const {
+  backgroundColor = "bg-gray-50",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+} = Astro.props;
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Main message -->
+    <div class="text-center mb-16">
+      <div class="max-w-4xl mx-auto">
+        <h2
+          class={`${titleColor} text-3xl sm:text-4xl font-bold mb-8 leading-tight`}
+        >
+          En cada historia hay una vida que volvió a empezar
+        </h2>
+        <p
+          class={`${textColor} text-xl sm:text-2xl leading-relaxed font-light`}
+        >
+          Eso es Libera: un lugar donde los sueños se reconstruyen.
+        </p>
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div
+      class="bg-gradient-to-r from-foundation-primary/10 to-foundation-primary/5 rounded-2xl p-8 lg:p-12 text-center"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h3 class={`${titleColor} text-2xl font-bold mb-6`}>
+          ¿Quieres ser parte de estas historias de esperanza?
+        </h3>
+        <p class={`${textColor} text-lg leading-relaxed mb-8`}>
+          Tu apoyo puede hacer la diferencia en la vida de más niñas, niños y
+          adolescentes. Juntos podemos crear más historias de éxito y
+          transformación.
+        </p>
+
+        <!-- Action buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="mailto:contacto@liberamexico.org"
+            class="inline-flex items-center bg-foundation-primary hover:bg-foundation-primary/90 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            Contáctanos
+          </a>
+          <a
+            href="#"
+            class="inline-flex items-center bg-white hover:bg-gray-50 text-foundation-primary font-semibold py-4 px-8 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl border-2 border-foundation-primary"
+          >
+            Dona ahora
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <div class="text-3xl font-bold text-foundation-primary mb-2">
+            +56,000
+          </div>
+          <p class={`${textColor} font-medium`}>Comidas servidas</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <div class="text-3xl font-bold text-foundation-primary mb-2">
+            +500
+          </div>
+          <p class={`${textColor} font-medium`}>Servicios jurídicos</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <div class="bg-white rounded-xl p-6 shadow-lg">
+          <div class="text-3xl font-bold text-foundation-primary mb-2">
+            +1,300
+          </div>
+          <p class={`${textColor} font-medium`}>Terapias psicológicas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

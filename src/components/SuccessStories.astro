@@ -1,0 +1,116 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardBackgroundColor?: string;
+}
+
+const {
+  backgroundColor = "bg-white",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+  cardBackgroundColor = "bg-gray-50",
+} = Astro.props;
+
+const successStories = [
+  {
+    name: "Regina",
+    age: "Adolescente",
+    background: "Llegó a Libera después de vivir una historia de engaño y explotación. No sabía leer ni escribir, y solo hablaba su lengua indígena.",
+    journey: "Desde que llegó a Libera, y gracias a su esfuerzo y al acompañamiento constante, ha aprendido a leer, está comenzando a escribir y avanza en su regularización escolar.",
+    dream: "Hoy sueña con regresar a la escuela y convertirse en inspiración para otras niñas de su comunidad.",
+    icon: "📚",
+    color: "bg-blue-500",
+    achievements: ["Aprendió a leer", "Comienza a escribir", "Regularización escolar", "Líder comunitaria"]
+  },
+  {
+    name: "Rodrigo",
+    age: "Adolescente",
+    background: "Creció en situación de calle, sometido a explotación laboral y mendicidad forzada. Había dejado la escuela.",
+    journey: "Desde que llegó a Libera su historia cambió. Ahora está a punto de terminar la primaria, redescubrió su amor por el dibujo y sueña con ser diseñador.",
+    dream: "Su talento y creatividad son prueba de que cuando se brinda una oportunidad, la niñez florece.",
+    icon: "🎨",
+    color: "bg-green-500",
+    achievements: ["Terminando primaria", "Redescubrió el dibujo", "Aspira a ser diseñador", "Talento artístico"]
+  },
+  {
+    name: "Beatriz",
+    age: "Adolescente",
+    background: "Sobrevivió a violencia física y explotación sexual. Al llegar a Fundación Libera México, era una niña retraída y temerosa.",
+    journey: "Gracias al acompañamiento integral y al espacio seguro que encontró, terminó la primaria, aprendió un oficio y comenzó a atender su discapacidad.",
+    dream: "Hoy forma parte de la escolta del colegio y está llena de ilusión por cumplir su sueño: celebrar sus 15 años.",
+    icon: "🌟",
+    color: "bg-purple-500",
+    achievements: ["Terminó primaria", "Aprendió un oficio", "Atención a discapacidad", "Líder estudiantil"]
+  }
+];
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        Historias de Transformación
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Cada historia es única, pero todas comparten algo en común: la esperanza de un futuro mejor
+      </p>
+    </div>
+
+    <!-- Stories grid -->
+    <div class="space-y-16">
+      {successStories.map((story, index) => (
+        <div class={`${cardBackgroundColor} rounded-2xl p-8 lg:p-12 shadow-lg border border-gray-100`}>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            <!-- Story info -->
+            <div class="lg:col-span-2">
+              <!-- Header -->
+              <div class="flex items-center mb-6">
+                <div class={`${story.color} w-16 h-16 rounded-full flex items-center justify-center mr-4`}>
+                  <span class="text-2xl">{story.icon}</span>
+                </div>
+                <div>
+                  <h3 class={`${titleColor} text-2xl font-bold`}>{story.name}</h3>
+                  <p class="text-foundation-primary font-semibold">{story.age}</p>
+                </div>
+              </div>
+
+              <!-- Story content -->
+              <div class="space-y-6">
+                <div>
+                  <h4 class={`${titleColor} font-semibold mb-2`}>Su historia:</h4>
+                  <p class={`${textColor} leading-relaxed`}>{story.background}</p>
+                </div>
+                
+                <div>
+                  <h4 class={`${titleColor} font-semibold mb-2`}>Su transformación:</h4>
+                  <p class={`${textColor} leading-relaxed`}>{story.journey}</p>
+                </div>
+                
+                <div>
+                  <h4 class={`${titleColor} font-semibold mb-2`}>Su sueño:</h4>
+                  <p class={`${textColor} leading-relaxed font-medium`}>{story.dream}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="lg:col-span-1">
+              <h4 class={`${titleColor} font-semibold mb-4 text-center lg:text-left`}>Logros alcanzados:</h4>
+              <div class="space-y-3">
+                {story.achievements.map((achievement) => (
+                  <div class="flex items-center">
+                    <div class="w-2 h-2 bg-foundation-primary rounded-full mr-3"></div>
+                    <span class={`${textColor} text-sm`}>{achievement}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

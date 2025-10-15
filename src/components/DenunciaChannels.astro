@@ -1,0 +1,135 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardBackgroundColor?: string;
+}
+
+const {
+  backgroundColor = "bg-white",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+  cardBackgroundColor = "bg-gray-50",
+} = Astro.props;
+
+const denunciaChannels = [
+  {
+    name: "Consejo Ciudadano para la Seguridad y Justicia de la CDMX",
+    description: "Puedes denunciar de forma gratuita y confidencial cualquier delito o situación de violencia. También ofrece orientación psicológica, asesoría legal, y cuenta con línea nacional y chat para denunciar.",
+    phone: "8005533000",
+    website: "https://consejociudadanomx.org/",
+    icon: "🏛️",
+    color: "bg-blue-500",
+    features: ["Gratuito", "Confidencial", "Orientación psicológica", "Asesoría legal", "Línea nacional", "Chat en línea"]
+  },
+  {
+    name: "Te Protejo",
+    description: "Plataforma digital a través de la cual puedes reportar situaciones de violencia sexual en contra de personas menores de 18 años de edad, de manera anónima y gratuita.",
+    website: "https://teprotejomexico.org/",
+    icon: "🛡️",
+    color: "bg-green-500",
+    features: ["Anónimo", "Gratuito", "Especializado en menores", "Plataforma digital"]
+  },
+  {
+    name: "Comisión Nacional de los Derechos Humanos",
+    description: "Organismo autónomo encargado de proteger y defender los derechos humanos en México.",
+    phone: "800-00-854-00",
+    icon: "⚖️",
+    color: "bg-purple-500",
+    features: ["Derechos humanos", "Organismo autónomo", "Nacional"]
+  },
+  {
+    name: "Fiscalía Especial para los Delitos de Violencia contra las Mujeres y Trata de Personas (FEVIMTRA)",
+    description: "Fiscalía especializada en delitos de violencia contra las mujeres y trata de personas.",
+    icon: "👩‍⚖️",
+    color: "bg-red-500",
+    features: ["Especializada", "Violencia contra mujeres", "Trata de personas"]
+  }
+];
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        Canales de Denuncia
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Múltiples opciones seguras y confidenciales para reportar cualquier situación de violencia o trata de personas
+      </p>
+    </div>
+
+    <!-- Channels grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      {denunciaChannels.map((channel) => (
+        <div class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100`}>
+          <!-- Header -->
+          <div class="flex items-start mb-6">
+            <div class={`${channel.color} w-16 h-16 rounded-full flex items-center justify-center mr-4 flex-shrink-0`}>
+              <span class="text-2xl">{channel.icon}</span>
+            </div>
+            <div class="flex-1">
+              <h3 class={`${titleColor} text-xl font-bold mb-2`}>
+                {channel.name}
+              </h3>
+              <p class={`${textColor} text-sm leading-relaxed`}>
+                {channel.description}
+              </p>
+            </div>
+          </div>
+
+          <!-- Contact info -->
+          <div class="space-y-3 mb-6">
+            {channel.phone && (
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-foundation-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+                <a href={`tel:${channel.phone}`} class="text-foundation-primary font-semibold hover:underline">
+                  {channel.phone}
+                </a>
+              </div>
+            )}
+            {channel.website && (
+              <div class="flex items-center">
+                <svg class="w-5 h-5 text-foundation-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                <a href={channel.website} target="_blank" rel="noopener noreferrer" class="text-foundation-primary font-semibold hover:underline">
+                  Visitar sitio web
+                </a>
+              </div>
+            )}
+          </div>
+
+          <!-- Features -->
+          <div class="flex flex-wrap gap-2">
+            {channel.features.map((feature) => (
+              <span class="bg-foundation-primary/10 text-foundation-primary text-xs font-medium px-3 py-1 rounded-full">
+                {feature}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Important notice -->
+    <div class="mt-16 bg-yellow-50 border border-yellow-200 rounded-2xl p-8">
+      <div class="flex items-start">
+        <svg class="w-6 h-6 text-yellow-600 mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+        </svg>
+        <div>
+          <h3 class="text-yellow-800 font-bold text-lg mb-2">Información Importante</h3>
+          <p class="text-yellow-700 leading-relaxed">
+            Todas las denuncias son <strong>gratuitas y confidenciales</strong>. No dudes en contactar cualquiera de estos canales si necesitas ayuda. 
+            Tu seguridad y la de otros es nuestra prioridad. Recuerda que denunciar es un acto de valentía que puede salvar vidas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

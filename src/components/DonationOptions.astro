@@ -1,0 +1,156 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardBackgroundColor?: string;
+}
+
+const {
+  backgroundColor = "bg-white",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+  cardBackgroundColor = "bg-gray-50",
+} = Astro.props;
+
+const donationTypes = [
+  {
+    id: "unique",
+    title: "Donativo Único",
+    description: "Haz una donación única para apoyar nuestro refugio y programas",
+    icon: "💝",
+    color: "bg-blue-500",
+    benefits: [
+      "Apoyo inmediato a nuestros programas",
+      "Acondicionamiento del refugio",
+      "Recursos para niñas, niños y adolescentes",
+      "Impacto directo en vidas"
+    ],
+    recommended: false
+  },
+  {
+    id: "monthly",
+    title: "Apoyo Mensual",
+    description: "Donativo recurrente mensual para sostener nuestros programas",
+    icon: "🔄",
+    color: "bg-green-500",
+    benefits: [
+      "Apoyo sostenido y constante",
+      "Planificación a largo plazo",
+      "Mayor impacto en la comunidad",
+      "Estabilidad para nuestros programas"
+    ],
+    recommended: true
+  },
+  {
+    id: "constructor",
+    title: "Sé un Constructor de Sueños",
+    description: "Donativo recurrente especial para la construcción y mejora del refugio",
+    icon: "🏗️",
+    color: "bg-purple-500",
+    benefits: [
+      "Construcción y mejora del refugio",
+      "Infraestructura para más beneficiarios",
+      "Espacios seguros y dignos",
+      "Legado duradero de esperanza"
+    ],
+    recommended: false
+  }
+];
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        Elige tu forma de ayudar
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Cada donativo, sin importar el tipo, es un paso hacia un México más libre y justo
+      </p>
+    </div>
+
+    <!-- Donation options grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {donationTypes.map((type) => (
+        <div class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 relative group`}>
+          {/* Recommended badge */}
+          {type.recommended && (
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <span class="bg-foundation-primary text-white px-4 py-2 rounded-full text-sm font-semibold">
+                Recomendado
+              </span>
+            </div>
+          )}
+
+          <!-- Header -->
+          <div class="text-center mb-6">
+            <div class={`${type.color} w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <span class="text-3xl">{type.icon}</span>
+            </div>
+            <h3 class={`${titleColor} text-2xl font-bold mb-2`}>{type.title}</h3>
+            <p class={`${textColor} leading-relaxed`}>{type.description}</p>
+          </div>
+
+          <!-- Benefits -->
+          <div class="space-y-3 mb-8">
+            <h4 class={`${titleColor} font-semibold text-lg mb-3`}>Beneficios:</h4>
+            {type.benefits.map((benefit) => (
+              <div class="flex items-start">
+                <div class="w-2 h-2 bg-foundation-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                <span class={`${textColor} text-sm`}>{benefit}</span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Action button -->
+          <button
+            class={`w-full py-4 px-6 rounded-lg font-semibold transition-colors duration-200 ${
+              type.recommended
+                ? 'bg-foundation-primary hover:bg-foundation-primary/90 text-white'
+                : 'bg-white hover:bg-gray-50 text-foundation-primary border-2 border-foundation-primary'
+            }`}
+            data-donation-type={type.id}
+          >
+            {type.id === 'unique' && 'Donar Ahora'}
+            {type.id === 'monthly' && 'Comenzar Apoyo Mensual'}
+            {type.id === 'constructor' && 'Ser Constructor de Sueños'}
+          </button>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional info -->
+    <div class="mt-16 text-center">
+      <div class="bg-gradient-to-r from-foundation-primary/10 to-foundation-primary/5 rounded-2xl p-8 lg:p-12">
+        <h3 class={`${titleColor} text-2xl font-bold mb-4`}>
+          ¿Por qué donar a Libera México?
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+          <div class="text-center">
+            <div class="bg-foundation-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">🎯</span>
+            </div>
+            <h4 class={`${titleColor} font-semibold mb-2`}>Impacto Directo</h4>
+            <p class={`${textColor} text-sm`}>Cada peso va directamente a ayudar a sobrevivientes</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-foundation-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">📊</span>
+            </div>
+            <h4 class={`${titleColor} font-semibold mb-2`}>Transparencia</h4>
+            <p class={`${textColor} text-sm`}>Rendimos cuentas de cada donativo recibido</p>
+          </div>
+          <div class="text-center">
+            <div class="bg-foundation-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl">💪</span>
+            </div>
+            <h4 class={`${titleColor} font-semibold mb-2`}>Resultados Comprobados</h4>
+            <p class={`${textColor} text-sm`}>Más de 56,000 comidas servidas y 1,300 terapias</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

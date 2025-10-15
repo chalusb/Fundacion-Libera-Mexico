@@ -1,0 +1,64 @@
+---
+import StatCard from "./StatCard.astro";
+
+export interface Props {
+  backgroundColor?: string;
+  numberColor?: string;
+  textColor?: string;
+  stats?: Array<{
+    number: string;
+    description: string;
+  }>;
+}
+
+const defaultStats = [
+  {
+    number: "27.6 M",
+    description:
+      "de personas son víctimas de trata o trabajo forzado en el mundo",
+  },
+  {
+    number: "2º Lugar",
+    description: "a nivel mundial en material de abuso sexual infantil",
+  },
+  {
+    number: "74%",
+    description: "de las víctimas son mujeres y niñas",
+  },
+  {
+    number: "11 M",
+    description: "de trata de personas se reconocen en México",
+  },
+];
+
+const {
+  backgroundColor = "bg-[#F3F2EA]",
+  numberColor = "text-foundation-primary",
+  textColor = "text-gray-800",
+  stats = defaultStats,
+} = Astro.props;
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class={`${textColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        En México, la situación es alarmante
+      </h2>
+    </div>
+    <!-- Statistics grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {
+        stats.map((stat, index) => (
+          <StatCard
+            number={stat.number}
+            description={stat.description}
+            numberColor={numberColor}
+            textColor={textColor}
+            index={index}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

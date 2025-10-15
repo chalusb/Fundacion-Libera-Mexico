@@ -1,0 +1,64 @@
+---
+// Configuración de colores para la fundación
+// Este archivo centraliza todos los colores utilizados en los componentes
+
+export interface ThemeColors {
+  primary: string;
+  secondary: string;
+  accent: string;
+  background: string;
+  text: string;
+  button: {
+    primary: string;
+    primaryText: string;
+  };
+}
+
+// Colores por defecto de la fundación
+export const defaultTheme: ThemeColors = {
+  primary: "#E74699", // Rosa/Magenta primario de la fundación
+  secondary: "#2A4B9B", // Azul de la fundación
+  accent: "#E74699", // Rosa/Magenta como acento
+  background: "#FFFFFF", // Fondo blanco
+  text: "#1F2937", // Gris oscuro para texto
+  button: {
+    primary: "#E74699", // Rosa/Magenta para botones
+    primaryText: "#FFFFFF", // Blanco para texto de botones
+  },
+};
+
+// Tema alternativo (ejemplo)
+export const darkTheme: ThemeColors = {
+  primary: "#3B82F6",
+  secondary: "#EC4899",
+  accent: "#10B981",
+  background: "#111827",
+  text: "#F9FAFB",
+  button: {
+    primary: "#10B981",
+    primaryText: "#FFFFFF",
+  },
+};
+
+// Función para generar clases de Tailwind basadas en el tema
+export function getThemeClasses(theme: ThemeColors) {
+  return {
+    header: {
+      logo: `text-[${theme.primary}]`,
+      text: `text-gray-800`,
+      button: `bg-[${theme.button.primary}] text-[${theme.button.primaryText}]`,
+    },
+    hero: {
+      title: "text-white",
+      button: `bg-[${theme.button.primary}] text-[${theme.button.primaryText}]`,
+    },
+    statistics: {
+      background: `bg-[${theme.background}]`,
+      numbers: `text-[${theme.accent}]`,
+      text: `text-[${theme.text}]`,
+    },
+  };
+}
+---
+
+<!-- Este componente no renderiza nada, solo exporta configuración -->

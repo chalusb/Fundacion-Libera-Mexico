@@ -1,0 +1,57 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  subtitleColor?: string;
+  backgroundImage?: string;
+}
+
+const {
+  backgroundColor = "bg-gray-900",
+  titleColor = "text-white",
+  subtitleColor = "text-gray-200",
+  backgroundImage = "/hero-2.png",
+} = Astro.props;
+---
+
+<section
+  class={`${backgroundColor} relative h-[80vh] mt-20 flex items-center justify-center overflow-hidden`}
+>
+  <!-- Background image -->
+  <div
+    class="absolute inset-0 bg-cover bg-no-repeat"
+    style={`background-image: url('${backgroundImage}'); background-position: center 20%;`}
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-4xl mx-auto">
+      <!-- Quote -->
+      <blockquote class="mb-8">
+        <p
+          class={`${subtitleColor} text-xl sm:text-2xl lg:text-3xl font-light leading-relaxed italic`}
+        >
+          "Quien salva una vida, salva al mundo entero"
+        </p>
+      </blockquote>
+
+      <!-- Main title -->
+      <h1
+        class={`${titleColor} text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight`}
+      >
+        Quiénes Somos
+      </h1>
+
+      <!-- Subtitle -->
+      <p
+        class={`${subtitleColor} text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto`}
+      >
+        Somos una fundación comprometida con la protección, acompañamiento y
+        rehabilitación de sobrevivientes de trata y violencia, trabajando
+        incansablemente por un México libre.
+      </p>
+    </div>
+  </div>
+</section>

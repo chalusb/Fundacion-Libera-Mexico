@@ -1,0 +1,61 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  subtitleColor?: string;
+  backgroundImage?: string;
+}
+
+const {
+  backgroundColor = "bg-gray-900",
+  titleColor = "text-white",
+  subtitleColor = "text-gray-200",
+  backgroundImage = "/hero-5.jpeg",
+} = Astro.props;
+---
+
+<section
+  class={`${backgroundColor} relative h-[80vh] mt-20 flex items-center justify-center overflow-hidden`}
+>
+  <!-- Background image -->
+  <div
+    class="absolute inset-0 bg-cover bg-no-repeat"
+    style={`background-image: url('${backgroundImage}'); background-position: center 20%;`}
+  >
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-4xl mx-auto">
+      <!-- Main title -->
+      <h1
+        class={`${titleColor} text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight`}
+      >
+        Dona Ahora
+      </h1>
+
+      <!-- Main message -->
+      <div
+        class="bg-foundation-primary/20 border border-foundation-primary/30 rounded-2xl p-8 mb-8 max-w-4xl mx-auto"
+      >
+        <p
+          class={`${subtitleColor} text-xl sm:text-2xl leading-relaxed font-medium mb-4`}
+        >
+          ¡Gracias porque tu donativo es un ladrillo de esperanza!
+        </p>
+        <p class={`${subtitleColor} text-lg sm:text-xl leading-relaxed`}>
+          Ya que con este se podrá acondicionar un refugio para recibir a más
+          niñas, niños y adolescentes sobrevivientes de trata de personas.
+        </p>
+      </div>
+
+      <!-- Secondary message -->
+      <p
+        class={`${subtitleColor} text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto font-semibold`}
+      >
+        ¡Gracias porque tu donativo nos ayuda a transformar vidas!
+      </p>
+    </div>
+  </div>
+</section>

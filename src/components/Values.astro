@@ -1,0 +1,60 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+  cardBackgroundColor?: string;
+}
+
+const {
+  backgroundColor = "bg-gray-50",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+  cardBackgroundColor = "bg-white",
+} = Astro.props;
+
+const values = [
+  { name: "Empatía", icon: "💝" },
+  { name: "Libertad", icon: "🕊️" },
+  { name: "Amor", icon: "❤️" },
+  { name: "Justicia", icon: "⚖️" },
+  { name: "Respeto", icon: "🤝" },
+  { name: "Unión", icon: "🤲" },
+  { name: "Resiliencia", icon: "💪" },
+  { name: "Tolerancia", icon: "🌍" },
+  { name: "Dignidad", icon: "👑" },
+];
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        Nuestros Valores
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Los principios fundamentales que guían cada una de nuestras acciones y
+        decisiones
+      </p>
+    </div>
+
+    <!-- Values grid -->
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+    >
+      {
+        values.map((value) => (
+          <div
+            class={`${cardBackgroundColor} rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group`}
+          >
+            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              {value.icon}
+            </div>
+            <h3 class={`${titleColor} text-lg font-semibold`}>{value.name}</h3>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

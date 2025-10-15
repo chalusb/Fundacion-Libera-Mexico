@@ -1,0 +1,115 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  titleColor?: string;
+  textColor?: string;
+}
+
+const {
+  backgroundColor = "bg-gray-50",
+  titleColor = "text-gray-900",
+  textColor = "text-gray-700",
+} = Astro.props;
+---
+
+<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Section title -->
+    <div class="text-center mb-16">
+      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+        ¿Por qué nos motiva?
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left side - Main content -->
+      <div class="space-y-6">
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+          <h3 class={`${titleColor} text-xl font-bold mb-4`}>
+            La Realidad Global
+          </h3>
+          <p class={`${textColor} text-lg leading-relaxed`}>
+            En el mundo, más de <strong>50 millones de personas</strong> viven en
+            esclavitud moderna, y
+            <strong>27.6 millones</strong> son víctimas de trata o trabajo forzado
+            (ONU, 2023).
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+          <h3 class={`${titleColor} text-xl font-bold mb-4`}>
+            La Situación en México
+          </h3>
+          <p class={`${textColor} text-lg leading-relaxed`}>
+            En México, la situación es alarmante: somos el <strong
+              >primer lugar en Latinoamérica</strong
+            > en consumo de pornografía (OCDE) y el <strong
+              >segundo a nivel mundial</strong
+            > en material de abuso sexual infantil (Consejo Ciudadano, 2025).
+          </p>
+        </div>
+      </div>
+
+      <!-- Right side - Impact stats -->
+      <div class="space-y-6">
+        <div
+          class="bg-foundation-primary/5 rounded-xl p-8 border border-foundation-primary/20"
+        >
+          <div class="text-center">
+            <div class="text-4xl font-black text-foundation-primary mb-2">
+              74%
+            </div>
+            <p class={`${textColor} text-lg font-medium`}>
+              de las víctimas son mujeres y niñas
+            </p>
+            <p class={`${textColor} text-sm mt-2`}>
+              Casi la mitad de las víctimas son menores de edad (CNDH, 2023)
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
+          <h3 class={`${titleColor} text-xl font-bold mb-4`}>
+            11 Modalidades de Trata
+          </h3>
+          <p class={`${textColor} text-lg leading-relaxed`}>
+            La trata de personas no se limita a la explotación sexual. En México
+            se reconocen 11 modalidades de este delito:
+          </p>
+          <ul class={`${textColor} text-base mt-4 space-y-2`}>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-foundation-primary rounded-full mr-3"
+              ></span>
+              Trabajo forzado
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-foundation-primary rounded-full mr-3"
+              ></span>
+              Mendicidad
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-foundation-primary rounded-full mr-3"
+              ></span>
+              Matrimonio forzado
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-foundation-primary rounded-full mr-3"
+              ></span>
+              Adopción ilegal
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-foundation-primary rounded-full mr-3"
+              ></span>
+              Tráfico de órganos
+            </li>
+            <li class="flex items-center">
+              <span class="w-2 h-2 bg-foundation-primary rounded-full mr-3"
+              ></span>
+              Reclutamiento por delincuencia organizada
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

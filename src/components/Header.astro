@@ -1,0 +1,91 @@
+---
+export interface Props {
+  textColor?: string;
+  buttonColor?: string;
+  buttonTextColor?: string;
+}
+
+const {
+  textColor = "text-gray-800",
+  buttonColor = "bg-foundation-primary",
+  buttonTextColor = "text-white",
+} = Astro.props;
+---
+
+<header class="bg-[#F3F2EA] shadow-sm fixed top-0 left-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="flex flex-col">
+          <img src="/logo.png" alt="Logo" class="w-full h-10" />
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8">
+        <a
+          href="/"
+          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
+        >
+          Inicio
+        </a>
+        <a
+          href="/about"
+          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
+        >
+          Quiénes somos
+        </a>
+        <a
+          href="/denuncia"
+          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
+        >
+          Denuncia
+        </a>
+        <a
+          href="/contacto"
+          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
+        >
+          Contacto
+        </a>
+        <a
+          href="/casos"
+          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
+        >
+          Casos de éxito
+        </a>
+      </nav>
+
+      <!-- CTA Button -->
+      <div class="flex items-center">
+        <a
+          href="/donativos"
+          class={`${buttonColor} ${buttonTextColor} px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity duration-200`}
+        >
+          Dona ya
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

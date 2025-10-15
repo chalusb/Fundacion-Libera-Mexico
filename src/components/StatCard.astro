@@ -1,0 +1,49 @@
+---
+export interface Props {
+  number: string;
+  description: string;
+  numberColor?: string;
+  textColor?: string;
+  index?: number;
+}
+
+const {
+  number,
+  description,
+  numberColor = "text-foundation-primary",
+  textColor = "text-gray-800",
+  index = 0,
+} = Astro.props;
+---
+
+<div class="group">
+  <!-- Card container -->
+  <div
+    class="rounded-lg hover:shadow-lg transition-all duration-300 p-6 h-full flex flex-col items-center justify-center min-h-[200px] hover:border-foundation-green/20"
+  >
+    <!-- Number with enhanced styling -->
+    <div class="mb-6">
+      <!-- Main number -->
+      <div
+        class={`${numberColor} text-xl sm:text-2xl lg:text-3xl font-black leading-none tracking-tight`}
+      >
+        {number}
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="text-center flex-1 flex items-start justify-center">
+      <p
+        class={`${textColor} text-sm sm:text-base lg:text-lg leading-relaxed font-medium max-w-[250px]`}
+      >
+        {description}
+      </p>
+    </div>
+
+    <!-- Decorative line -->
+    <div
+      class="mt-6 w-12 h-0.5 bg-foundation-primary rounded-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+    >
+    </div>
+  </div>
+</div>

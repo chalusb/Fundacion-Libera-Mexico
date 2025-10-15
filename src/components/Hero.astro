@@ -1,0 +1,154 @@
+---
+export interface Props {
+  backgroundImage?: string;
+  titleColor?: string;
+  buttonColor?: string;
+  buttonTextColor?: string;
+  overlayOpacity?: string;
+  messages?: Array<{
+    line1: string;
+    line2: string;
+  }>;
+}
+
+const defaultMessages = [
+  {
+    line1: "Rescatando a la",
+    line2: "infancia mexicana",
+  },
+  {
+    line1: "Protegiendo",
+    line2: "nuestros niños",
+  },
+  {
+    line1: "Construyendo",
+    line2: "un futuro mejor",
+  },
+  {
+    line1: "Luchando contra",
+    line2: "la trata infantil",
+  },
+];
+
+const {
+  backgroundImage = 'url("/hero-bg.jpg")',
+  titleColor = "text-white",
+  buttonColor = "bg-foundation-primary",
+  buttonTextColor = "text-white",
+  overlayOpacity = "bg-black bg-opacity-0",
+  messages = defaultMessages,
+} = Astro.props;
+---
+
+<section
+  class="relative h-[80vh] flex items-center justify-center overflow-hidden mt-20"
+>
+  <!-- Background Image -->
+  <div
+    class="absolute inset-0 z-1 bg-cover bg-center bg-no-repeat"
+    style={`background-image: ${backgroundImage};`}
+  >
+    <!-- Overlay -->
+    <div class={`absolute inset-0 ${overlayOpacity}`}></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <!-- Animated Text Container -->
+    <div class="relative h-32 flex items-center justify-center mb-8">
+      <h1
+        class={`${titleColor} text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight`}
+        id="animated-title"
+      >
+        <span class="block" id="line1">Rescatando a la</span>
+        <span class="block" id="line2">infancia mexicana</span>
+      </h1>
+    </div>
+
+    <button
+      class={`${buttonColor} ${buttonTextColor} px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity duration-200 shadow-lg`}
+      onclick="window.location.href='/donativos'"
+    >
+      Dona ya
+    </button>
+  </div>
+</section>
+
+<script define:vars={{ messages }}>
+  class TextAnimator {
+    constructor(messages, interval = 3000) {
+      this.messages = messages;
+      this.currentIndex = 0;
+      this.interval = interval;
+      this.isAnimating = false;
+      this.init();
+    }
+
+    init() {
+      this.line1 = document.getElementById("line1");
+      this.line2 = document.getElementById("line2");
+
+      if (!this.line1 || !this.line2) return;
+
+      this.startAnimation();
+    }
+
+    startAnimation() {
+      setInterval(() => {
+        if (!this.isAnimating) {
+          this.changeText();
+        }
+      }, this.interval);
+    }
+
+    changeText() {
+      this.isAnimating = true;
+
+      // Fade out current text
+      this.line1.style.transition =
+        "opacity 0.5s ease-out, transform 0.5s ease-out";
+      this.line2.style.transition =
+        "opacity 0.5s ease-out, transform 0.5s ease-out";
+
+      this.line1.style.opacity = "0";
+      this.line1.style.transform = "translateY(-20px)";
+      this.line2.style.opacity = "0";
+      this.line2.style.transform = "translateY(-20px)";
+
+      // Change text and fade in after fade out completes
+      setTimeout(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.messages.length;
+        const nextMessage = this.messages[this.currentIndex];
+
+        this.line1.textContent = nextMessage.line1;
+        this.line2.textContent = nextMessage.line2;
+
+        // Fade in new text
+        this.line1.style.opacity = "1";
+        this.line1.style.transform = "translateY(0)";
+        this.line2.style.opacity = "1";
+        this.line2.style.transform = "translateY(0)";
+
+        // Reset animation state
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 500);
+      }, 500);
+    }
+  }
+
+  // Initialize the animator when the page loads
+  document.addEventListener("DOMContentLoaded", () => {
+    new TextAnimator(messages, 4000); // Change text every 4 seconds
+  });
+</script>
+
+<style>
+  #line1,
+  #line2 {
+    transition:
+      opacity 0.5s ease-out,
+      transform 0.5s ease-out;
+    will-change: opacity, transform;
+  }
+</style>
