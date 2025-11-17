@@ -14,14 +14,14 @@ const {
 } = Astro.props;
 
 const ods = [
-  { number: "1", title: "Fin de la pobreza", color: "bg-red-500" },
-  { number: "3", title: "Salud y bienestar", color: "bg-green-500" },
-  { number: "4", title: "Educación de calidad", color: "bg-red-500" },
-  { number: "5", title: "Igualdad de género", color: "bg-orange-500" },
-  { number: "8", title: "Trabajo decente y crecimiento económico", color: "bg-red-600" },
-  { number: "10", title: "Reducción de las desigualdades", color: "bg-pink-500" },
-  { number: "16", title: "Paz, justicia e instituciones sólidas", color: "bg-blue-500" },
-  { number: "17", title: "Alianzas para lograr los objetivos", color: "bg-blue-600" },
+  { number: "1", title: "Fin de la pobreza", color: "bg-red-500", image: "./ods/fin-pobreza.png" },
+  { number: "3", title: "Salud y bienestar", color: "bg-green-500", image: "./ods/salud-y-bienestar.jpg" },
+  { number: "4", title: "Educación de calidad", color: "bg-red-500", image: "./ods/educacion-de-calidad.jpg" },
+  { number: "5", title: "Igualdad de género", color: "bg-orange-500", image: "./ods/igualdad-de-genero.jpg" },
+  { number: "8", title: "Trabajo decente y crecimiento económico", color: "bg-red-600", image: "./ods/trabajo-decente.jpg" },
+  { number: "10", title: "Reducción de las desigualdades", color: "bg-pink-500", image: "./ods/reduccion.jpg" },
+  { number: "16", title: "Paz, justicia e instituciones sólidas", color: "bg-blue-500", image: "./ods/paz.jpg" },
+  { number: "17", title: "Alianzas para lograr los objetivos", color: "bg-blue-600", image: "./ods/alianzas.png" },
 ];
 ---
 
@@ -33,7 +33,7 @@ const ods = [
         ODS Alineados
       </h2>
       <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-        Nuestro trabajo contribuye directamente a los Objetivos de Desarrollo Sostenible de la ONU
+        Nuestro trabajo contribuye directamente a los Objetivos de Desarrollo Sostenible de las Naciones Unidas
       </p>
     </div>
 
@@ -43,8 +43,8 @@ const ods = [
         <div class={`${cardBackgroundColor} rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group`}>
           <div class="text-center">
             <!-- ODS Number Circle -->
-            <div class={`${odsItem.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-              <span class="text-white font-bold text-xl">{odsItem.number}</span>
+            <div class={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+              <img src={odsItem.image} alt={odsItem.title} class="w-full h-full object-cover" />
             </div>
             
             <!-- ODS Title -->

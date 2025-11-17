@@ -62,7 +62,7 @@ const {
     const newsletterForm = document.getElementById("newsletter-section-form");
 
     if (newsletterForm) {
-      newsletterForm.addEventListener("submit", (e) => {
+      newsletterForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const emailInput = newsletterForm.querySelector(
@@ -96,17 +96,41 @@ const {
         submitButton.textContent = "Suscribiendo...";
         submitButton.disabled = true;
 
-        // Simular envío (aquí conectarías con tu servicio de newsletter)
-        setTimeout(() => {
+        try {
+          // Enviar al endpoint API
+          const response = await fetch("/api/newsletter", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            alert(
+              "¡Gracias por suscribirte! Te mantendremos informado sobre nuestros avances."
+            );
+            emailInput.value = "";
+          } else {
+            alert(
+              result.error ||
+                "Hubo un error al procesar tu suscripción. Por favor, intenta nuevamente."
+            );
+          }
+        } catch (error) {
+          console.error("Error al procesar la suscripción:", error);
           alert(
-            "¡Gracias por suscribirte! Te mantendremos informado sobre nuestros avances."
+            "Hubo un error al procesar tu suscripción. Por favor, intenta nuevamente."
           );
-          emailInput.value = "";
+        } finally {
+          // Restaurar el botón
           if (submitButton && originalText) {
             submitButton.textContent = originalText;
             submitButton.disabled = false;
           }
-        }, 1500);
+        }
       });
     }
   });

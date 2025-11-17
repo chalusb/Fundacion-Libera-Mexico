@@ -17,32 +17,26 @@ const teamMembers = [
   { 
     name: "Paola Tolsá", 
     role: "Cofundadora",
-    description: "Líder visionaria comprometida con la libertad y la justicia social"
   },
   { 
     name: "Daniela", 
     role: "Cofundadora",
-    description: "Estratega apasionada por la transformación social"
   },
   { 
     name: "Sandra", 
     role: "Directora Operativa del Refugio",
-    description: "Experta en operaciones y cuidado integral de sobrevivientes"
   },
   { 
     name: "Karla", 
     role: "Coordinadora del Área de Salud Mental",
-    description: "Especialista en rehabilitación psicológica y emocional"
   },
   { 
     name: "Eli", 
     role: "Coordinadora de Cuidadores",
-    description: "Líder en la formación y coordinación del equipo de cuidado"
   },
   { 
     name: "Michelle", 
     role: "Comunicación y Procuración de Fondos",
-    description: "Experta en comunicación estratégica y desarrollo de recursos"
   },
 ];
 ---
@@ -54,9 +48,6 @@ const teamMembers = [
       <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
         Nuestro Equipo
       </h2>
-      <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-        Somos apasionadas de la libertad
-      </p>
       <p class="text-base text-gray-500 max-w-2xl mx-auto">
         Un equipo comprometido y especializado que trabaja incansablemente 
         para crear un impacto positivo en la vida de quienes más lo necesitan.
@@ -81,9 +72,6 @@ const teamMembers = [
             </h3>
             <p class="text-foundation-primary font-semibold mb-3">
               {member.role}
-            </p>
-            <p class={`${textColor} text-sm leading-relaxed`}>
-              {member.description}
             </p>
           </div>
         </div>

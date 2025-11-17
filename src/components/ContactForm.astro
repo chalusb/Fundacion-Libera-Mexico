@@ -243,39 +243,6 @@ const {
             </div>
           </div>
         </div>
-
-        <!-- Emergency contact -->
-        <div class="bg-red-50 border border-red-200 rounded-2xl p-6">
-          <div class="flex items-center mb-4">
-            <svg
-              class="w-6 h-6 text-red-600 mr-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
-              ></path>
-            </svg>
-            <h3 class="text-red-800 font-bold text-lg">🚨 Emergencia</h3>
-          </div>
-          <p class="text-red-700 text-sm mb-3">
-            Si eres víctima de trata o conoces a alguien que lo sea:
-          </p>
-          <div class="space-y-2">
-            <div class="flex items-center">
-              <span class="text-red-600 font-bold mr-2">911</span>
-              <span class="text-red-700 text-sm">Emergencias</span>
-            </div>
-            <div class="flex items-center">
-              <span class="text-red-600 font-bold mr-2">01 800 5533 000</span>
-              <span class="text-red-700 text-sm">Línea nacional</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -289,7 +256,7 @@ const {
     ) as HTMLFormElement;
 
     if (contactForm) {
-      contactForm.addEventListener("submit", (e) => {
+      contactForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
         const formData = new FormData(contactForm);
@@ -304,15 +271,48 @@ const {
         submitButton.textContent = "Enviando...";
         submitButton.disabled = true;
 
-        // Simular envío (aquí conectarías con tu servicio de email)
-        setTimeout(() => {
-          alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
-          contactForm.reset();
+        try {
+          // Preparar los datos del formulario
+          const data = {
+            name: formData.get("name"),
+            email: formData.get("email"),
+            phone: formData.get("phone") || "",
+            subject: formData.get("subject"),
+            message: formData.get("message"),
+          };
+
+          // Enviar al endpoint API
+          const response = await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            alert("¡Gracias por tu mensaje! Te contactaremos pronto.");
+            contactForm.reset();
+          } else {
+            alert(
+              result.error ||
+                "Hubo un error al enviar tu mensaje. Por favor, intenta nuevamente."
+            );
+          }
+        } catch (error) {
+          console.error("Error al enviar el formulario:", error);
+          alert(
+            "Hubo un error al enviar tu mensaje. Por favor, intenta nuevamente."
+          );
+        } finally {
+          // Restaurar el botón
           if (submitButton && originalText) {
             submitButton.textContent = originalText;
             submitButton.disabled = false;
           }
-        }, 1500);
+        }
       });
     }
   });

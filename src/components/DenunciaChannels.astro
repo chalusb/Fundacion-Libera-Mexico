@@ -20,6 +20,7 @@ const denunciaChannels = [
     phone: "8005533000",
     website: "https://consejociudadanomx.org/",
     icon: "🏛️",
+    image: "./logo-consejo-ciudadano.svg",
     color: "bg-blue-500",
     features: ["Gratuito", "Confidencial", "Orientación psicológica", "Asesoría legal", "Línea nacional", "Chat en línea"]
   },
@@ -28,6 +29,7 @@ const denunciaChannels = [
     description: "Plataforma digital a través de la cual puedes reportar situaciones de violencia sexual en contra de personas menores de 18 años de edad, de manera anónima y gratuita.",
     website: "https://teprotejomexico.org/",
     icon: "🛡️",
+    image: "./te-protejo-logo.png",
     color: "bg-green-500",
     features: ["Anónimo", "Gratuito", "Especializado en menores", "Plataforma digital"]
   },
@@ -67,9 +69,13 @@ const denunciaChannels = [
         <div class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100`}>
           <!-- Header -->
           <div class="flex items-start mb-6">
-            <div class={`${channel.color} w-16 h-16 rounded-full flex items-center justify-center mr-4 flex-shrink-0`}>
-              <span class="text-2xl">{channel.icon}</span>
-            </div>
+            {channel.image ? (
+              <img src={channel.image} alt={channel.name} class="w-16 h-16 object-contain rounded-full flex items-center justify-center mr-4 flex-shrink-0" />
+            ): (
+              <div class={`${channel.color} w-16 h-16 rounded-full flex items-center justify-center mr-4 flex-shrink-0`}>
+                <span class="text-2xl">{channel.icon}</span>
+              </div>
+            )}
             <div class="flex-1">
               <h3 class={`${titleColor} text-xl font-bold mb-2`}>
                 {channel.name}

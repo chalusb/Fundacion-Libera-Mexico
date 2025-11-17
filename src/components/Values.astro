@@ -14,15 +14,15 @@ const {
 } = Astro.props;
 
 const values = [
-  { name: "Empatía", icon: "💝" },
-  { name: "Libertad", icon: "🕊️" },
-  { name: "Amor", icon: "❤️" },
-  { name: "Justicia", icon: "⚖️" },
-  { name: "Respeto", icon: "🤝" },
-  { name: "Unión", icon: "🤲" },
-  { name: "Resiliencia", icon: "💪" },
-  { name: "Tolerancia", icon: "🌍" },
-  { name: "Dignidad", icon: "👑" },
+  { name: "Empatía", icon: "./values/empatia.png" },
+  { name: "Libertad", icon: "./values/libertad.png" },
+  { name: "Amor", icon: "./values/amor.png" },
+  { name: "Justicia", icon: "./values/justicia.png" },
+  { name: "Respeto", icon: "./values/respeto.png" },
+  { name: "Unión", icon: "./values/union.png" },
+  { name: "Resiliencia", icon: "./values/resiliencia.png" },
+  { name: "Tolerancia", icon: "./values/tolerancia.png" },
+  { name: "Dignidad", icon: "./values/dignidad.png" },
 ];
 ---
 
@@ -48,8 +48,12 @@ const values = [
           <div
             class={`${cardBackgroundColor} rounded-xl p-6 text-center shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group`}
           >
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              {value.icon}
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <img
+                src={value.icon}
+                alt={value.name}
+                class="w-full h-full object-cover"
+              />
             </div>
             <h3 class={`${titleColor} text-lg font-semibold`}>{value.name}</h3>
           </div>

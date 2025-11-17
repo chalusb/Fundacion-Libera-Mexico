@@ -8,26 +8,27 @@ export interface Props {
   stats?: Array<{
     number: string;
     description: string;
+    bibliography?: string;
   }>;
 }
 
 const defaultStats = [
   {
-    number: "27.6 M",
-    description:
-      "de personas son víctimas de trata o trabajo forzado en el mundo",
-  },
-  {
     number: "2º Lugar",
     description: "a nivel mundial en material de abuso sexual infantil",
+    bibliography:
+      "https://derechosinfancia.org.mx/v1/mexico-se-encuentra-en-el-2o-puesto-en-america-latina-y-en-el-12o-a-nivel-mundial-con-respecto-a-la-prevencion-y-la-respuesta-a-la-violencia-sexual-contra-ninas-ninos-y-adolescentes/",
   },
   {
     number: "74%",
     description: "de las víctimas son mujeres y niñas",
+    bibliography:
+      "https://www.lavanguardia.com/vida/20241211/10189481/mujeres-ninas-siguen-siendo-principales-victimas-trata-onu-agenciaslv20241211.html",
   },
   {
-    number: "11 M",
+    number: "11 Modalidades",
     description: "de trata de personas se reconocen en México",
+    bibliography: "https://www.diputados.gob.mx/LeyesBiblio/pdf/LGPSEDMTP.pdf",
   },
 ];
 
@@ -47,12 +48,13 @@ const {
       </h2>
     </div>
     <!-- Statistics grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {
         stats.map((stat, index) => (
           <StatCard
             number={stat.number}
             description={stat.description}
+            bibliography={stat.bibliography}
             numberColor={numberColor}
             textColor={textColor}
             index={index}
