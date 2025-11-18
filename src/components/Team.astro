@@ -17,26 +17,42 @@ const teamMembers = [
   { 
     name: "Paola Tolsá", 
     role: "Cofundadora",
+    image: "./users/paola-tolsa.jpg",
   },
   { 
-    name: "Daniela", 
+    name: "Daniela Tapia", 
     role: "Cofundadora",
+    image: "./users/daniela-tapia.jpg",
   },
   { 
-    name: "Sandra", 
+    name: "Sandra Dieguez", 
     role: "Directora Operativa del Refugio",
+    image: "./users/sandra-dieguez.png",
   },
   { 
-    name: "Karla", 
+    name: "Karla Gama", 
     role: "Coordinadora del Área de Salud Mental",
+    image: "./users/karla-gama.jpg",
   },
   { 
-    name: "Eli", 
+    name: "Elizabeth Alvarez ", 
     role: "Coordinadora de Cuidadores",
+    image: "./users/elizabeth.png",
   },
   { 
-    name: "Michelle", 
+    name: "Michelle Arzate", 
     role: "Comunicación y Procuración de Fondos",
+    image: "./users/michelle-arzate.jpg",
+  },
+  { 
+    name: "Veronica Naranjo ", 
+    role: "Desarrollo Institucional",
+    image: "./users/veronica-naranjo.jpg",
+  },
+  { 
+    name: "Karla Jacinto ", 
+    role: "Desarrollo Institucional",
+    image: "./users/karla-jacinto.jpg",
   },
 ];
 ---
@@ -59,11 +75,12 @@ const teamMembers = [
       {teamMembers.map((member) => (
         <div class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group`}>
           <!-- Photo placeholder -->
-          <div class="w-32 h-32 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-            <svg class="w-16 h-16 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
-          </div>
+          <div 
+            class={`w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 overflow-hidden`}
+            style={`background-image: url(${member.image}); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+          >
+              <img src={member.image} alt={member.name} class="w-full h-full object-contain rounded-full" />
+            </div>
           
           <!-- Member info -->
           <div class="text-center">
