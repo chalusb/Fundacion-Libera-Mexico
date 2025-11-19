@@ -14,6 +14,7 @@ const {
 } = Astro.props;
 
 const teamMembers = [
+
   { 
     name: "Paola Tolsá", 
     role: "Cofundadora",
@@ -53,6 +54,64 @@ const teamMembers = [
     name: "Karla Jacinto ", 
     role: "Desarrollo Institucional",
     image: "./users/karla-jacinto.jpg",
+  },
+];
+
+const consejoConsultivo = [
+{ 
+    name: "Lucía Chaparro", 
+    role: "Presidenta. Lider social.",
+    image: "./users/consejo/lucia-chaparro.jpg",
+  },
+  { 
+    name: "Karla Gómez", 
+    role: "Secretaria. Lider social,presidenta de Ayuda Pedregal.",
+    image: "./users/consejo/carla-gomez.jpg",
+  },
+  { 
+    name: "Saskia Niño de Rivera", 
+    role: "Vocal. Cofundadora de Reinserta",
+    image: "./users/consejo/saskia-niño-de-rivera.jpeg",
+  },
+  { 
+    name: "Salvador Cacho", 
+    role: "Vocal. Activista y protector de las infancias.",
+    image: "./users/consejo/salvador-cacho.png",
+  },
+  { 
+    name: "Raquel Aguirre", 
+    role: "Vocal. Cofundadora de La Cana",
+    image: "./users/consejo/raquel-aguirre.png",
+  },
+  { 
+    name: "Mercedes Becker", 
+    role: "Vocal. Cofundadora de La Cana",
+    image: "./users/consejo/Mercedes.png",
+  },
+  { 
+    name: "Karen Farias", 
+    role: "Vocal. Directora ESG en Aeroméxico",
+    image: "./users/consejo/karen-farias.png",
+  },
+  { 
+    name: "Diana Murrieta", 
+    role: "Vocal. Fundadora de Nosotras para Ellas A.C.",
+    image: "./users/consejo/diana-murrieta.png",
+  },
+  { 
+    name: "Daniela Gomez", 
+    role: "Vocal. Experta en trata de personas. OIM.",
+    image: "./users/consejo/daniela-gomez.png",
+  },
+  { 
+    name: "Carlos Ferrán", 
+    role: "Vocal. Fundador de Ferran Martinez  Abogados.",
+    image: "./users/consejo/carlos-ferran.png",
+  },
+  { 
+    name: "Mariana Ávila", 
+    role: "Vocal. Directora ESG en Hogan Lovells",
+    image: "./users/consejo/mariana-avila.png",
   },
 ];
 ---
@@ -95,6 +154,44 @@ const teamMembers = [
       ))}
     </div>
 
+    <!-- Consejo Consultivo Section -->
+    <div class="mt-20">
+      <!-- Section title -->
+      <div class="text-center mb-16">
+        <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
+          Consejo Consultivo
+        </h2>
+        <p class="text-base text-gray-500 max-w-2xl mx-auto">
+          Un grupo de especialistas y aliadas/os que ponen su conocimiento,trayectoria y corazón al servicio de nuestra misión:proteger,acompañar y transformar vidas.
+        </p>
+      </div>
+
+      <!-- Consejo grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {consejoConsultivo.map((member) => (
+          <div class={`${cardBackgroundColor} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 group`}>
+            <!-- Photo placeholder -->
+            <div 
+              class={`w-32 h-32 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 overflow-hidden`}
+              style={`background-image: url(${member.image}); background-size: cover; background-position: center; background-repeat: no-repeat;`}
+            >
+              <img src={member.image} alt={member.name} class="w-full h-full object-contain rounded-full" />
+            </div>
+            
+            <!-- Member info -->
+            <div class="text-center">
+              <h3 class={`${titleColor} text-xl font-bold mb-2`}>
+                {member.name}
+              </h3>
+              <p class="text-foundation-primary font-semibold mb-3">
+                {member.role}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    
     <!-- Call to action -->
     <div class="mt-16 text-center">
       <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-4xl mx-auto">
