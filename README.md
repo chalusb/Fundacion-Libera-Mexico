@@ -41,6 +41,19 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
+## 🐳 Ejecutar con Docker
+
+1. Asegúrate de tener Docker y Docker Compose instalados.
+2. Construye la imagen y levanta el servicio:
+
+   ```sh
+   docker compose up --build
+   ```
+
+3. Abre `http://localhost:4321` en tu navegador. Gracias al volumen compartido, los cambios en el código se reflejan automáticamente sin reconstruir la imagen.
+
+Para detener el entorno, usa `docker compose down`.
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
