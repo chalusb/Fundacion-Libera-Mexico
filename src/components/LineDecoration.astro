@@ -1,0 +1,19 @@
+---
+const textLines = Array.from(
+  { length: 4 },
+  (_) => `Sé un constructor de sueños`
+);
+---
+
+<section class="overflow-hidden h-28 bg-[#23479A] w-full">
+  <div class="flex items-center justify-between px-8 w-full h-full">
+    {
+      textLines.map((text) => (
+        <div class="flex items-center gap-x-8 h-full items-center">
+          <div class="bg-[#F45B9E] w-5 h-5 rounded-full" />
+          <div class="font-semibold text-white text-center text-lg">{text}</div>
+        </div>
+      ))
+    }
+  </div>
+</section>
