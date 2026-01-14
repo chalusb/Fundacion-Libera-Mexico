@@ -5,64 +5,85 @@ export interface Props {
   buttonTextColor?: string;
 }
 
-const {
-  textColor = "text-gray-800",
-  buttonColor = "bg-foundation-primary",
-  buttonTextColor = "text-white",
-} = Astro.props;
+const links = [
+  {
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "Quiénes somos",
+    href: "/about",
+  },
+  {
+    label: "Impacto",
+    href: "/#impacto",
+  },
+  {
+    label: "Denuncia",
+    href: "/denuncia",
+  },
+  {
+    label: "Constructor de Sueños",
+    href: "/#constructor",
+  },
+  {
+    label: "Contacto",
+    href: "/contacto",
+  },
+];
+// Obtener la ruta actual
+const currentPath = Astro.url.pathname;
+
+// Función para determinar si un enlace está activo
+const isActive = (path: string) => {
+  if (path === "/") {
+    return currentPath === "/";
+  }
+  return currentPath.startsWith(path);
+};
+
+// Clases para enlaces activos e inactivos
+const activeLinkClass =
+  "relative text-[#254687] text-base h-full flex items-center font-medium hover:text-[#254687] transition-colors duration-200";
+const inactiveLinkClass =
+  "relative text-[#4B5563] text-base h-full flex items-center font-medium hover:text-[#254687] transition-colors duration-200";
 ---
 
-<header class="bg-[#F3F2EA] shadow-sm fixed top-0 left-0 w-full z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
     <div class="flex justify-between items-center h-20">
       <!-- Logo -->
-      <div class="flex items-center">
-        <a href="/" class="flex flex-col">
-          <img src="/logo.png" alt="Logo" class="w-auto h-10" />
-        </a>
-      </div>
+      <a href="/" class="flex items-center">
+        <div class="flex flex-col max-h-16">
+          <img src="/logo.png" alt="Logo" class="h-12" />
+        </div>
+      </a>
 
       <!-- Navigation -->
-      <nav class="hidden md:flex space-x-8">
-        <a
-          href="/"
-          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
-        >
-          Inicio
-        </a>
-        <a
-          href="/about"
-          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
-        >
-          Quiénes somos
-        </a>
-        <a
-          href="/denuncia"
-          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
-        >
-          Denuncia
-        </a>
-        <a
-          href="/contacto"
-          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
-        >
-          Contacto
-        </a>
-        <a
-          href="/casos"
-          class={`${textColor} hover:text-foundation-primary transition-colors duration-200 font-medium`}
-        >
-          Casos de éxito
-        </a>
+      <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 h-full">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class={isActive(link.href) ? activeLinkClass : inactiveLinkClass}
+            >
+              {link.label}
+
+              {isActive(link.href) && (
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-[#254687]" />
+              )}
+            </a>
+          ))
+        }
       </nav>
 
       <!-- CTA Button -->
       <div class="flex items-center max-sm:hidden">
         <a
           href="/#"
-          class={`${buttonColor} ${buttonTextColor} px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity duration-200`}
+          class="bg-[#EC4899] text-white px-8 py-3 rounded-full font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity duration-200 shadow-sm"
         >
-          Dona ya
+          DONA AHORA
         </a>
       </div>
 
@@ -91,42 +112,66 @@ const {
 
     <!-- Mobile menu -->
     <div id="mobile-menu" class="md:hidden hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
+      <div
+        class="px-4 pt-4 pb-6 space-y-2 sm:px-6 border-t border-gray-200 bg-white"
+      >
         <a
           href="/"
-          class="block px-3 py-2 text-base font-medium text-gray-800 hover:text-foundation-primary hover:bg-gray-50 rounded-md"
+          class={`block px-4 py-3 text-base font-medium hover:bg-gray-50 rounded-md ${
+            isActive("/")
+              ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
+              : "text-[#4B5563] hover:text-[#254687]"
+          }`}
         >
           Inicio
         </a>
         <a
           href="/about"
-          class="block px-3 py-2 text-base font-medium text-gray-800 hover:text-foundation-primary hover:bg-gray-50 rounded-md"
+          class={`block px-4 py-3 text-base font-medium hover:bg-gray-50 rounded-md ${
+            isActive("/about")
+              ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
+              : "text-[#4B5563] hover:text-[#254687]"
+          }`}
         >
           Quiénes somos
         </a>
         <a
+          href="/#impacto"
+          class="block px-4 py-3 text-base font-medium text-[#4B5563] hover:text-[#254687] hover:bg-gray-50 rounded-md"
+        >
+          Impacto
+        </a>
+        <a
           href="/denuncia"
-          class="block px-3 py-2 text-base font-medium text-gray-800 hover:text-foundation-primary hover:bg-gray-50 rounded-md"
+          class={`block px-4 py-3 text-base font-medium hover:bg-gray-50 rounded-md ${
+            isActive("/denuncia")
+              ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
+              : "text-[#4B5563] hover:text-[#254687]"
+          }`}
         >
           Denuncia
         </a>
         <a
+          href="/#constructor"
+          class="block px-4 py-3 text-base font-medium text-[#4B5563] hover:text-[#254687] hover:bg-gray-50 rounded-md"
+        >
+          Constructor de Sueños
+        </a>
+        <a
           href="/contacto"
-          class="block px-3 py-2 text-base font-medium text-gray-800 hover:text-foundation-primary hover:bg-gray-50 rounded-md"
+          class={`block px-4 py-3 text-base font-medium hover:bg-gray-50 rounded-md ${
+            isActive("/contacto")
+              ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
+              : "text-[#4B5563] hover:text-[#254687]"
+          }`}
         >
           Contacto
         </a>
         <a
-          href="/casos"
-          class="block px-3 py-2 text-base font-medium text-gray-800 hover:text-foundation-primary hover:bg-gray-50 rounded-md"
+          href="/#"
+          class="block px-4 py-3 text-base font-semibold text-white bg-[#EC4899] hover:bg-[#EC4899]/90 rounded-full text-center mt-4 shadow-sm"
         >
-          Casos de éxito
-        </a>
-        <a
-          href="/donativos"
-          class="block px-3 py-2 text-base font-medium text-white bg-foundation-primary hover:bg-foundation-primary/90 rounded-md text-center mt-4"
-        >
-          Dona ya
+          DONA AHORA
         </a>
       </div>
     </div>
