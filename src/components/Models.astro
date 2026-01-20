@@ -1,0 +1,66 @@
+---
+import BubblesGrid, { type BubbleType } from "./bubbles/grid.astro";
+
+const bubbles = [
+  { title: "APOYO LEGAL", image: "/images/bubbles/1.png", color: "green" },
+  { title: "SALUD MENTAL", image: "/images/bubbles/2.png", color: "purple" },
+  { title: "APOYO EDUCATIVO", image: "/images/bubbles/3.png", color: "green" },
+  {
+    title: "ATENCIÓN MÉDICA",
+    image: "/images/bubbles/4.png",
+    color: "purple",
+  },
+  {
+    title: "TALENTOS Y HABILIDADES",
+    image: "/images/bubbles/5.png",
+    color: "green",
+  },
+] as BubbleType[];
+---
+
+<section class="w-full mx-auto overflow-hidden w-full relative bg-white">
+  <div
+    class="w-full h-[16rem] z-[3] relative"
+    style="background-image: url('/images/background/paper.png'); background-size: cover; background-position: center;"
+  >
+  </div>
+  <div class="max-w-7xl mx-auto relative px-4 -mt-24 z-[10]">
+    <div class="relative">
+      <h1 class="text-7xl font-bold text-center text-[#214296]">
+        NUESTRO MODELO
+      </h1>
+      <img
+        src="/images/decores/2.png"
+        alt="Models"
+        class="w-auto h-full object-cover mx-auto -mt-6"
+      />
+      <img
+        src="/images/decores/3.png"
+        alt="Models"
+        class="w-32 h-32 object-cover absolute bottom-10 right-[10rem] z-10"
+      />
+    </div>
+    <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto font-medium">
+      Nuestro Modelo <strong class="font-bold">Integral</strong> está construido sobre
+      <strong class="font-bold">cinco pilares</strong> fundamentales que permiten
+      sanar, proteger y reconstruir proyectos de vida.
+    </p>
+
+    <div class="mt-10">
+      <BubblesGrid items={bubbles} />
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      <button
+        class="mt-8 bg-[#E1629F] hover:bg-[#c94d8a] text-white font-semibold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg uppercase tracking-wider"
+      >
+        Nuestro modelo
+      </button>
+    </div>
+  </div>
+  <div
+    class="w-full h-[15rem] z-4 -mt-32"
+    style="background-image: url('/images/background/paper-2.png'); background-size: cover; background-position: center;"
+  >
+  </div>
+</section>
