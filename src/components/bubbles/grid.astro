@@ -1,0 +1,30 @@
+---
+import BubbleItem from "./Items.astro";
+
+export interface BubbleType {
+  title: string;
+  image: string;
+  color: "blue" | "purple" | "green";
+}
+
+interface Props {
+  items: BubbleType[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="w-full flex justify-center">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+    {
+      items.map((item, index) => (
+        <BubbleItem
+          title={item.title}
+          image={item.image}
+          color={item.color}
+          index={index}
+        />
+      ))
+    }
+  </div>
+</section>

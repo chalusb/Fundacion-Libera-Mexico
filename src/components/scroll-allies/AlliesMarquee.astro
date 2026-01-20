@@ -1,0 +1,98 @@
+---
+interface Ally {
+  name: string;
+  logo: string;
+  className?: string;
+}
+
+const allies: Ally[] = [
+  {
+    name: "Danone",
+    logo: "/images/allies/1.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  { name: "Farmacias del Ahorro", logo: "/images/allies/2.png", className: "" },
+  { name: "Abrazada", logo: "/images/allies/3.jpg", className: "" },
+  {
+    name: "Reinserta",
+    logo: "/images/allies/4.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Tecnológico de Monterrey",
+    logo: "/images/allies/5.jpg",
+    className: "",
+  },
+  {
+    name: "Nelson Vargas",
+    logo: "/images/allies/6.jpg",
+    className: "",
+  },
+  {
+    name: "Mexico City",
+    logo: "/images/allies/7.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Danone",
+    logo: "/images/allies/8.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  { name: "Farmacias del Ahorro", logo: "/images/allies/9.jpg" },
+  {
+    name: "Abrazada",
+    logo: "/images/allies/10.jpg",
+    className: "",
+  },
+  {
+    name: "Reinserta",
+    logo: "/images/allies/11.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Tecnológico de Monterrey",
+    logo: "/images/allies/12.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Nelson Vargas",
+    logo: "/images/allies/13.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Mexico City",
+    logo: "/images/allies/14.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Danone",
+    logo: "/images/allies/15.png",
+    className: " brightness-0 invert opacity-90",
+  },
+  {
+    name: "Farmacias del Ahorro",
+    logo: "/images/allies/16.jpg",
+    className: " brightness-0 invert opacity-90",
+  },
+];
+
+// duplicamos para scroll infinito
+const marqueeItems = [...allies];
+---
+
+<div class="relative w-full overflow-hidden mt-8">
+  <div class="flex w-max animate-marquee gap-16 px-8">
+    {
+      marqueeItems.map((ally) => (
+        <div class="flex items-center justify-center min-w-[160px]">
+          <img
+            src={ally.logo}
+            alt={ally.name}
+            class={`h-12 w-auto transition hover:opacity-100 ${ally.className}`}
+            loading="lazy"
+          />
+        </div>
+      ))
+    }
+  </div>
+</div>

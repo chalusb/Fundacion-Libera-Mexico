@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  image: string;
+  color: "blue" | "purple" | "green";
+  index: number;
+}
+
+const { title, image, color, index } = Astro.props;
+
+const colorMap = {
+  green: {
+    bg: "bg-[#BEEFE8]",
+    text: "text-[#1E40AF]",
+  },
+  purple: {
+    bg: "bg-[#E9D5FF]",
+    text: "text-[#7E22CE]",
+  },
+  blue: {
+    bg: "bg-[#DBEAFE]",
+    text: "text-[#1D4ED8]",
+  },
+};
+---
+
+<div class="flex flex-col items-center gap-4">
+  <!-- Texto curvo -->
+  {
+    index % 2 === 0 ? (
+      <div
+        class={`w-full ${colorMap[color].bg} text-center rounded-full flex items-center justify-center`}
+      >
+        <div class={`${colorMap[color].text} py-2 px-4`}>{title}</div>
+      </div>
+    ) : (
+      <div class="py-2 px-4" />
+    )
+  }
+
+  <!-- Imagen circular -->
+  <div class="w-44 h-44 rounded-full overflow-hidden shadow-lg">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+  </div>
+
+  {
+    index % 2 !== 0 ? (
+      <div
+        class={`w-full ${colorMap[color].bg} text-center rounded-full flex items-center justify-center`}
+      >
+        <div class={`${colorMap[color].text} py-2 px-4`}>{title}</div>
+      </div>
+    ) : (
+      <div class="py-2 px-4" />
+    )
+  }
+</div>
