@@ -1,97 +1,91 @@
----
-export interface Props {
-  backgroundColor?: string;
-  titleColor?: string;
-  textColor?: string;
-  cardBackgroundColor?: string;
-}
-
-const {
-  backgroundColor = "bg-white",
-  titleColor = "text-gray-900",
-  textColor = "text-gray-700",
-  cardBackgroundColor = "bg-gray-50",
-} = Astro.props;
----
-
-<section class={`${backgroundColor} py-20 px-4 sm:px-6 lg:px-8`}>
+<section
+  class={`py-20 h-screen w-full mx-auto overflow-hidden relative`}
+  style="background-image: url('/images/background/mission-vision.png'); background-size: cover; background-position: center;"
+>
   <div class="max-w-7xl mx-auto">
-    <!-- Section title -->
-    <div class="text-center mb-16">
-      <h2 class={`${titleColor} text-3xl sm:text-4xl font-bold mb-4`}>
-        Nuestra Misión y Visión
-      </h2>
-      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-        Nuetro propósito se basa en reconstruir y salvar vida.
-      </p>
-    </div>
-
-    <!-- Mission and Vision cards -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-      <!-- Mission -->
-      <div
-        class={`${cardBackgroundColor} rounded-2xl p-8 lg:p-12 shadow-lg border border-gray-100`}
-      >
-        <div class="text-center mb-8">
-          <div
-            class="inline-flex items-center justify-center w-16 h-16 bg-foundation-primary/10 rounded-full mb-6"
-          >
-            <svg
-              class="w-8 h-8 text-foundation-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              ></path>
-            </svg>
-          </div>
-          <h3 class={`${titleColor} text-2xl font-bold mb-4`}>Misión</h3>
+    <div class="flex items-center justify-center mt-24 gap-x-8">
+      <div class="w-auto h-[24rem] relative">
+        <img
+          src="/images/decores/7.png"
+          alt="Mission Vision"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute -bottom-8 -right-12 z-10">
+          <img
+            src="/images/decores/8.png"
+            alt="Mission Vision"
+            class="w-full h-[14rem] object-cover"
+          />
         </div>
-        <p class={`${textColor} text-xl leading-relaxed`}>
-          Proteger, acompañar y rehabilitar a niñas, niños, adolescentes y
-          jóvenes sobrevivientes de trata y violencia, brindándoles herramientas
-          para su reinserción social, y al mismo tiempo prevenir este delito
-          mediante la capacitación y sensibilización de la sociedad.
-        </p>
+        <div
+          class="absolute top-0 left-0 z-10 w-full h-full flex flex-col items-center justify-center px-10"
+        >
+          <div>
+            <h1 class="text-5xl font-bold text-[#214296] mb-1">MISIÓN</h1>
+            <p class="text-md text-gray-600 max-w-xl mx-auto font-medium">
+              Proteger, acompañar y rehabilitar a niñas, niños, adolescentes y
+              jóvenes sobrevivientes de trata y violencia, brindándoles
+              herramientas para su reinserción social, y al mismo tiempo
+              prevenir este delito mediante la capacitación y sensibilización de
+              la sociedad.
+            </p>
+          </div>
+        </div>
       </div>
-
-      <!-- Vision -->
-      <div
-        class={`${cardBackgroundColor} rounded-2xl p-8 lg:p-12 shadow-lg border border-gray-100`}
-      >
-        <div class="text-center mb-8">
-          <div
-            class="inline-flex items-center justify-center w-16 h-16 bg-foundation-primary/10 rounded-full mb-6"
-          >
-            <svg
-              class="w-8 h-8 text-foundation-primary"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-              ></path>
-            </svg>
-          </div>
-          <h3 class={`${titleColor} text-2xl font-bold mb-4`}>Visión</h3>
+      <div class="w-auto h-[18rem] relative">
+        <img
+          src="/images/decores/7.png"
+          alt="Mission Vision"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute -top-20 -right-8 z-10">
+          <img
+            src="/images/decores/3.png"
+            alt="Mission Vision"
+            class="w-full h-full object-cover"
+          />
         </div>
-        <p class={`${textColor} text-xl leading-relaxed`}>
-          Sumar a la erradicación de la trata de personas en México para que
-          todas las personas vivan en libertad.
+        <div
+          class="absolute top-0 left-0 z-10 w-full h-full flex flex-col items-center justify-center px-10"
+        >
+          <div>
+            <h1 class="text-5xl font-bold text-[#E1629F] mb-1">VISIÓN</h1>
+            <p class="text-md text-gray-600 max-w-xl mx-auto font-medium">
+              Sumar a la erradicación de la trata de personas en México para que
+              todas las personas vivan en libertad.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="w-auto h-[18rem] relative">
+        <img
+          src="/images/decores/7.png"
+          alt="Mission Vision"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute top-0 left-0 z-10 w-full h-full flex flex-col items-center justify-center px-10"
+        >
+          <div>
+            <h1 class="text-5xl font-bold text-[#0cc0df] mb-1">VALORES</h1>
+            <p class="text-md text-gray-600 max-w-xl mx-auto font-medium">
+              Empatía · Libertad · Amor · Justicia · Respeto · Unión ·
+              Resiliencia · Tolerancia · Dignidad
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 max-w-4xl mx-auto">
+      <div class="flex flex-col items-center justify-center">
+        <h1 class="text-3xl font-bold text-[#E1629F] mb-1">
+          Como parte esencial de nuestra labor,
+        </h1>
+        <p class="text-xl mx-auto font-semibold text-center">
+          operamos el <strong class="text-[#214296]"
+            >único refugio en el país que brinda acompañamiento integral y de
+            largo plazo</strong
+          > a niñas, niños y adolescentes sobrevivientes de trata.
         </p>
       </div>
     </div>

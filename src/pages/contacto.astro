@@ -1,7 +1,6 @@
 ---
 import Header from "../components/Header.astro";
 import ContactForm from "../components/ContactForm.astro";
-import NewsletterSection from "../components/NewsletterSection.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -9,6 +8,12 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
   <Header />
   <ContactForm />
-  <NewsletterSection />
+  <div>
+    <img
+      src="/images/bg-paper.png"
+      alt="Donation"
+      class="w-full h-[14rem] object-cover"
+    />
+  </div>
   <Footer />
 </Layout>
