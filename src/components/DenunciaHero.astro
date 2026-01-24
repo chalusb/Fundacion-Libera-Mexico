@@ -1,47 +1,144 @@
----
-export interface Props {
-  backgroundColor?: string;
-  titleColor?: string;
-  subtitleColor?: string;
-  backgroundImage?: string;
-}
-
-const {
-  backgroundColor = "bg-gray-900",
-  titleColor = "text-white",
-  subtitleColor = "text-gray-200",
-  backgroundImage = "/hero-3.jpg",
-} = Astro.props;
----
-
-<section
-  class={`${backgroundColor} relative h-[80vh] mt-20 flex items-center justify-center overflow-hidden`}
->
-  <!-- Background image -->
-  <div
-    class="absolute inset-0 bg-cover bg-no-repeat"
-    style={`background-image: url('${backgroundImage}'); background-position: center 40%;`}
-  >
-    <div class="absolute inset-0 bg-black/50"></div>
+<section class={`pt-20 min-h-screen w-full mx-auto overflow-hidden relative`}>
+  <div class="w-full h-full">
+    <img
+      src="/images/lienzo/5.png"
+      alt="Denuncia"
+      class="w-full h-full object-cover"
+    />
   </div>
-
-  <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="max-w-4xl mx-auto">
-      <!-- Main title -->
-      <h1
-        class={`${titleColor} text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight`}
-      >
-        Denuncia
+  <div class="w-full min-h-screen relative bg-white">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl font-bold text-center my-2">
+        ¿Necesitas <span class="text-[#214296]">ayuda</span> o quieres denunciar?
       </h1>
-
-      <!-- Subtitle -->
-      <p
-        class={`${subtitleColor} text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto`}
-      >
-        Tu voz es importante. Denuncia de forma segura, confidencial y gratuita.
-        Juntos podemos hacer la diferencia.
+      <p class="text-lg text-center max-w-6xl mx-auto">
+        Si conoces o sospechas de una situación de trata o violencia sexual
+        contra niñas, niños o adolescentes, estas instancias pueden <span
+          class="text-[#214296]">orientarte y recibir denuncias</span
+        > de forma gratuita y confidencial:
       </p>
+      <div class="flex gap-4 pt-20 items-center justify-center">
+        <div class="w-3/4">
+          <div
+            class="bg-[#F5F0E6] rounded-lg p-8 shadow-md"
+            style="background-image: 
+              linear-gradient(rgba(200, 200, 220, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(200, 200, 220, 0.1) 1px, transparent 1px);
+              background-size: 20px 20px;
+              background-position: 0 0, 0 0;"
+          >
+            <h2 class="text-2xl font-bold text-[#214296] mb-4">
+              Consejo Ciudadano para la Seguridad y Justicia de la CDMX
+            </h2>
+            <p class="text-[#222222] text-base leading-relaxed mb-4">
+              Denuncia gratuita y confidencial, orientación psicológica y
+              asesoría legal
+            </p>
+            <a
+              href="tel:8005533000"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#D6427D] underline hover:text-[#c03a6d] transition-colors"
+            >
+              Tel: 800 553 3000
+            </a>
+          </div>
+        </div>
+        <div class="w-3/4 flex flex-col justify-between items-center gap-4">
+          <div
+            class="bg-[#F5F0E6] rounded-lg p-8 shadow-md"
+            style="background-image: 
+              linear-gradient(rgba(200, 200, 220, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(200, 200, 220, 0.1) 1px, transparent 1px);
+              background-size: 20px 20px;
+              background-position: 0 0, 0 0;"
+          >
+            <h2 class="text-2xl font-bold text-[#214296] mb-4">Te Protejo</h2>
+            <p class="text-[#222222] text-base leading-relaxed mb-4">
+              Plataforma digital para reportar situaciones de violencia sexual
+              contra personas menores de 18 años de manera anónima y gratuita.
+            </p>
+            <a
+              href="https://teprotejo.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#D6427D] underline hover:text-[#c03a6d] transition-colors"
+            >
+              Sitio web
+            </a>
+          </div>
+          <div
+            class="bg-[#F5F0E6] rounded-lg p-8 shadow-md"
+            style="background-image: 
+              linear-gradient(rgba(200, 200, 220, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(200, 200, 220, 0.1) 1px, transparent 1px);
+              background-size: 20px 20px;
+              background-position: 0 0, 0 0;"
+          >
+            <h2 class="text-2xl font-bold text-[#214296] mb-4">
+              Comisión Nacional de los Derechos Humanos (CNDH)
+            </h2>
+            <a
+              href="tel:8000085400"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#D6427D] underline hover:text-[#c03a6d] transition-colors"
+            >
+              Tel: 800 00 854 00
+            </a>
+          </div>
+        </div>
+        <div class="w-3/4">
+          <div
+            class="bg-[#F5F0E6] rounded-lg p-8 shadow-md"
+            style="background-image: 
+              linear-gradient(rgba(200, 200, 220, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(200, 200, 220, 0.1) 1px, transparent 1px);
+              background-size: 20px 20px;
+              background-position: 0 0, 0 0;"
+          >
+            <h2 class="text-2xl font-bold text-[#214296] mb-4">
+              Fiscalía Especial para los Delitos de Violencia contra las Mujeres
+              y Trata de Personas (FEVIMTRA)
+            </h2>
+            <a
+              href="tel:5553468841"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#D6427D] underline hover:text-[#c03a6d] transition-colors"
+            >
+              Tel: 55 53 46 88 41
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="absolute bottom-0 left-0">
+      <img
+        src="/images/decores/10.png"
+        alt="Denuncia"
+        class="w-[22rem] object-cover"
+      />
+    </div>
+    <div class="absolute -bottom-20 right-0">
+      <img
+        src="/images/decores/11.png"
+        alt="Denuncia"
+        class="w-[22rem] object-cover"
+      />
+    </div>
+  </div>
+  <div class="w-full h-[10rem] bg-[#214296] flex items-center justify-center">
+    <h2 class="text-white text-2xl font-bold text-center">
+      <span class="text-[#f0559f]">Nota:</span><br />
+      En caso de emergencia, busca apoyo inmediato de las autoridades locales.
+    </h2>
+  </div>
+  <div class="w-full h-full">
+    <img
+      src="/images/lienzo/5.png"
+      alt="Denuncia"
+      class="w-full h-full object-cover rotate-180"
+    />
   </div>
 </section>

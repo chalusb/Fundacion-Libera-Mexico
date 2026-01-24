@@ -10,7 +10,7 @@ const {
   backgroundColor = "bg-gray-900",
   titleColor = "text-white",
   subtitleColor = "text-gray-200",
-  backgroundImage = "/hero-2.png",
+  backgroundImage = "/images/bg-about.png",
 } = Astro.props;
 ---
 
@@ -26,32 +26,37 @@ const {
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="max-w-4xl mx-auto">
-      <!-- Quote -->
-      <blockquote class="mb-8">
-        <p
-          class={`${subtitleColor} text-xl sm:text-2xl lg:text-3xl font-light leading-relaxed italic`}
-        >
-          "Quien salva una vida, salva al mundo entero"
-        </p>
-      </blockquote>
-
-      <!-- Main title -->
-      <h1
-        class={`${titleColor} text-4xl sm:text-5xl lg:text-6xl font-bold mb-8 leading-tight`}
+  <div class="relative z-10 max-w-7xl mx-auto px-4 overflow-hidden w-full">
+    <div class="flex items-center justify-center w-full">
+      <div
+        class="z-10 w-full h-full flex items-center justify-center relative max-w-7xl mx-auto"
       >
-        Quiénes Somos
-      </h1>
-
-      <!-- Subtitle -->
-      <p
-        class={`${subtitleColor} text-lg sm:text-xl leading-relaxed max-w-3xl mx-auto`}
-      >
-        Somos una fundación comprometida con la protección, acompañamiento y
-        rehabilitación de sobrevivientes de trata y violencia, trabajando
-        incansablemente por un México libre.
-      </p>
+        <img
+          src="/images/decores/6.png"
+          alt="About Hero"
+          class="w-[60rem] h-full object-cover"
+        />
+        <div class="absolute top-0 left-0 z-10 h-full w-full">
+          <div
+            class="h-full flex flex-col items-center justify-center text-center"
+          >
+            <h1 class="text-6xl font-bold text-[#E1629F] mt-8">
+              ¿Quienes somos?
+            </h1>
+            <p class="text-md my-2">
+              <strong class="text-[#E1629F]">Fundación Libera México</strong> es una
+              organización dedicada a <strong class="text-[#E1629F]"
+                >combatir</strong
+              > la trata de personas<br /> y transformar la vida de quienes han sobrevivido
+              a este delito.<br />
+              Trabajamos desde un enfoque integral que abarca <strong
+                class="text-[#E1629F]">prevención, incidencia y atención</strong
+              ><br /> especializada, con el objetivo de construir entornos más seguros
+              y libres de violencia.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
