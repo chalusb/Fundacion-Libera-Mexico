@@ -1,0 +1,164 @@
+---
+type Member = {
+  name: string;
+  role: string;
+  image?: string;
+};
+
+type TeamSection = {
+  title: string;
+  gridClass: string;
+  members: Member[];
+};
+
+const titleImage = "/images/imgcompleta/img_completa-4-removebg-preview.png";
+const avatarBg = "/images/web_decore-4.webp";
+
+const imagePath = (filename?: string) =>
+  filename ? `/images/equipo/${encodeURIComponent(filename)}` : "";
+
+const sections: TeamSection[] = [
+  {
+    title: "Cofundadoras",
+    gridClass: "grid-cols-1 sm:grid-cols-2",
+    members: [
+      { name: "Daniela Tapia", role: "Cofundadora", image: "Daniela Tapia.jpg" },
+      { name: "Paola Tolsá", role: "Cofundadora", image: "Paola Tolsá.jpg" },
+    ],
+  },
+  {
+    title: "Equipo Corporativo",
+    gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+    members: [
+      {
+        name: "Karla Jacinto",
+        role: "Prevención y Sensibilización",
+        image: "Karla Jacinto.jpg",
+      },
+      {
+        name: "Leticia Hernández",
+        role: "Administración y Finanzas",
+      },
+      {
+        name: "Michelle Arzate",
+        role: "Procuración de Fondos y Comunicación",
+        image: "Michelle Arzate.jpg",
+      },
+      {
+        name: "Verónica Naranjo",
+        role: "Desarrollo Institucional y Alianzas Estratégicas",
+        image: "Verónica Naranjo.jpg",
+      },
+    ],
+  },
+  {
+    title: "Equipo operativo",
+    gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+    members: [
+      { name: "Sandra Dieguez", role: "Directora Operativa", image: "Sandra Dieguez.png" },
+      { name: "Elizabeth", role: "Coordinadora de Cuidadores", image: "Elizabeth.png" },
+      { name: "Karla Gama", role: "Salud Mental", image: "Karla Gama.jpg" },
+      { name: "Guadalupe", role: "Atención", image: "Guadalupe .jpg" },
+    ],
+  },
+  {
+    title: "Patronato",
+    gridClass: "grid-cols-1 sm:grid-cols-2",
+    members: [
+      { name: "Troy Brewer", role: "Presidente", image: "Troy Brewer.png" },
+      { name: "Suaanamy Calera", role: "Vicepresidenta" },
+    ],
+  },
+  {
+    title: "Consejo Consultivo",
+    gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+    members: [
+      { name: "Lucía Chaparro", role: "Presidenta", image: "Lucía Chaparro.jpg" },
+      { name: "Karen Farias Cruzado", role: "Vicepresidenta", image: "Karen Farias.png" },
+      { name: "Alfredo García Conde", role: "Tesorero" },
+      { name: "Karla Gómez", role: "Secretaria", image: "Carla Gómez.jpg" },
+      { name: "Carlos Ferrán Martinez", role: "Consejero", image: "Carlos Ferrán.png" },
+      { name: "Daniela Gómez", role: "Consejera", image: "Daniela Gomez.png" },
+      { name: "Diana Murrieta", role: "Consejera", image: "Diana Murrieta.png" },
+      { name: "Mariana Ávila Martinez", role: "Consejera", image: "Mariana Ávila.png" },
+      { name: "Mario Uribe", role: "Consejero" },
+      { name: "Mercedes Becker", role: "Consejera", image: "Mercedes.png" },
+      { name: "Raquel Aguirre", role: "Consejera", image: "Raquel Aguirre.png" },
+      { name: "Salvador Cacho", role: "Consejero", image: "Salvador Cacho.png" },
+    ],
+  },
+  {
+    title: "Voceros",
+    gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+    members: [
+      {
+        name: "Saskia Niño de Rivera",
+        role: "Consejera",
+        image: "Saskia Niño de Rivera.jpeg",
+      },
+      { name: "Karla Jacinto", role: "Vocera", image: "Karla Jacinto.jpg" },
+      { name: "Luis Armando Campos", role: "Vocero" },
+      { name: "María", role: "Vocera", image: "Maria.jpg" },
+      { name: "Zundury", role: "Vocera", image: "Zundury.jpg" },
+    ],
+  },
+];
+---
+
+<section
+  class="w-full py-24 relative overflow-hidden"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-center">
+      <img
+        src={titleImage}
+        alt="Nuestro Equipo"
+        class="w-[320px] sm:w-[420px] lg:w-[520px] h-auto object-contain"
+      />
+    </div>
+
+    {sections.map((section) => {
+      const isTwo = section.members.length === 2;
+
+      return (
+        <div class="mt-12">
+          <div class="flex justify-center">
+            <div class="bg-[#ef3f98] text-white font-bold px-8 py-3 rounded-md text-xl sm:text-2xl lg:text-3xl">
+              {section.title}
+            </div>
+          </div>
+
+          <div
+            class={`mt-10 grid gap-10 ${section.gridClass} ${isTwo ? "justify-items-center sm:max-w-4xl mx-auto" : ""}`}
+          >
+            {section.members.map((member) => (
+              <div class={`flex flex-col gap-4 ${isTwo ? "items-center text-center" : "items-start"}`}>
+                <div class="relative w-[170px] h-[170px]">
+                  <img
+                    src={avatarBg}
+                    alt=""
+                    class="absolute inset-0 w-full h-full object-contain"
+                  />
+                  {member.image && (
+                    <img
+                      src={imagePath(member.image)}
+                      alt={member.name}
+                      class="absolute inset-[20px] w-[calc(100%-40px)] h-[calc(100%-40px)] object-cover rounded-full"
+                    />
+                  )}
+                </div>
+                <div>
+                  <p class="text-xl font-bold text-black leading-tight">
+                    {member.name}
+                  </p>
+                  <p class="text-sm text-black/80">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>

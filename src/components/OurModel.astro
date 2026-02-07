@@ -1,0 +1,97 @@
+---
+type ResponsivePos = {
+  base: string;
+  sm?: string;
+  lg?: string;
+};
+
+type DecorImage = {
+  src: string;
+  alt: string;
+  className: ResponsivePos;
+};
+
+const titleImage = "/images/imgcompleta/img_completa-1-removebg-preview.png";
+const photoImage = "/images/imgcompleta/img_completa-2.jpg";
+
+const listBulletImage: DecorImage = {
+  src: "/images/decore-19.png",
+  alt: "",
+  className: {
+    base: "w-[28px] h-[28px]",
+    sm: "w-[32px] h-[32px]",
+    lg: "w-[36px] h-[36px]",
+  },
+};
+
+const photoSizes: ResponsivePos = {
+  base: "h-[420px]",
+  sm: "h-[440px]",
+  lg: "h-[460px]",
+};
+
+const getClassName = (classes: ResponsivePos) =>
+  [classes.base, classes.sm ?? "", classes.lg ?? ""].join(" ").trim();
+---
+
+<section
+  class="w-full py-24 relative overflow-hidden"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="max-w-7xl mx-auto px-6 grid gap-16 lg:grid-cols-2 items-start">
+    <div class="relative">
+      <img
+        src={titleImage}
+        alt="Nuestro Modelo"
+        class="w-[360px] sm:w-[420px] lg:w-[580px] h-auto object-contain"
+      />
+      <p class="mt-8 text-lg text-gray-700 max-w-xl leading-relaxed">
+        Somos el único refugio en México que ofrece
+        <strong class="text-[#214296]">atención integral, especializada y de largo plazo</strong>
+        a sobrevivientes de trata.
+      </p>
+      <p class="mt-4 text-lg text-gray-700 max-w-xl leading-relaxed">
+        Nuestro modelo reconoce que cada niña, niño y adolescente necesita tiempos,
+        procesos y formas distintas para sanar.
+      </p>
+
+      <div class="mt-10 bg-[#efefef] rounded-[2rem] p-7 max-w-md shadow-sm">
+        <p class="text-xl font-bold text-[#f0559f] mb-4">Modelos de acompa?amiento</p>
+        <ul class="space-y-3 text-[#214296] font-semibold tracking-wide uppercase">
+          <li class="flex items-center gap-4">
+            <img
+              src={listBulletImage.src}
+              alt={listBulletImage.alt}
+              class={`${getClassName(listBulletImage.className)} object-contain`}
+            />
+            Refugio especializado
+          </li>
+          <li class="flex items-center gap-4">
+            <img
+              src={listBulletImage.src}
+              alt={listBulletImage.alt}
+              class={`${getClassName(listBulletImage.className)} object-contain`}
+            />
+            Programa de medio camino
+          </li>
+          <li class="flex items-center gap-4">
+            <img
+              src={listBulletImage.src}
+              alt={listBulletImage.alt}
+              class={`${getClassName(listBulletImage.className)} object-contain`}
+            />
+            Acompa?amiento externo
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="relative w-full max-w-2xl mx-auto">
+      <img
+        src={photoImage}
+        alt="Nuestro modelo"
+        class={`w-full ${getClassName(photoSizes)} object-cover rounded-[2rem]`}
+      />
+    </div>
+  </div>
+</section>

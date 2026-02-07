@@ -1,0 +1,64 @@
+---
+import BubblesGrid, { type BubbleType } from "./bubbles/grid.astro";
+
+const bubbles = [
+  { title: "APOYO LEGAL", image: "/images/bubbles/1.png", color: "green" },
+  { title: "SALUD MENTAL", image: "/images/bubbles/2.png", color: "purple" },
+  { title: "APOYO EDUCATIVO", image: "/images/bubbles/3.png", color: "green" },
+  {
+    title: "ATENCIÓN MÉDICA",
+    image: "/images/bubbles/4.png",
+    color: "purple",
+  },
+  {
+    title: "TALENTOS Y HABILIDADES",
+    image: "/images/bubbles/5.png",
+    color: "green",
+  },
+] as BubbleType[];
+---
+
+<section class="w-full mx-auto overflow-hidden w-full relative bg-white">
+  <div
+    class="w-full h-[16rem] z-[3] relative"
+    style="background-image: url('/images/background/paper.png'); background-size: cover; background-position: center;"
+  >
+  </div>
+  <div class="max-w-7xl mx-auto relative px-4 -mt-24 z-[10]">
+    <div class="relative">
+      <img
+        src="/images/imgcompleta/img_completa-3-removebg-preview.png"
+        alt="Pilares"
+        class="w-[260px] sm:w-[320px] lg:w-[380px] h-auto object-contain mx-auto"
+      />
+      <img
+        src="/images/decores/2.png"
+        alt="Pilares"
+        class="w-auto h-full object-cover mx-auto -mt-6"
+      />
+      <img
+        src="/images/decores/3.png"
+        alt="Pilares"
+        class="w-32 h-32 object-cover absolute bottom-10 right-[10rem] z-10"
+      />
+    </div>
+    <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto font-medium">
+      Nuestro Modelo <strong class="font-bold">Integral</strong> está construido sobre
+      <strong class="font-bold">cinco pilares</strong> fundamentales que permiten
+      sanar, proteger y reconstruir proyectos de vida.
+    </p>
+
+    <div class="mt-10">
+      <BubblesGrid items={bubbles} />
+    </div>
+
+    <div class="mt-10 flex justify-center">
+      
+    </div>
+  </div>
+  <div
+    class="w-full h-[15rem] z-4 -mt-32"
+    style="background-image: url('/images/background/paper-2.png'); background-size: cover; background-position: center;"
+  >
+  </div>
+</section>
