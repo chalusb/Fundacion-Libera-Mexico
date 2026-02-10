@@ -1,0 +1,80 @@
+---
+const frameImage = "/images/imgcompleta/img_completa-9.jpg";
+const titleImage = "/images/imgcompleta/img_completa-10.png";
+const sun = "/images/web_decore-14.webp";
+---
+
+<section
+  class="w-full py-20 relative overflow-hidden"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="absolute inset-0 pointer-events-none">
+    <img
+      src="/images/png-decore-10.png"
+      alt=""
+      class="absolute bottom-0 left-0 w-40 sm:w-56 lg:w-72"
+    />
+    <img
+      src="/images/png-decore-11.png"
+      alt=""
+      class="absolute right-0 top-1/3 w-36 sm:w-44 lg:w-52"
+    />
+    <img
+      src="/images/png-decore-10.png"
+      alt=""
+      class="absolute -top-4 right-16 w-28 sm:w-36 lg:w-44 rotate-[15deg]"
+    />
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <div class="flex flex-col items-center text-center">
+      <img
+        src={titleImage}
+        alt="Por qué son necesarios dos nuevos refugios"
+        class="w-[280px] sm:w-[520px] lg:w-[760px] h-auto object-contain"
+      />
+    </div>
+
+    <div class="mt-10 relative">
+      <img
+        src={frameImage}
+        alt=""
+        class="w-full max-w-5xl mx-auto h-auto object-contain"
+      />
+      <div class="absolute inset-0 max-w-4xl mx-auto px-6 py-8 sm:py-10 lg:py-12">
+        <ul class="space-y-6 text-base sm:text-lg text-gray-700">
+          <li class="flex gap-4 items-start">
+            <img src={sun} alt="" class="w-6 sm:w-7 h-auto" />
+            <p>
+              México ocupa el <strong class="text-[#f0559f]">primer lugar</strong> mundial en
+              producción y difusión de pornografía infantil.
+            </p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <img src={sun} alt="" class="w-6 sm:w-7 h-auto" />
+            <p>
+              El <strong class="text-[#f0559f]">74% de las víctimas</strong> de trata son
+              mujeres y niñas.
+            </p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <img src={sun} alt="" class="w-6 sm:w-7 h-auto" />
+            <p>
+              En México <strong class="text-[#f0559f]">no existe un refugio</strong>
+              especializado para niños varones sobrevivientes.
+            </p>
+          </li>
+          <li class="flex gap-4 items-start">
+            <img src={sun} alt="" class="w-6 sm:w-7 h-auto" />
+            <p>
+              Un entorno estable multiplica por 3 las
+              <strong class="text-[#f0559f]"> posibilidades</strong> de que niñas, niños y
+              adolescentes continúen sus estudios y se
+              <strong class="text-[#f0559f]"> reintegren</strong> socialmente.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

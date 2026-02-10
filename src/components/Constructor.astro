@@ -1,37 +1,89 @@
+---
+const decor7 = {
+  base: { top: -16, left: 16, size: 20 },
+  sm: { top: -16, left: 24, size: 64 },
+  lg: { top: -24, left: 24, size: 96 },
+};
+
+const decor2 = {
+  base: { top: -20, right: 10, size: 80, rotate: 50 },
+  sm: { top: -4, right: 32, size: 64, rotate: 0 },
+  lg: { top: -8, right: 40, size: 96, rotate: 0 },
+};
+
+const decor1 = {
+  base: { bottom: 24, left: 24, size: 80 },
+  sm: { bottom: 24, left: 24, size: 56 },
+  lg: { bottom: 24, left: 40, size: 80 },
+};
+
+const decor6 = {
+  base: { bottom: 40, right: 16, size: 80 },
+  sm: { bottom: 40, right: 16, size: 48 },
+  lg: { bottom: 32, right: 24, size: 48 },
+};
+---
+
 <section
-  class="w-full mx-auto overflow-hidden w-full relative bg-white h-screen"
+  class="w-full mx-auto overflow-hidden relative bg-white"
   style="background-image: url('/images/background/contructor.png'); background-size: cover; background-position: center;"
 >
-  <div class="mx-auto relative px-4 py-20">
-    <h1 class="text-7xl font-bold text-center text-[#f0559f]">
+  <div class="mx-auto relative px-4 py-12 sm:py-20">
+    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold text-center text-[#f0559f]">
       Constructor de Sueños
     </h1>
   </div>
-  <div class="grid grid-cols-2 gap-4">
-    <div class="col-span-1">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 pb-16">
+    <div class="relative">
       <img
         src="/images/constructor/1.png"
         alt="Constructor"
-        class="w-full h-[56vh] object-contain"
+        class="w-full h-[260px] sm:h-[420px] lg:h-[56vh] object-contain"
       />
+      <div class="absolute inset-0 pointer-events-none">
+        <!-- <img
+          src="/images/png-decore-7.png"
+          alt=""
+          class="decor-7 absolute"
+          style={`--d7-top:${decor7.base.top}px; --d7-left:${decor7.base.left}px; --d7-size:${decor7.base.size}px; --d7-top-sm:${decor7.sm.top}px; --d7-left-sm:${decor7.sm.left}px; --d7-size-sm:${decor7.sm.size}px; --d7-top-lg:${decor7.lg.top}px; --d7-left-lg:${decor7.lg.left}px; --d7-size-lg:${decor7.lg.size}px;`}
+        /> -->
+        <img
+          src="/images/png-decore-2.png"
+          alt=""
+          class="decor-2 absolute"
+          style={`--d2-top:${decor2.base.top}px; --d2-right:${decor2.base.right}px; --d2-size:${decor2.base.size}px; --d2-rot:${decor2.base.rotate}deg; --d2-top-sm:${decor2.sm.top}px; --d2-right-sm:${decor2.sm.right}px; --d2-size-sm:${decor2.sm.size}px; --d2-rot-sm:${decor2.sm.rotate}deg; --d2-top-lg:${decor2.lg.top}px; --d2-right-lg:${decor2.lg.right}px; --d2-size-lg:${decor2.lg.size}px; --d2-rot-lg:${decor2.lg.rotate}deg;`}
+        />
+        <img
+          src="/images/png-decore-1.png"
+          alt=""
+          class="decor-1 absolute"
+          style={`--d1-bottom:${decor1.base.bottom}px; --d1-left:${decor1.base.left}px; --d1-size:${decor1.base.size}px; --d1-bottom-sm:${decor1.sm.bottom}px; --d1-left-sm:${decor1.sm.left}px; --d1-size-sm:${decor1.sm.size}px; --d1-bottom-lg:${decor1.lg.bottom}px; --d1-left-lg:${decor1.lg.left}px; --d1-size-lg:${decor1.lg.size}px;`}
+        />
+        <img
+          src="/images/png-decore-6.png"
+          alt=""
+          class="decor-6 absolute"
+          style={`--d6-bottom:${decor6.base.bottom}px; --d6-right:${decor6.base.right}px; --d6-size:${decor6.base.size}px; --d6-bottom-sm:${decor6.sm.bottom}px; --d6-right-sm:${decor6.sm.right}px; --d6-size-sm:${decor6.sm.size}px; --d6-bottom-lg:${decor6.lg.bottom}px; --d6-right-lg:${decor6.lg.right}px; --d6-size-lg:${decor6.lg.size}px;`}
+        />
+      </div>
     </div>
-    <div class="col-span-1">
-      <div class="flex flex-col py-8 max-w-xl">
+    <div>
+      <div class="flex flex-col py-4 sm:py-8 max-w-xl text-center lg:text-left items-center lg:items-start">
         <img
           src="/images/decores/5.png"
           alt="Constructor"
-          class="w-32 h-32 object-contain -mt-16 -ml-10"
+          class="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 object-contain -mt-10 sm:-mt-16 -ml-6 sm:-ml-10"
         />
-        <h2 class="text-4xl font-bold">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold">
           En México, solo <span class="text-[#f0559f]">12 refugios</span> protegen
           a niñas y niños sobrevivientes de trata.
         </h2>
-        <p class="text-lg mt-2 mb-8">
+        <p class="text-base sm:text-lg mt-2 mb-6 sm:mb-8">
           Queremos construir <strong>dos nuevos refugios</strong> que<br
           />representen hogar, seguridad y futuro.
         </p>
         <button
-          class="bg-[#f0559f] hover:bg-[#e14d8a] text-white font-semibold py-4 px-2 max-w-xs rounded-full text-md uppercase mt-8"
+          class="bg-[#f0559f] hover:bg-[#e14d8a] text-white font-semibold py-3 sm:py-4 px-6 sm:px-8 max-w-xs rounded-full text-sm sm:text-md uppercase mt-4 sm:mt-8"
         >
           Sé un constructor de sueños
         </button>
@@ -39,3 +91,76 @@
     </div>
   </div>
 </section>
+
+<style is:global>
+  .decor-7 {
+    top: var(--d7-top);
+    left: var(--d7-left);
+    width: var(--d7-size);
+  }
+  .decor-2 {
+    top: var(--d2-top);
+    right: var(--d2-right);
+    width: var(--d2-size);
+    transform: rotate(var(--d2-rot, 0deg));
+    transform-origin: center;
+  }
+  .decor-1 {
+    bottom: var(--d1-bottom);
+    left: var(--d1-left);
+    width: var(--d1-size);
+  }
+  .decor-6 {
+    bottom: var(--d6-bottom);
+    right: var(--d6-right);
+    width: var(--d6-size);
+  }
+
+  @media (min-width: 640px) {
+    .decor-7 {
+      top: var(--d7-top-sm, var(--d7-top));
+      left: var(--d7-left-sm, var(--d7-left));
+      width: var(--d7-size-sm, var(--d7-size));
+    }
+    .decor-2 {
+      top: var(--d2-top-sm, var(--d2-top));
+      right: var(--d2-right-sm, var(--d2-right));
+      width: var(--d2-size-sm, var(--d2-size));
+      transform: rotate(var(--d2-rot-sm, var(--d2-rot, 0deg)));
+    }
+    .decor-1 {
+      bottom: var(--d1-bottom-sm, var(--d1-bottom));
+      left: var(--d1-left-sm, var(--d1-left));
+      width: var(--d1-size-sm, var(--d1-size));
+    }
+    .decor-6 {
+      bottom: var(--d6-bottom-sm, var(--d6-bottom));
+      right: var(--d6-right-sm, var(--d6-right));
+      width: var(--d6-size-sm, var(--d6-size));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .decor-7 {
+      top: var(--d7-top-lg, var(--d7-top));
+      left: var(--d7-left-lg, var(--d7-left));
+      width: var(--d7-size-lg, var(--d7-size));
+    }
+    .decor-2 {
+      top: var(--d2-top-lg, var(--d2-top));
+      right: var(--d2-right-lg, var(--d2-right));
+      width: var(--d2-size-lg, var(--d2-size));
+      transform: rotate(var(--d2-rot-lg, var(--d2-rot, 0deg)));
+    }
+    .decor-1 {
+      bottom: var(--d1-bottom-lg, var(--d1-bottom));
+      left: var(--d1-left-lg, var(--d1-left));
+      width: var(--d1-size-lg, var(--d1-size));
+    }
+    .decor-6 {
+      bottom: var(--d6-bottom-lg, var(--d6-bottom));
+      right: var(--d6-right-lg, var(--d6-right));
+      width: var(--d6-size-lg, var(--d6-size));
+    }
+  }
+</style>

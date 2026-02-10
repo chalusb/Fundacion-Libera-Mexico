@@ -5,32 +5,36 @@ export interface Props {
   buttonTextColor?: string;
 }
 
-const links = [
-  {
-    label: "Inicio",
-    href: "/",
-  },
-  {
-    label: "Quiénes somos",
-    href: "/about",
-  },
-  {
-    label: "Impacto",
-    href: "/#impacto",
-  },
-  {
-    label: "Denuncia",
-    href: "/denuncia",
-  },
-  {
-    label: "Constructor de Sueños",
-    href: "/#constructor",
-  },
-  {
-    label: "Contacto",
-    href: "/contacto",
-  },
-];
+// const links = [
+//   {
+//     label: "Inicio",
+//     href: "/",
+//   },
+//   {
+//     label: "Quiénes somos",
+//     href: "/about",
+//   },
+//   {
+//     label: "Transparencia",
+//     href: "/transparencia",
+//   },
+//   {
+//     label: "Impacto",
+//     href: "/#impacto",
+//   },
+//   {
+//     label: "Denuncia",
+//     href: "/denuncia",
+//   },
+//   {
+//     label: "Constructor de Sueños",
+//     href: "/constructor",
+//   },
+//   {
+//     label: "Contacto",
+//     href: "/contacto",
+//   },
+// ];
 // Obtener la ruta actual
 const currentPath = Astro.url.pathname;
 
@@ -60,6 +64,7 @@ const inactiveLinkClass =
       </a>
 
       <!-- Navigation -->
+      {/*
       <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 h-full">
         {
           links.map((link) => (
@@ -76,6 +81,7 @@ const inactiveLinkClass =
           ))
         }
       </nav>
+      */}
 
       <!-- CTA Button -->
       <div class="flex items-center max-sm:hidden">
@@ -88,6 +94,17 @@ const inactiveLinkClass =
       </div>
 
       <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <a
+          href="/#"
+          class="bg-[#EC4899] text-white px-6 py-2 rounded-full font-semibold text-xs tracking-wide hover:opacity-90 transition-opacity duration-200 shadow-sm"
+        >
+          DONA AHORA
+        </a>
+      </div>
+
+      <!-- Mobile menu button (disabled while menu is hidden) -->
+      {/*
       <div class="md:hidden">
         <button
           type="button"
@@ -108,9 +125,11 @@ const inactiveLinkClass =
           </svg>
         </button>
       </div>
+      */}
     </div>
 
     <!-- Mobile menu -->
+    {/*
     <div id="mobile-menu" class="md:hidden hidden">
       <div
         class="px-4 pt-4 pb-6 space-y-2 sm:px-6 border-t border-gray-200 bg-white"
@@ -136,6 +155,16 @@ const inactiveLinkClass =
           Quiénes somos
         </a>
         <a
+          href="/transparencia"
+          class={`block px-4 py-3 text-base font-medium hover:bg-gray-50 rounded-md ${
+            isActive("/transparencia")
+              ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
+              : "text-[#4B5563] hover:text-[#254687]"
+          }`}
+        >
+          Transparencia
+        </a>
+        <a
           href="/#impacto"
           class="block px-4 py-3 text-base font-medium text-[#4B5563] hover:text-[#254687] hover:bg-gray-50 rounded-md"
         >
@@ -152,8 +181,12 @@ const inactiveLinkClass =
           Denuncia
         </a>
         <a
-          href="/#constructor"
-          class="block px-4 py-3 text-base font-medium text-[#4B5563] hover:text-[#254687] hover:bg-gray-50 rounded-md"
+          href="/constructor"
+          class={`block px-4 py-3 text-base font-medium hover:bg-gray-50 rounded-md ${
+            isActive("/constructor")
+              ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
+              : "text-[#4B5563] hover:text-[#254687]"
+          }`}
         >
           Constructor de Sueños
         </a>
@@ -175,6 +208,7 @@ const inactiveLinkClass =
         </a>
       </div>
     </div>
+    */}
   </div>
 </header>
 

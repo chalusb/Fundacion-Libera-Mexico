@@ -1,0 +1,59 @@
+---
+const photo = "/images/imgcompleta/img_completa-8.jpg";
+---
+
+<section
+  class="w-full py-20 relative overflow-hidden"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="absolute inset-0 pointer-events-none">
+    <img
+      src="/images/png-decore-9.png"
+      alt=""
+      class="absolute top-8 right-6 w-24 sm:w-32 lg:w-40"
+    />
+    <img
+      src="/images/png-decore-8.png"
+      alt=""
+      class="absolute bottom-20 right-28 w-24 sm:w-32 lg:w-[200px] rotate-[-70deg] origin-bottom-right"
+    />
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <h2 class="text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2b4a9b]">
+      En México, solo 11 refugios protegen a niñas y niños
+      <span class="text-[#f0559f]"> sobrevivientes de trata.</span>
+    </h2>
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[1.1fr_1fr] items-center">
+      <div class="relative">
+        <img
+          src={photo}
+          alt="Niña"
+          class="w-full max-w-xl mx-auto rounded-[1.5rem] object-cover shadow-lg"
+        />
+      </div>
+
+      <div class="space-y-5">
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-[#2b4a9b]">
+          ¡DOS <span class="text-[#f0559f]">NUEVOS</span>
+          <br />
+          <span class="text-[#f0559f]">REFUGIOS</span>!
+        </h3>
+        <p class="text-base sm:text-lg text-gray-700">
+          Queremos construir <strong class="text-[#2b4a9b]">dos refugios especializados</strong>
+          que representen hogar, seguridad y futuro.
+        </p>
+        <p class="text-base sm:text-lg text-gray-700">
+          Y además construir el <strong class="text-[#2b4a9b]">primer refugio</strong>
+          especializado en varones víctimas de este delito.
+        </p>
+        <button
+          class="bg-[#f0559f] hover:bg-[#e14d8a] text-white font-semibold py-3 px-10 rounded-full text-sm sm:text-base uppercase tracking-wider transition-all transform hover:scale-105 shadow-lg"
+        >
+          Dona aquí
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

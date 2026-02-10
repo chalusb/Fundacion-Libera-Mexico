@@ -16,31 +16,38 @@ const bubbles = [
     color: "green",
   },
 ] as BubbleType[];
+
+const decore3Offsets = {
+  base: { right: 8, top: -54 },
+  sm: { right: 96, top: 40 },
+  lg: { right: 160, top: 40 },
+};
 ---
 
 <section class="w-full mx-auto overflow-hidden w-full relative bg-white">
   <div
-    class="w-full h-[16rem] z-[3] relative"
+    class="w-full h-[10rem] sm:h-[16rem] z-[3] relative"
     style="background-image: url('/images/background/paper.png'); background-size: cover; background-position: center;"
   >
   </div>
-  <div class="max-w-7xl mx-auto relative px-4 -mt-24 z-[10]">
+  <div class="max-w-7xl mx-auto relative px-4 -mt-16 sm:-mt-24 z-[10]">
     <div class="relative">
-      <h1 class="text-7xl font-bold text-center text-[#214296]">
+      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold text-center text-[#214296]">
         NUESTRO MODELO
       </h1>
       <img
         src="/images/decores/2.png"
         alt="Models"
-        class="w-auto h-full object-cover mx-auto -mt-6"
+        class="w-auto h-12 sm:h-16 object-cover mx-auto -mt-3 sm:-mt-6"
       />
       <img
         src="/images/decores/3.png"
         alt="Models"
-        class="w-32 h-32 object-cover absolute bottom-10 right-[10rem] z-10"
+        class="decore-3-pos w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 object-cover absolute z-10"
+        style={`--decore3-top:${decore3Offsets.base.top}px; --decore3-right:${decore3Offsets.base.right}px; --decore3-top-sm:${decore3Offsets.sm.top}px; --decore3-right-sm:${decore3Offsets.sm.right}px; --decore3-top-lg:${decore3Offsets.lg.top}px; --decore3-right-lg:${decore3Offsets.lg.right}px;`}
       />
     </div>
-    <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto font-medium">
+    <p class="text-center text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-medium">
       Nuestro Modelo <strong class="font-bold">Integral</strong> está construido sobre
       <strong class="font-bold">cinco pilares</strong> fundamentales que permiten
       sanar, proteger y reconstruir proyectos de vida.
@@ -52,15 +59,36 @@ const bubbles = [
 
     <div class="mt-10 flex justify-center">
       <button
-        class="mt-8 bg-[#E1629F] hover:bg-[#c94d8a] text-white font-semibold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg uppercase tracking-wider"
+        class="mt-6 sm:mt-8 bg-[#E1629F] hover:bg-[#c94d8a] text-white font-semibold py-3 sm:py-4 px-8 sm:px-10 rounded-full text-sm sm:text-lg transition-all transform hover:scale-105 shadow-lg uppercase tracking-wider"
       >
         Nuestro modelo
       </button>
     </div>
   </div>
   <div
-    class="w-full h-[15rem] z-4 -mt-32"
+    class="w-full h-[10rem] sm:h-[15rem] z-4 -mt-20 sm:-mt-32"
     style="background-image: url('/images/background/paper-2.png'); background-size: cover; background-position: center;"
   >
   </div>
 </section>
+
+<style is:global>
+  .decore-3-pos {
+    top: var(--decore3-top);
+    right: var(--decore3-right);
+  }
+
+  @media (min-width: 640px) {
+    .decore-3-pos {
+      top: var(--decore3-top-sm, var(--decore3-top));
+      right: var(--decore3-right-sm, var(--decore3-right));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .decore-3-pos {
+      top: var(--decore3-top-lg, var(--decore3-top));
+      right: var(--decore3-right-lg, var(--decore3-right));
+    }
+  }
+</style>

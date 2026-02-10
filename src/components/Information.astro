@@ -1,28 +1,69 @@
+---
+const decore3Offsets = {
+  base: { left: 36, top: -24 },
+  sm: { left: 32, top: -32 },
+  lg: { left: 32, top: -32 },
+};
+
+const decore4Offsets = {
+  base: { left: 0, bottom: 0 },
+  sm: { left: 0, bottom: 0 },
+  lg: { left: 0, bottom: 0 },
+};
+
+const lienzo3Offsets = {
+  base: { right: 14, top: -24 },
+  sm: { right: -40, top: -32 },
+  lg: { right: -40, top: -32 },
+};
+
+const lienzo3Sizes = {
+  base: 106,
+  sm: 80,
+  lg: 96,
+};
+
+const lienzo2Offsets = {
+  base: { right: -20, bottom: 40 },
+  sm: { right: -32, bottom: 112 },
+  lg: { right: -32, bottom: 112 },
+};
+
+const lienzo2Sizes = {
+  base: 100,
+  sm: 80,
+  lg: 96,
+};
+---
+
 <section
   class="w-full mx-auto overflow-hidden w-full py-24 relative"
   style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
 >
-  <div class="grid grid-cols-2 max-w-7xl mx-auto relative px-4 gap-x-8">
-    <div class="col-span-1 w-full">
-      <div class="absolute -top-8 left-8 z-10 w-full h-full">
+  <div class="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto relative px-4 gap-x-8 gap-y-10">
+    <div class="w-full relative">
+      <div
+        class="decore-3-pos absolute z-10"
+        style={`--decore3-left:${decore3Offsets.base.left}px; --decore3-top:${decore3Offsets.base.top}px; --decore3-left-sm:${decore3Offsets.sm.left}px; --decore3-top-sm:${decore3Offsets.sm.top}px; --decore3-left-lg:${decore3Offsets.lg.left}px; --decore3-top-lg:${decore3Offsets.lg.top}px;`}
+      >
         <img
           src="/images/decore-3.png"
           alt="Information"
-          class="w-40 h-28 object-cover"
+          class="w-28 sm:w-36 md:w-40 h-auto object-cover"
         />
       </div>
-      <div class="ml-10">
-        <h1 class="text-6xl font-bold text-[#23479A] mt-12">¿Quienes somos?</h1>
+      <div class="ml-0 sm:ml-10 text-center sm:text-left">
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-[#23479A] mt-8 sm:mt-12">¿Quienes somos?</h1>
 
         <div
-          class="flex flex-col w-1/2 items-center p-8 gap-y-2 bg-gray-100 text-lg mt-12 mb-4 rounded-[2rem] w-full"
+          class="flex flex-col items-center p-6 sm:p-8 gap-y-2 bg-gray-100 text-base sm:text-lg mt-8 sm:mt-12 mb-4 rounded-[2rem] w-full"
         >
-          <p class="text-lg">
+          <p class="text-base sm:text-lg">
             <strong class="text-[#23479A]">Fundación Libera México</strong> es una
             organización dedicada a combatir la trata de personas y transformar la
             vida de quienes han sobrevivido a este delito.
           </p>
-          <p class="text-lg">
+          <p class="text-base sm:text-lg">
             Operamos el único refugio en el país que brinda <strong
               class="text-[#F45B9E]">acompañamiento integral</strong
             > y de largo plazo a niñas, niños y adolescentes sobrevivientes de trata.
@@ -32,51 +73,58 @@
             >
           </p>
         </div>
-        <button
-          class="bg-[#E1629F] hover:bg-[#c94d8a] text-white font-semibold py-4 px-10 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg uppercase tracking-wider"
-        >
-          Conocenos
-        </button>
+        <!-- <div class="flex justify-center sm:justify-start">
+          <button
+            class="bg-[#E1629F] hover:bg-[#c94d8a] text-white font-semibold py-3 sm:py-4 px-8 sm:px-10 rounded-full text-sm sm:text-lg transition-all transform hover:scale-105 shadow-lg uppercase tracking-wider"
+          >
+            Conocenos
+          </button>
+        </div> -->
       </div>
     </div>
     <div class="flex items-center justify-center">
-      <div class="h-full w-full flex items-center justify-center">
-        <div class="w-full h-full relative">
+      <div class="w-full flex items-center justify-center">
+        <div class="w-full h-[360px] sm:h-[440px] lg:h-[520px] relative">
           <img
             src="/images/lienzo/1.png"
             alt="Information"
-            class="object-cover absolute top-0 right-0 z-1"
+            class="object-cover absolute top-0 right-0 z-1 w-40 sm:w-56 lg:w-64"
           />
           <img
             src="/images/lienzo/1.png"
             alt="Information"
-            class="object-cover absolute top-44 right-0 z-1"
+            class="object-cover absolute top-32 sm:top-44 right-0 z-1 w-40 sm:w-56 lg:w-64"
           />
           <img
             src="/images/lienzo/2.png"
             alt="Information"
-            class="object-cover absolute bottom-28 -right-8 z-[3]"
+            class="lienzo-2-pos object-cover absolute z-[3]"
+            style={`--lienzo2-right:${lienzo2Offsets.base.right}px; --lienzo2-bottom:${lienzo2Offsets.base.bottom}px; --lienzo2-right-sm:${lienzo2Offsets.sm.right}px; --lienzo2-bottom-sm:${lienzo2Offsets.sm.bottom}px; --lienzo2-right-lg:${lienzo2Offsets.lg.right}px; --lienzo2-bottom-lg:${lienzo2Offsets.lg.bottom}px; --lienzo2-size:${lienzo2Sizes.base}px; --lienzo2-size-sm:${lienzo2Sizes.sm}px; --lienzo2-size-lg:${lienzo2Sizes.lg}px;`}
           />
           <img
             src="/images/lienzo/3.png"
             alt="Information"
-            class="object-cover absolute -top-8 -right-10 z-[3]"
+            class="lienzo-3-pos object-cover absolute z-[3]"
+            style={`--lienzo3-right:${lienzo3Offsets.base.right}px; --lienzo3-top:${lienzo3Offsets.base.top}px; --lienzo3-right-sm:${lienzo3Offsets.sm.right}px; --lienzo3-top-sm:${lienzo3Offsets.sm.top}px; --lienzo3-right-lg:${lienzo3Offsets.lg.right}px; --lienzo3-top-lg:${lienzo3Offsets.lg.top}px; --lienzo3-size:${lienzo3Sizes.base}px; --lienzo3-size-sm:${lienzo3Sizes.sm}px; --lienzo3-size-lg:${lienzo3Sizes.lg}px;`}
           />
           <img
             src="/images/lienzo/4.png"
             alt="Information"
-            class="object-cover absolute bottom-32 -left-4 z-[3]"
+            class="object-cover absolute bottom-24 sm:bottom-32 -left-2 sm:-left-4 z-[3] w-20 sm:w-24 lg:w-28"
           />
           <img
             src="/images/childs/2.png"
             alt="Information"
-            class="h-[21rem] w-[520px] object-cover z-2 absolute top-[3.5rem] right-10"
+            class="h-[240px] sm:h-[280px] lg:h-[21rem] w-full max-w-[520px] object-cover z-2 absolute top-[3.5rem] right-0 sm:right-6 lg:right-10"
           />
         </div>
       </div>
     </div>
   </div>
-  <div class="absolute left-0 bottom-0 h-30 w-24 z-10">
+  <div
+    class="decore-4-pos absolute h-30 w-24 z-10"
+    style={`--decore4-left:${decore4Offsets.base.left}px; --decore4-bottom:${decore4Offsets.base.bottom}px; --decore4-left-sm:${decore4Offsets.sm.left}px; --decore4-bottom-sm:${decore4Offsets.sm.bottom}px; --decore4-left-lg:${decore4Offsets.lg.left}px; --decore4-bottom-lg:${decore4Offsets.lg.bottom}px;`}
+  >
     <img
       src="/images/decore-4.png"
       alt="Information"
@@ -84,3 +132,71 @@
     />
   </div>
 </section>
+
+<style is:global>
+  .decore-3-pos {
+    left: var(--decore3-left);
+    top: var(--decore3-top);
+  }
+
+  .decore-4-pos {
+    left: var(--decore4-left);
+    bottom: var(--decore4-bottom);
+  }
+
+  @media (min-width: 640px) {
+    .decore-3-pos {
+      left: var(--decore3-left-sm, var(--decore3-left));
+      top: var(--decore3-top-sm, var(--decore3-top));
+    }
+    .decore-4-pos {
+      left: var(--decore4-left-sm, var(--decore4-left));
+      bottom: var(--decore4-bottom-sm, var(--decore4-bottom));
+    }
+    .lienzo-3-pos {
+      right: var(--lienzo3-right-sm, var(--lienzo3-right));
+      top: var(--lienzo3-top-sm, var(--lienzo3-top));
+      width: var(--lienzo3-size-sm, var(--lienzo3-size));
+    }
+    .lienzo-2-pos {
+      right: var(--lienzo2-right-sm, var(--lienzo2-right));
+      bottom: var(--lienzo2-bottom-sm, var(--lienzo2-bottom));
+      width: var(--lienzo2-size-sm, var(--lienzo2-size));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .decore-3-pos {
+      left: var(--decore3-left-lg, var(--decore3-left));
+      top: var(--decore3-top-lg, var(--decore3-top));
+    }
+    .decore-4-pos {
+      left: var(--decore4-left-lg, var(--decore4-left));
+      bottom: var(--decore4-bottom-lg, var(--decore4-bottom));
+    }
+    .lienzo-3-pos {
+      right: var(--lienzo3-right-lg, var(--lienzo3-right));
+      top: var(--lienzo3-top-lg, var(--lienzo3-top));
+      width: var(--lienzo3-size-lg, var(--lienzo3-size));
+    }
+    .lienzo-2-pos {
+      right: var(--lienzo2-right-lg, var(--lienzo2-right));
+      bottom: var(--lienzo2-bottom-lg, var(--lienzo2-bottom));
+      width: var(--lienzo2-size-lg, var(--lienzo2-size));
+    }
+  }
+
+  .lienzo-3-pos {
+    right: var(--lienzo3-right);
+    top: var(--lienzo3-top);
+    width: var(--lienzo3-size);
+    height: auto;
+  }
+
+  .lienzo-2-pos {
+    right: var(--lienzo2-right);
+    bottom: var(--lienzo2-bottom);
+    width: var(--lienzo2-size);
+    height: auto;
+  }
+</style>

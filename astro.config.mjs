@@ -5,6 +5,9 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
     server: {
       allowedHosts: ['fundacion-libera-mexico-production.up.railway.app'],

@@ -1,0 +1,58 @@
+---
+const titleImage = "/images/imgcompleta/img_completa-5-removebg-preview.png";
+const reportHref = "/docs/Informe%20Anual%20LM.pdf";
+const paperImage = "/images/lienzo/5.png";
+---
+
+<section
+  class="w-full py-24 relative overflow-hidden"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="absolute inset-0 pointer-events-none">
+    <img
+      src="/images/png-decore-3.png"
+      alt=""
+      class="absolute -top-6 -left-4 w-36 sm:w-44 lg:w-52"
+    />
+    <img
+      src="/images/png-decore-4.png"
+      alt=""
+      class="absolute top-6 right-2 w-40 sm:w-52 lg:w-64"
+    />
+    <img
+      src="/images/png-decore-1.png"
+      alt=""
+      class="absolute bottom-8 right-6 w-28 sm:w-36 lg:w-40"
+    />
+    <img
+      src="/images/web_decore-7.webp"
+      alt=""
+      class="absolute -bottom-6 -left-6 w-40 sm:w-52 lg:w-64"
+    />
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <div class="relative flex flex-col items-center text-center gap-6">     
+      <div class="relative z-10 flex flex-col items-center text-center gap-6 py-12 sm:py-16">
+        <div class="relative flex items-center justify-center">
+          <img
+            src={titleImage}
+            alt="Transparencia"
+            class="relative w-[600px] sm:w-[840px] lg:w-[1040px] h-auto object-contain"
+          />
+        </div>
+        <p class="text-lg sm:text-xl text-[#1f2c55] max-w-2xl">
+          Creemos en la rendición de cuentas como base de la confianza.
+        </p>
+        <a
+          href={reportHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-[#214296] hover:bg-[#1a357a] text-white font-semibold py-4 px-10 rounded-full text-sm sm:text-base tracking-wider uppercase transition-all transform hover:scale-105 shadow-lg"
+        >
+          Lee el informe anual 2025
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

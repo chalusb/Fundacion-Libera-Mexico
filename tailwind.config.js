@@ -14,7 +14,7 @@ module.exports = {
         'foundation-green': '#8DAF7A',
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
+        marquee: 'marquee 75s linear infinite',
       },
       keyframes: {
         marquee: {
