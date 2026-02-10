@@ -30,39 +30,7 @@ const {
             <img src="/logo.png" alt="Logo Libera México" class="w-auto h-16" />
           </div>
 
-          <!-- Contáctanos -->
-          <h3 class={`${logoColor} text-lg font-bold mb-4`}>Contáctanos</h3>
-
-          <!-- Newsletter form -->
-          <form
-            class="flex items-center gap-2 mb-4"
-            id="footer-newsletter-form"
-          >
-            <input
-              type="email"
-              placeholder="Enter your email"
-              required
-              class="flex-1 px-4 py-3 bg-white border border-gray-800 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-foundation-primary focus:border-transparent transition-colors duration-200 text-md"
-            />
-            <button
-              type="submit"
-              class="bg-[#254687] hover:bg-[#254687]/90 text-white p-3 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-foundation-primary focus:ring-offset-2 flex-shrink-0"
-              aria-label="Suscribirse al newsletter"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-              </svg>
-            </button>
-          </form>
+          <!-- Email removed -->
         </div>
 
         <!-- Columna Central: Menu -->
@@ -81,12 +49,7 @@ const {
             >
               Dona Ahora
             </a>
-            <a
-              href="/denuncia"
-              class={`${linkColor} block text-lg font-normal transition-colors duration-200`}
-            >
-              Denuncia
-            </a>
+            <!-- Denuncia removed -->
           </nav>
         </div>
 
@@ -161,7 +124,7 @@ const {
         <!-- Copyright -->
         <div class={`${textColor} text-md`}>
           <p>&copy; Fundación Libera México.</p>
-          <p>All Rights Reserved 2025</p>
+          <p>All Rights Reserved 2026</p>
         </div>
 
         <!-- Dirección y Teléfono -->
@@ -170,89 +133,18 @@ const {
           <p>Tel. +(52) 55 88 392792</p>
         </div>
       </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href="https://www.cssoftware.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`${linkColor} text-sm sm:text-base`}
+        >
+          Desarrollado por CSSoftware
+        </a>
+      </div>
     </div>
   </footer>
 </div>
 
-<script>
-  // Manejar el formulario de newsletter del footer
-  document.addEventListener("DOMContentLoaded", () => {
-    const newsletterForm = document.getElementById("footer-newsletter-form");
-
-    if (newsletterForm) {
-      newsletterForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const emailInput = newsletterForm.querySelector(
-          'input[type="email"]',
-        ) as HTMLInputElement;
-        const submitButton = newsletterForm.querySelector(
-          'button[type="submit"]',
-        ) as HTMLButtonElement;
-
-        if (!emailInput || !submitButton) {
-          console.error("No se encontraron los elementos del formulario");
-          return;
-        }
-
-        const email = emailInput.value.trim();
-
-        if (!email) {
-          alert("Por favor, ingresa tu correo electrónico");
-          return;
-        }
-
-        // Validar formato de email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          alert("Por favor, ingresa un correo electrónico válido");
-          return;
-        }
-
-        // Deshabilitar el botón mientras se procesa
-        submitButton.disabled = true;
-        const originalHTML = submitButton.innerHTML;
-        submitButton.innerHTML = `
-          <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-        `;
-
-        try {
-          // Enviar al endpoint API
-          const response = await fetch("/api/newsletter", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email }),
-          });
-
-          const result = await response.json();
-
-          if (result.success) {
-            alert(
-              "¡Gracias por suscribirte! Te mantendremos informado sobre nuestros avances.",
-            );
-            emailInput.value = "";
-          } else {
-            alert(
-              result.error ||
-                "Hubo un error al procesar tu suscripción. Por favor, intenta nuevamente.",
-            );
-          }
-        } catch (error) {
-          console.error("Error al procesar la suscripción:", error);
-          alert(
-            "Hubo un error al procesar tu suscripción. Por favor, intenta nuevamente.",
-          );
-        } finally {
-          // Restaurar el botón
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalHTML;
-        }
-      });
-    }
-  });
-</script>

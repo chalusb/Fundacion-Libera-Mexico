@@ -1,4 +1,12 @@
-<section class={`pt-20 min-h-screen w-full mx-auto overflow-hidden relative`}>
+---
+const decore6Offsets = {
+  base: { left: 288, bottom: -32 },
+  sm: { left: 288, bottom: -32 },
+  lg: { left: 288, bottom: -100 },
+};
+---
+
+<section class={`pt-16 sm:pt-20 min-h-screen w-full mx-auto overflow-hidden relative`}>
   <div class="w-full h-full">
     <img
       src="/images/lienzo/5.png"
@@ -7,28 +15,31 @@
     />
   </div>
   <div class="relative h-full">
-    <div class="absolute -bottom-32 left-0 z-10">
+    <div class="absolute -bottom-32 left-0 z-10 hidden sm:block">
       <img
         src="/images/decore-5.png"
         alt="Onda"
         class="w-full h-[18rem] object-cover"
       />
     </div>
-    <div class="absolute -bottom-8 left-[18rem] z-10">
+    <div
+      class="decore-6-pos absolute z-10 hidden sm:block"
+      style={`--decore6-left:${decore6Offsets.base.left}px; --decore6-bottom:${decore6Offsets.base.bottom}px; --decore6-left-sm:${decore6Offsets.sm.left}px; --decore6-bottom-sm:${decore6Offsets.sm.bottom}px; --decore6-left-lg:${decore6Offsets.lg.left}px; --decore6-bottom-lg:${decore6Offsets.lg.bottom}px;`}
+    >
       <img
         src="/images/decore-6.png"
         alt="Onda"
         class="w-full h-[8rem] object-cover"
       />
     </div>
-    <div class="absolute -top-6 left-[11rem] z-10">
+    <div class="absolute -top-6 left-[11rem] z-10 hidden sm:block">
       <img
         src="/images/decore-7.png"
         alt="Onda"
         class="w-full h-[8rem] object-cover"
       />
     </div>
-    <div class="absolute -bottom-[7rem] right-0 z-10">
+    <div class="absolute -bottom-[7rem] right-0 z-10 hidden sm:block">
       <img
         src="/images/decore-8.png"
         alt="Onda"
@@ -36,44 +47,57 @@
       />
     </div>
     <div class="w-full relative bg-white max-w-7xl mx-auto">
-      <div class="grid grid-cols-2 gap-4 pl-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 sm:px-10 lg:pl-20">
         <div>
-          <h1 class="text-7xl font-bold text-[#f0559f] mb-16">Contáctanos</h1>
-          <p class="text-2xl font-bold max-w-xl mb-4">
+          <h1 class="text-3xl sm:text-5xl lg:text-7xl font-bold text-[#f0559f] mb-8 sm:mb-12 lg:mb-16">
+            Contáctanos
+          </h1>
+          <p class="text-lg sm:text-xl lg:text-2xl font-bold max-w-xl mb-4">
             <span class="text-dark"
               >¿Tienes dudas, <span class="text-[#214296]"
                 >quieres colaborar</span
               > o simplemente saber más?</span
             >
           </p>
-          <p class="text-2xl">
+          <p class="text-lg sm:text-xl lg:text-2xl">
             <span class="text-dark">Estamos aquí para escucharte</span>
           </p>
         </div>
         <div>
-          <div class="flex flex-col gap-8 max-w-md">
+          <div class="flex flex-col gap-6 sm:gap-8 max-w-md">
             <div class="inline-flex gap-2 border-b border-gray-900 pb-2 px-4">
-              <div class="bg-[#214296] rounded-full p-2 h-8 w-8"></div>
-              <h4 class="text-lg">contacto@liberamexico.org</h4>
+              <img
+                src="/images/decore-19.png"
+                alt=""
+                class="w-8 h-8 object-contain"
+              />
+              <h4 class="text-base sm:text-lg">+(52) 55 88 392792</h4>
             </div>
             <div class="inline-flex gap-2 border-b border-gray-900 pb-2 px-4">
-              <div class="bg-[#214296] rounded-full p-2 h-8 w-8"></div>
-              <div class="bg-[#214296] rounded-full p-2 h-8 w-8"></div>
-              <h4 class="text-lg">+(52) 55 88 392792</h4>
+              <img
+                src="/images/decore-19.png"
+                alt=""
+                class="w-8 h-8 object-contain"
+              />
+              <h4 class="text-base sm:text-lg">Fundación Libera México</h4>
             </div>
             <div class="inline-flex gap-2 border-b border-gray-900 pb-2 px-4">
-              <div class="bg-[#214296] rounded-full p-2 h-8 w-8"></div>
-              <h4 class="text-lg">Fundación Libera México</h4>
-            </div>
-            <div class="inline-flex gap-2 border-b border-gray-900 pb-2 px-4">
-              <div class="bg-[#214296] rounded-full p-2 h-8 w-8"></div>
-              <h4 class="text-lg">
+              <img
+                src="/images/decore-19.png"
+                alt=""
+                class="w-8 h-8 object-contain"
+              />
+              <h4 class="text-base sm:text-lg">
                 Horario de Atención: Lun - Vie: 9 AM - 6 PM
               </h4>
             </div>
             <div class="inline-flex gap-2 border-b border-gray-900 pb-2 px-4">
-              <div class="bg-[#214296] rounded-full p-2 h-8 w-8"></div>
-              <h4 class="text-lg">Av. Santa Fe 505 Cuajimalpa, México.</h4>
+              <img
+                src="/images/decore-19.png"
+                alt=""
+                class="w-8 h-8 object-contain"
+              />
+              <h4 class="text-base sm:text-lg">Av. Santa Fe 505 Cuajimalpa, México.</h4>
             </div>
           </div>
         </div>
@@ -88,3 +112,24 @@
     />
   </div>
 </section>
+
+<style is:global>
+  .decore-6-pos {
+    left: var(--decore6-left);
+    bottom: var(--decore6-bottom);
+  }
+
+  @media (min-width: 640px) {
+    .decore-6-pos {
+      left: var(--decore6-left-sm, var(--decore6-left));
+      bottom: var(--decore6-bottom-sm, var(--decore6-bottom));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .decore-6-pos {
+      left: var(--decore6-left-lg, var(--decore6-left));
+      bottom: var(--decore6-bottom-lg, var(--decore6-bottom));
+    }
+  }
+</style>
