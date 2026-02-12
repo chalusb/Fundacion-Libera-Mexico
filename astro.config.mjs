@@ -10,7 +10,11 @@ export default defineConfig({
   },
   vite: {
     server: {
-      allowedHosts: ['fundacion-libera-mexico-production.up.railway.app'],
+      allowedHosts: [
+        'fundacion-libera-mexico-production.up.railway.app',
+        'liberamexico.org',
+        'fundacionliberamexico.org',
+      ],
     },
   },
 });
