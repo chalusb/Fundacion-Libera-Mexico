@@ -15,7 +15,7 @@ const {
 ---
 
 <section
-  class={`${backgroundColor} relative h-[80vh] mt-20 flex items-center justify-center overflow-hidden`}
+  class={`${backgroundColor} relative  sm:min-h-[86rem] lg:min-h-[104rem] mt-20 flex items-center justify-center overflow-hidden py-16 sm:py-20 lg:py-24`}
 >
   <!-- Background image -->
   <div
@@ -26,7 +26,7 @@ const {
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 overflow-hidden w-full">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 overflow-hidden w-full">
     <div class="flex items-center justify-center w-full">
       <div
         class="z-10 w-full h-full flex items-center justify-center relative max-w-7xl mx-auto"
@@ -34,24 +34,22 @@ const {
         <img
           src="/images/decores/6.png"
           alt="About Hero"
-          class="w-[60rem] h-full object-cover"
+          class="h-[30rem] w-auto max-w-full self-start"
         />
         <div class="absolute top-0 left-0 z-10 h-full w-full">
           <div
-            class="h-full flex flex-col items-center justify-center text-center"
+            class="h-full flex flex-col items-center justify-center text-center px-4 sm:px-8 pt-6 sm:pt-8"
           >
-            <h1 class="text-6xl font-bold text-[#E1629F] mt-8">
+            <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-[#E1629F] mt-6 sm:mt-8 lg:mt-10">
               ¿Quiénes somos?
             </h1>
-            <p class="text-md my-2">
+            <p class="text-xs sm:text-sm lg:text-base my-2 w-[90%] max-w-3xl leading-relaxed mx-auto">
               <strong class="text-[#E1629F]">Fundación Libera México</strong> es una
-              organización dedicada a <strong class="text-[#E1629F]"
-                >combatir</strong
-              > la trata de personas<br /> y transformar la vida de quienes han sobrevivido
-              a este delito.<br />
-              Trabajamos desde un enfoque integral que abarca <strong
-                class="text-[#E1629F]">prevención, incidencia y atención</strong
-              ><br /> especializada, con el objetivo de construir entornos más seguros
+              organización dedicada a <strong class="text-[#E1629F]">combatir</strong>
+              la trata de personas y transformar la vida de quienes han sobrevivido
+              a este delito. Trabajamos desde un enfoque integral que abarca
+              <strong class="text-[#E1629F]">prevención, incidencia y atención</strong>
+              especializada, con el objetivo de construir entornos más seguros
               y libres de violencia.
             </p>
           </div>

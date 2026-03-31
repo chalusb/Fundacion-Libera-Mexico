@@ -1,0 +1,203 @@
+---
+const headerBand = "/images/background/title.png";
+const tapeImage = "/images/web_decore-9.webp";
+const bricksImage = "/images/png-decore-11.png";
+const tapeStyle = (rotate) =>
+  `transform: translateX(-50%) rotate(${rotate}deg);`;
+
+const stages = [
+  {
+    label: "Etapa 1",
+    date: "Abril 2026",
+    image: "/images/childs/IMG_2534.jpeg",
+    alt: "Etapa 1: áreas esenciales",
+    description: "Áreas esenciales para comenzar a operar:",
+    items: [
+      "Habitaciones",
+      "Caseta de vigilancia e ingreso",
+      "Comedor",
+      "Cocina",
+      "Área de lavado",
+      "Ludoteca",
+    ],
+    tapeClass: "tape--pink",
+    tapeRotate: -26,
+    offsetClass: "",
+  },
+  {
+    label: "Etapa 2",
+    date: "Sept 2026",
+    image: "/images/childs/IMG_2586.jpeg",
+    alt: "Etapa 2: integración",
+    description: "Fortaleciendo su proceso de integración:",
+    items: ["Oficinas", "Casa de transición"],
+    tapeClass: "tape--sand",
+    tapeRotate: 18,
+    offsetClass: "",
+  },
+  {
+    label: "Etapa 3",
+    date: "Sept 2027",
+    image: "/images/childs/Inicio%20de%20la%20p%C3%A1gina.png",
+    alt: "Etapa 3: habilidades y bienestar",
+    description: "Espacios que impulsan habilidades, autonomía y bienestar:",
+    items: ["Espacios recreativos", "Pastelería (taller formativo)", "Gimnasio"],
+    tapeClass: "tape--lavender",
+    tapeRotate: -42,
+    offsetClass: "",
+  },
+];
+---
+
+<section
+  class="w-full py-20 relative overflow-hidden"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="absolute inset-0 pointer-events-none">
+    
+    <img
+      src="/images/png-decore-12.png"
+      alt=""
+      class="absolute -bottom-6 left-2 w-40 sm:w-56 lg:w-64 opacity-90"
+    />
+    <img
+      src="/images/png-decore-12.png"
+      alt=""
+      class="absolute bottom-[100px] right-[54px] w-[20rem] sm:w-[28rem] lg:w-[32rem] opacity-90"
+    />
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative">
+    <div class="flex justify-center">
+      <div class="relative w-full max-w-4xl">
+        <img
+          src={headerBand}
+          alt=""
+          class="w-full h-auto object-contain"
+        />
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center gap-1 sm:gap-2 px-4">
+          <span class="etapas-kicker uppercase text-3xl sm:text-[4rem] lg:text-[4.5rem]">
+            Etapas
+          </span>
+          <h2 class="etapas-title uppercase text-3xl sm:text-5xl lg:text-6xl">
+            De Construcción
+          </h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-3 items-stretch">
+      {stages.map((stage) => (
+        <article class={`relative h-full ${stage.offsetClass}`}>
+          <div class="stage-card relative px-6 pb-8 pt-12 h-full flex flex-col">
+            <img
+              src={tapeImage}
+              alt=""
+              class={`tape ${stage.tapeClass} w-24 sm:w-[9rem]`}
+              style={tapeStyle(stage.tapeRotate)}
+            />
+            <div class="stage-photo">
+              <img
+                src={stage.image}
+                alt={stage.alt}
+                class="w-full h-36 sm:h-40 object-cover rounded-lg"
+                loading="lazy"
+              />
+            </div>
+            <div class="mt-4 flex justify-center">
+              <span class="stage-label uppercase">
+                <span class="block">{stage.label}</span>
+                <span class="block">{stage.date}</span>
+              </span>
+            </div>
+            <p class="mt-4 text-sm sm:text-base text-[#2b4a9b] font-semibold">
+              {stage.description}
+            </p>
+            <ul class="mt-3 list-disc pl-5 text-sm sm:text-base text-gray-800">
+              {stage.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .etapas-kicker {
+    color: #2b4a9b;
+    -webkit-text-stroke: 4px #ffffff;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.9), 0 6px 14px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    paint-order: stroke fill;
+  }
+
+  .etapas-title {
+    color: #f0559f;
+    -webkit-text-stroke: 6px #ffffff;
+    text-shadow: 0 4px 0 rgba(255, 255, 255, 0.9), 0 10px 22px rgba(0, 0, 0, 0.18);
+    letter-spacing: 0.05em;
+    font-weight: 900;
+    line-height: 1.05;
+    paint-order: stroke fill;
+  }
+
+  .stage-card {
+    background-image: url("/images/background/paper.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 1.25rem;
+    box-shadow: 0 18px 32px rgba(15, 23, 42, 0.2);
+  }
+
+  .stage-photo {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.5rem;
+    border-radius: 0.9rem;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  }
+
+  .stage-label {
+    background: #f0559f;
+    color: #ffffff;
+    font-weight: 800;
+    padding: 0.5rem 1.4rem;
+    border-radius: 0.6rem;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    text-align: center;
+    box-shadow: 0 10px 16px rgba(240, 85, 159, 0.35);
+  }
+
+  .tape {
+    position: absolute;
+    top: -52px;
+    left: 50%;
+    transform-origin: center;
+  }
+
+  .tape--pink {
+    filter: hue-rotate(320deg) saturate(1.4) brightness(1.05)
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
+  }
+
+  .tape--sand {
+    filter: hue-rotate(20deg) saturate(0.9) brightness(1.1)
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+  }
+
+  .tape--lavender {
+    filter: hue-rotate(230deg) saturate(1.1) brightness(1.08)
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
+  }
+
+  @media (min-width: 1024px) {
+    .stage-card {
+      padding-left: 1.75rem;
+      padding-right: 1.75rem;
+    }
+  }
+</style>

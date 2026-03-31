@@ -47,7 +47,7 @@ const sections: TeamSection[] = [
       {
         name: "Verónica Naranjo",
         role: "Desarrollo Institucional y Alianzas Estratégicas",
-        image: "Verónica Naranjo.jpg",
+        image: "Veronica Naranjo.jpg",
       },
     ],
   },
@@ -75,13 +75,12 @@ const sections: TeamSection[] = [
     members: [
       { name: "Lucía Chaparro", role: "Presidenta", image: "Lucía Chaparro.jpg" },
       { name: "Karen Farias Cruzado", role: "Vicepresidenta", image: "Karen Farias.png" },
-      { name: "Alfredo García Conde", role: "Tesorero" },
+      { name: "Alfredo García Conde", role: "Tesorero" , image: "Alfredo Garcia.jpeg" },
       { name: "Karla Gómez", role: "Secretaria", image: "Carla Gómez.jpg" },
-      { name: "Carlos Ferrán Martinez", role: "Consejero", image: "Carlos Ferrán.png" },
-      { name: "Daniela Gómez", role: "Consejera", image: "Daniela Gomez.png" },
+      { name: "Carlos Ferrán Martinez", role: "Consejero", image: "Carlos Ferran.png" },
       { name: "Diana Murrieta", role: "Consejera", image: "Diana Murrieta.png" },
-      { name: "Mariana Ávila Martinez", role: "Consejera", image: "Mariana Ávila.png" },
-      { name: "Mario Uribe", role: "Consejero" },
+      { name: "Mariana Ávila Martinez", role: "Consejera", image: "Mariana avila.png" },
+      { name: "Mario Uribe", role: "Consejero", image: "Mario Uribe.jpeg" },
       { name: "Mercedes Becker", role: "Consejera", image: "Mercedes.png" },
       { name: "Raquel Aguirre", role: "Consejera", image: "Raquel Aguirre.png" },
       { name: "Salvador Cacho", role: "Consejero", image: "Salvador Cacho.png" },
@@ -91,11 +90,6 @@ const sections: TeamSection[] = [
     title: "Voceros",
     gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
     members: [
-      {
-        name: "Saskia Niño de Rivera",
-        role: "Consejera",
-        image: "Saskia Niño de Rivera.jpeg",
-      },
       { name: "Karla Jacinto", role: "Vocera", image: "Karla Jacinto.jpg" },
       { name: "Luis Armando Campos", role: "Vocero" },
       { name: "María", role: "Vocera", image: "Maria.jpg" },
@@ -130,10 +124,10 @@ const sections: TeamSection[] = [
           </div>
 
           <div
-            class={`mt-10 grid gap-10 ${section.gridClass} ${isTwo ? "justify-items-center sm:max-w-4xl mx-auto" : ""}`}
+            class={`mt-10 grid gap-10 ${section.gridClass} justify-items-center`}
           >
             {section.members.map((member) => (
-              <div class={`flex flex-col gap-4 ${isTwo ? "items-center text-center" : "items-start"}`}>
+              <div class="flex flex-col gap-4 items-center text-center">
                 <div class="relative w-[170px] h-[170px]">
                   <img
                     src={avatarBg}
