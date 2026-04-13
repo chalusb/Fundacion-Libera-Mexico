@@ -13,9 +13,13 @@ type TeamSection = {
 
 const titleImage = "/images/imgcompleta/img_completa-4-removebg-preview.png";
 const avatarBg = "/images/web_decore-4.webp";
+const defaultAvatar = "/images/6997662.png";
 
-const imagePath = (filename?: string) =>
-  filename ? `/images/equipo/${encodeURIComponent(filename)}` : "";
+const imagePath = (filename?: string) => {
+  if (!filename) return defaultAvatar;
+  if (filename.startsWith("/")) return filename;
+  return `/images/equipo/${encodeURIComponent(filename)}`;
+};
 
 const sections: TeamSection[] = [
   {
@@ -38,6 +42,7 @@ const sections: TeamSection[] = [
       {
         name: "Leticia Hernández",
         role: "Administración y Finanzas",
+        image: "LETICIA HERNANDEZ.jpg",
       },
       {
         name: "Michelle Arzate",
@@ -59,6 +64,12 @@ const sections: TeamSection[] = [
       { name: "Elizabeth", role: "Coordinadora de Cuidadores", image: "Elizabeth.png" },
       { name: "Karla Gama", role: "Salud Mental", image: "Karla Gama.jpg" },
       { name: "Guadalupe", role: "Atención", image: "Guadalupe .jpg" },
+      {
+        name: "ALMA LAURA Bautista",
+        role: "Área de Trabajo Social",
+        image: "ALMA LAURA.JPG",
+      },
+      { name: "Sarahí Rodríguez", role: "Cuidadora", image: "Sarahí Rodríguez .JPG" },
     ],
   },
   {
@@ -66,7 +77,11 @@ const sections: TeamSection[] = [
     gridClass: "grid-cols-1 sm:grid-cols-2",
     members: [
       { name: "Troy Brewer", role: "Presidente", image: "Troy Brewer.png" },
-      { name: "Suaanamy Calera", role: "Miembro del Patronato" },
+      {
+        name: "Suaanamy Calera",
+        role: "Miembro del Patronato",
+        image: "Suannamy Calera.jpeg",
+      },
     ],
   },
   {
@@ -84,6 +99,12 @@ const sections: TeamSection[] = [
       { name: "Mercedes Becker", role: "Consejera", image: "Mercedes.png" },
       { name: "Raquel Aguirre", role: "Consejera", image: "Raquel Aguirre.png" },
       { name: "Salvador Cacho", role: "Consejero", image: "Salvador Cacho.png" },
+      {
+        name: "Gerardo Nasser Nehme",
+        role: "Consejero",
+        image: "Gerardo Nasser Nehme .JPG",
+      },
+      { name: "Sr. Erick Nasser Nehme", role: "Consejero" },
     ],
   },
   {
@@ -91,7 +112,11 @@ const sections: TeamSection[] = [
     gridClass: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
     members: [
       { name: "Karla Jacinto", role: "Vocera", image: "Karla Jacinto.jpg" },
-      { name: "Luis Armando Campos", role: "Vocero" },
+      {
+        name: "Luis Armando Campos",
+        role: "Vocero",
+        image: "LUIS ARMANDO CAMPOS.jpeg",
+      },
       { name: "María", role: "Vocera", image: "Maria.jpg" },
       { name: "Zundury", role: "Vocera", image: "Zundury.jpg" },
     ],
@@ -126,30 +151,32 @@ const sections: TeamSection[] = [
           <div
             class={`mt-10 grid gap-10 ${section.gridClass} justify-items-center`}
           >
-            {section.members.map((member) => (
-              <div class="flex flex-col gap-4 items-center text-center">
-                <div class="relative w-[170px] h-[170px]">
-                  <img
-                    src={avatarBg}
-                    alt=""
-                    class="absolute inset-0 w-full h-full object-contain"
-                  />
-                  {member.image && (
+            {section.members.map((member) => {
+              const memberImage = imagePath(member.image);
+
+              return (
+                <div class="flex flex-col gap-4 items-center text-center">
+                  <div class="relative w-[170px] h-[170px]">
                     <img
-                      src={imagePath(member.image)}
+                      src={avatarBg}
+                      alt=""
+                      class="absolute inset-0 w-full h-full object-contain"
+                    />
+                    <img
+                      src={memberImage}
                       alt={member.name}
                       class="absolute inset-[20px] w-[calc(100%-40px)] h-[calc(100%-40px)] object-cover rounded-full"
                     />
-                  )}
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-black leading-tight">
+                      {member.name}
+                    </p>
+                    <p class="text-sm text-black/80">{member.role}</p>
+                  </div>
                 </div>
-                <div>
-                  <p class="text-xl font-bold text-black leading-tight">
-                    {member.name}
-                  </p>
-                  <p class="text-sm text-black/80">{member.role}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       );

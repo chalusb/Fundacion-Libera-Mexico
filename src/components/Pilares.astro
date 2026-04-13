@@ -1,31 +1,70 @@
 ---
-import BubblesGrid, { type BubbleType } from "./bubbles/grid.astro";
+type Pillar = {
+  title: string;
+  description: string;
+  accent: string;
+  folder: string;
+  images: string[];
+};
 
-const bubbles = [
-  { title: "APOYO LEGAL", image: "/images/bubbles/1.png", color: "green" },
-  { title: "SALUD MENTAL", image: "/images/bubbles/2.png", color: "purple" },
-  { title: "APOYO EDUCATIVO", image: "/images/bubbles/3.png", color: "green" },
+const pillars: Pillar[] = [
+  {
+    title: "APOYO LEGAL",
+    description: `Acompañamos a las niñas, niños y adolescentes en todo el proceso de acceso a la justicia. Incluye asesoría jurídica especializada en delitos de trata y violencia sexual, acompañamiento en denuncias y procesos judiciales, y restitución de derechos y representación ante fiscalías y organismos públicos.`,
+    accent: "#E1629F",
+    folder: "APOYO LEGAL",
+    images: ["IMG_5467.JPG", "IMG_5469.JPG", "IMG_5473.JPG", "IMG_5474.JPG", "IMG_5508.JPG"],
+  },
+  {
+    title: "SALUD MENTAL",
+    description: `La trata deja marcas profundas; por ello, la atención emocional es el corazón de nuestro modelo. Nuestro enfoque se basa en la crianza con ternura y la comprensión del trauma complejo, reconociendo que cada persona necesita tiempos y formas distintas para sanar. Incluye terapia psicológica especializada en trauma, acompañamiento psiquiátrico, intervenciones terapéuticas individuales y grupales, y psicoeducación.`,
+    accent: "#214296",
+    folder: "SALUD MENTAL",
+    images: ["IMG_5486.JPG", "IMG_5488.JPG", "IMG_5490.JPG", "IMG_5491.JPG"],
+  },
+  {
+    title: "APOYO EDUCATIVO",
+    description: `Acompañamos los procesos de reintegración o continuidad escolar mediante tutorías personalizadas, apoyo académico y acceso a talleres artísticos, culturales y formativos. Trabajamos en coordinación con instituciones educativas aliadas.`,
+    accent: "#8B5CF6",
+    folder: "APOYO EDUCATIVO",
+    images: ["IMG_5460.JPG", "IMG_5461.JPG", "IMG_5462.JPG", "IMG_5463.JPG", "IMG_5464.JPG"],
+  },
   {
     title: "ATENCIÓN MÉDICA",
-    image: "/images/bubbles/4.png",
-    color: "purple",
+    description: `Realizamos una evaluación médica inicial y seguimiento continuo, con nutrición integral personalizada e intervenciones de rehabilitación física. Dependiendo de cada caso, se brinda acceso a especialidades pediátricas como perinatología, oftalmología, atención dental, dermatología, fisioterapia y otras requeridas.`,
+    accent: "#F59E0B",
+    folder: "ATENCIÓN MEDICO",
+    images: ["IMG_5479.JPG", "IMG_5480.JPG", "IMG_5483.JPG", "IMG_5484.JPG"],
   },
   {
     title: "TALENTOS Y HABILIDADES",
-    image: "/images/bubbles/5.png",
-    color: "green",
+    description: `Impulsamos actividades deportivas, culturales, creativas y recreativas que fortalecen habilidades socioemocionales y preparan para la autonomía, la independencia y la vida adulta.`,
+    accent: "#22C55E",
+    folder: "TALENTOS Y HABILIDADES",
+    images: [
+      "IMG_5492.JPG",
+      "IMG_5494.JPG",
+      "IMG_5497.JPG",
+      "IMG_5500.JPG",
+      "IMG_5501.JPG",
+      "IMG_5509.JPG",
+      "IMG_5510.JPG",
+    ],
   },
-] as BubbleType[];
+];
+
+const pillarImagePath = (folder: string, filename: string) =>
+  `/images/pilares/${encodeURIComponent(folder)}/${encodeURIComponent(filename)}`;
 ---
 
-<section class="w-full mx-auto overflow-hidden w-full relative bg-white">
+<section class="w-full mx-auto overflow-hidden relative bg-white">
   <div
     class="w-full h-32 sm:h-[16rem] z-[3] relative"
     style="background-image: url('/images/background/paper.png'); background-size: cover; background-position: center;"
   >
   </div>
   <div class="max-w-7xl mx-auto relative px-4 -mt-24 z-[10]">
-    <div class="relative">
+    <div class="relative text-center">
       <img
         src="/images/imgcompleta/img_completa-3-removebg-preview.png"
         alt="Pilares"
@@ -48,12 +87,73 @@ const bubbles = [
       sanar, proteger y reconstruir proyectos de vida.
     </p>
 
-    <div class="mt-10">
-      <BubblesGrid items={bubbles} />
-    </div>
+    <div class="mt-14 flex flex-col gap-16">
+      {pillars.map((pillar) => (
+        <article class="pillar-card" style={`--accent:${pillar.accent};`}>
+          <div class="pillar-body grid gap-6 sm:gap-8 lg:gap-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-center lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
+            <div class="pillar-text lg:self-center">
+              <header class="pillar-head">
+                <div class="pillar-title-row">
+                  <h3 class="pillar-title">{pillar.title}</h3>
+                  <img
+                    src="/images/decore-12.png"
+                    alt=""
+                    class="pillar-decore"
+                    loading="lazy"
+                  />
+                </div>
+              </header>
+              <p class="text-base leading-relaxed text-slate-700">
+                {pillar.description}
+              </p>
+            </div>
 
-    <div class="mt-10 flex justify-center">
-      
+            <div class="pillar-slider" data-slider>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2 ml-auto">
+                  <button type="button" class="pillar-nav" data-prev aria-label="Anterior">
+                    ‹
+                  </button>
+                  <button type="button" class="pillar-nav" data-next aria-label="Siguiente">
+                    ›
+                  </button>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div
+                  class="pillar-track flex gap-0 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+                  data-track
+                >
+                  {pillar.images.map((image, imageIndex) => (
+                    <div
+                      class="pillar-slide snap-start shrink-0 w-full"
+                      data-slide
+                    >
+                      <img
+                        src={pillarImagePath(pillar.folder, image)}
+                        alt={`${pillar.title} ${imageIndex + 1}`}
+                        loading="lazy"
+                        class="w-full h-[260px] sm:h-[320px] lg:h-[360px] object-cover rounded-[28px] shadow-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div class="mt-3 flex justify-center gap-2">
+                  {pillar.images.map((_, dotIndex) => (
+                    <button
+                      type="button"
+                      aria-label={`Ir a imagen ${dotIndex + 1}`}
+                      class={`pillar-dot ${dotIndex === 0 ? "is-active" : ""}`}
+                      data-dot
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
   <div
@@ -62,3 +162,203 @@ const bubbles = [
   >
   </div>
 </section>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const sliderRoots = document.querySelectorAll("[data-slider]");
+    sliderRoots.forEach((sliderRoot) => {
+      const track = sliderRoot.querySelector("[data-track]");
+      if (!track) return;
+
+      const slides = Array.from(track.querySelectorAll("[data-slide]"));
+      const dots = Array.from(sliderRoot.querySelectorAll("[data-dot]"));
+      const prev = sliderRoot.querySelector("[data-prev]");
+      const next = sliderRoot.querySelector("[data-next]");
+
+      if (slides.length <= 1) {
+        sliderRoot.querySelectorAll("[data-prev], [data-next], [data-dot]").forEach((el) => {
+          el.setAttribute("disabled", "true");
+        });
+      }
+
+      const getActiveIndex = () => {
+        const current = track.scrollLeft;
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        slides.forEach((slide, index) => {
+          const distance = Math.abs(slide.offsetLeft - current);
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        return closestIndex;
+      };
+
+      const setActiveDot = (index) => {
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle("is-active", dotIndex === index);
+        });
+      };
+
+      const scrollToIndex = (index) => {
+        const target = slides[index];
+        if (!target) return;
+        track.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
+        setActiveDot(index);
+      };
+
+      prev?.addEventListener("click", () => {
+        const current = getActiveIndex();
+        scrollToIndex(Math.max(current - 1, 0));
+      });
+
+      next?.addEventListener("click", () => {
+        const current = getActiveIndex();
+        scrollToIndex(Math.min(current + 1, slides.length - 1));
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => scrollToIndex(index));
+      });
+
+      let isTicking = false;
+      track.addEventListener("scroll", () => {
+        if (isTicking) return;
+        isTicking = true;
+        window.requestAnimationFrame(() => {
+          setActiveDot(getActiveIndex());
+          isTicking = false;
+        });
+      });
+
+      setActiveDot(0);
+    });
+  });
+</script>
+
+<style>
+  .pillar-card {
+    padding: 24px 0 10px;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  }
+
+  .pillar-head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 18px;
+  }
+
+  .pillar-label {
+    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: #1f3b8f;
+  }
+
+  .pillar-title {
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1.1;
+  }
+
+  .pillar-title-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pillar-decore {
+    display: inline-block;
+    width: 48px;
+    height: auto;
+    transform: translateY(1px);
+  }
+
+  .pillar-track {
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+  }
+
+  .pillar-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pillar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .pillar-dot.is-active {
+    background: var(--accent);
+    transform: scale(1.2);
+  }
+
+  .pillar-nav {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .pillar-nav:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 1024px) {
+    .pillar-decore {
+      width: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pillar-card {
+      padding: 16px 0 8px;
+    }
+
+    .pillar-title-row {
+      gap: 6px;
+    }
+
+    .pillar-decore {
+      width: 34px;
+    }
+
+    .pillar-nav {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+    }
+
+    .pillar-dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .pillar-slide img {
+      height: 220px;
+      border-radius: 22px;
+    }
+  }
+</style>

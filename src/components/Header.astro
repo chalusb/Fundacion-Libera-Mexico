@@ -4,50 +4,6 @@ export interface Props {
   buttonColor?: string;
   buttonTextColor?: string;
 }
-
-const links = [
-  {
-    label: "Inicio",
-    href: "/",
-  },
-  {
-    label: "Denuncia",
-    href: "/denuncia",
-  },
-  {
-    label: "Contacto",
-    href: "/contacto",
-  },
-  {
-    label: "Transparencia",
-    href: "/transparencia",
-  },
-  {
-    label: "Constructor de Sueños",
-    href: "/constructor",
-  },
-  {
-    label: "Quiénes Somos",
-    href: "/about",
-  },
-];
-
-// Obtener la ruta actual
-const currentPath = Astro.url.pathname;
-
-// Función para determinar si un enlace está activo
-const isActive = (path: string) => {
-  if (path === "/") {
-    return currentPath === "/";
-  }
-  return currentPath.startsWith(path);
-};
-
-// Clases para enlaces activos e inactivos
-const activeLinkClass =
-  "relative text-[#254687] text-base h-full flex items-center font-medium hover:text-[#254687] transition-colors duration-200";
-const inactiveLinkClass =
-  "relative text-[#4B5563] text-base h-full flex items-center font-medium hover:text-[#254687] transition-colors duration-200";
 ---
 
 <header class="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
@@ -60,170 +16,17 @@ const inactiveLinkClass =
         </div>
       </a>
 
-      <!-- Navigation -->
-      <nav class="hidden lg:flex flex-1 items-center justify-center gap-4 xl:gap-6 h-full">
-        {
-          links.map((link) => (
-            <a
-              href={link.href}
-              class={isActive(link.href) ? activeLinkClass : inactiveLinkClass}
-              aria-current={isActive(link.href) ? "page" : undefined}
-            >
-              {link.label}
-
-              {isActive(link.href) && (
-                <span class="absolute bottom-0 left-0 w-full h-1 bg-[#254687]" />
-              )}
-            </a>
-          ))
-        }
-      </nav>
-
-      <!-- CTA + Mobile Actions -->
-      <div class="flex items-center gap-3">
+      <!-- CTA -->
+      <div class="flex items-center">
         <a
           href="https://alwayson.recaudia.com/liberamexico/donor"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden lg:inline-flex bg-[#EC4899] text-white px-8 py-3 rounded-full font-semibold text-sm tracking-wide hover:opacity-90 transition-opacity duration-200 shadow-sm"
-        >
-          DONA AHORA
-        </a>
-        <div class="flex items-center gap-2 lg:hidden">
-          <a
-            href="https://alwayson.recaudia.com/liberamexico/donor"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-[#EC4899] text-white px-5 py-2 rounded-full font-semibold text-xs tracking-wide hover:opacity-90 transition-opacity duration-200 shadow-sm"
-          >
-            DONA AHORA
-          </a>
-          <button
-            type="button"
-            id="mobile-menu-button"
-            class="inline-flex items-center justify-center p-2 rounded-md text-[#254687] hover:text-[#1f3b74] focus:outline-none focus:ring-2 focus:ring-[#254687]/30"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
-            aria-label="Abrir menú"
-          >
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="lg:hidden hidden">
-      <div class="px-4 pt-4 pb-6 space-y-2 sm:px-6 border-t border-gray-200 bg-white">
-        {
-          links.map((link) => (
-            <a
-              href={link.href}
-              class={`block px-4 py-3 text-base font-medium rounded-md transition-colors ${
-                isActive(link.href)
-                  ? "text-[#254687] underline decoration-[#254687] decoration-2 underline-offset-4"
-                  : "text-[#4B5563] hover:text-[#254687] hover:bg-gray-50"
-              }`}
-              aria-current={isActive(link.href) ? "page" : undefined}
-            >
-              {link.label}
-            </a>
-          ))
-        }
-        <a
-          href="https://alwayson.recaudia.com/liberamexico/donor"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="block px-4 py-3 text-base font-semibold text-white bg-[#EC4899] hover:bg-[#EC4899]/90 rounded-full text-center mt-4 shadow-sm"
+          class="inline-flex bg-[#EC4899] text-white px-5 py-2 sm:px-6 sm:py-2.5 lg:px-8 lg:py-3 rounded-full font-semibold text-xs sm:text-sm tracking-wide hover:opacity-90 transition-opacity duration-200 shadow-sm"
         >
           DONA AHORA
         </a>
       </div>
     </div>
-
   </div>
 </header>
-
-<script>
-  // Manejar el menú móvil
-  document.addEventListener("DOMContentLoaded", () => {
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    if (mobileMenuButton && mobileMenu) {
-      mobileMenuButton.addEventListener("click", () => {
-        // Toggle del menú
-        mobileMenu.classList.toggle("hidden");
-
-        const isOpen = !mobileMenu.classList.contains("hidden");
-        mobileMenuButton.setAttribute("aria-expanded", String(isOpen));
-        mobileMenuButton.setAttribute(
-          "aria-label",
-          isOpen ? "Cerrar menú" : "Abrir menú"
-        );
-
-        // Cambiar el icono del botón
-        const icon = mobileMenuButton.querySelector("svg");
-        if (icon) {
-          if (!isOpen) {
-            // Mostrar icono de hamburguesa
-            icon.innerHTML =
-              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-          } else {
-            // Mostrar icono de X
-            icon.innerHTML =
-              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
-          }
-        }
-      });
-
-      // Cerrar menú al hacer clic en un enlace
-      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
-      mobileMenuLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-          mobileMenuButton.setAttribute("aria-label", "Abrir menú");
-          // Restaurar icono de hamburguesa
-          const icon = mobileMenuButton.querySelector("svg");
-          if (icon) {
-            icon.innerHTML =
-              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-          }
-        });
-      });
-
-      // Cerrar menú al hacer clic fuera de él
-      document.addEventListener("click", (e) => {
-        const target = e.target as Node;
-        if (
-          target &&
-          !mobileMenuButton.contains(target) &&
-          !mobileMenu.contains(target)
-        ) {
-          mobileMenu.classList.add("hidden");
-          mobileMenuButton.setAttribute("aria-expanded", "false");
-          mobileMenuButton.setAttribute("aria-label", "Abrir menú");
-          // Restaurar icono de hamburguesa
-          const icon = mobileMenuButton.querySelector("svg");
-          if (icon) {
-            icon.innerHTML =
-              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
-          }
-        }
-      });
-    }
-  });
-</script>

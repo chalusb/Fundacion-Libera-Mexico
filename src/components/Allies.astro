@@ -1,14 +1,120 @@
 ---
-import AlliesMarquee from "./scroll-allies/AlliesMarquee.astro";
+type Ally = {
+  name: string;
+  logo: string;
+};
+
+const allies: Ally[] = [
+  { name: "Troy Brewer Ministries", logo: "troy brewer misitries.webp" },
+  { name: "Grupo Shogua", logo: "sin-logo.jpg" },
+  { name: "Aeroméxico", logo: "sin-logo.jpg" },
+  { name: "Alcaldía Álvaro Obregón", logo: "Alcaldía Álvaro Obregón.jpeg" },
+  { name: "Ann’s Delights", logo: "Ann_s Delight.jpeg" },
+  { name: "Anthus A.C.", logo: "Anthus.jpeg" },
+  { name: "Appleseed México", logo: "Appleseed.png" },
+  { name: "ATLAS FREE", logo: "ATLAS FREE.jpg" },
+  { name: "BANMEX – Banco de Alimentos", logo: "BAMEX.png" },
+  { name: "Brazada Abrazada A.C.", logo: "Brazada Abrazada A.C..png" },
+  {
+    name: "Colegio Sagrado Corazón de Jesús",
+    logo: "Colegio Sagrado Corazón de Jesús.png",
+  },
+  { name: "Comex", logo: "Comex.png" },
+  {
+    name: "Comisión Intersecretarial contra la Trata de Personas",
+    logo: "Comisión Intersecretarial contra la Trata de Personas.jpeg",
+  },
+  {
+    name: "Consejo Ciudadano para la Seguridad y Justicia",
+    logo: "Consejo Ciudadano para la Seguridad y Justicia.jpg",
+  },
+  { name: "CRIT", logo: "CRIT.png" },
+  {
+    name: "Commission on the Status of Women",
+    logo: "Commission on the Status of Women.png",
+  },
+  { name: "Danone", logo: "Danone.png" },
+  { name: "Embajada de Estados Unidos en México", logo: "USM.jpeg" },
+  { name: "Ferrán Martínez & Asociados", logo: "Ferran.jpg" },
+  { name: "Fin de la Escavitud", logo: "Fin de la Escavitud.png" },
+  {
+    name: "Fiscalía de Trata de Personas de la Ciudad de México",
+    logo: "FISCALÍA CDMX.jpeg",
+  },
+  { name: "Ford", logo: "FORD.png" },
+  { name: "Fuerza Pedregal A.C.", logo: "Fuerza Pedregal.jpeg" },
+  { name: "García Conde Hermida y Asociados", logo: "sin-logo.jpg" },
+  { name: "GKR | Kichik & Rosas", logo: "GKR.jpeg" },
+  { name: "JUF Aprendiendo a vivir jugando", logo: "JUF Aprendiendo a vivir jugando.png" },
+  { name: "Juguetón", logo: "Jugueton .png" },
+  { name: "La Cana A.C.", logo: "La Cana A.C..png" },
+  { name: "Nelson Vargas", logo: "Nelson Vargas.jpg" },
+  { name: "Net4U", logo: "sin-logo.jpg" },
+  { name: "Noddo Arquitectos", logo: "sin-logo.jpg" },
+  { name: "Nosotras para Ellas A.C.", logo: "Nosotras para Ellas A.C..jpeg" },
+  { name: "Maricú", logo: "Maricú.jpeg" },
+  { name: "Medical Impact", logo: "Medical Impact.jpeg" },
+  {
+    name: "Organización Internacional para las Migraciones",
+    logo: "Organización Internacional para las Migraciones.png",
+  },
+  { name: "Pacto por la Primera Infancia", logo: "Pacto por la Primera Infancia.png" },
+  { name: "Pozo de Vida", logo: "Pozo de Vida.png" },
+  { name: "Promotora Social México", logo: "Promotora Social México.png" },
+  {
+    name: "Procuradurías de Protección de Niñas, Niños y Adolescentes",
+    logo: "Procuraduria.jpeg",
+  },
+  { name: "Reinserta A.C.", logo: "Reinserta A.C..jpg" },
+  { name: "Secretaría de Gobernación", logo: "SEGOB.png" },
+  { name: "SUSALIA", logo: "SUSALIA.png" },
+  { name: "Tecnológico de Monterrey", logo: "Tecnológico de Monterrey.png" },
+  { name: "TV Azteca", logo: "azteca.png" },
+  { name: "UNODC", logo: "sin-logo.jpg" },
+  { name: "Universidad Panamericana", logo: "Universidad Panamericana.png" },
+  { name: "Universidad del Valle de México (UVM)", logo: "UVM.png" },
+  { name: "Red de voluntariado Regnum Christi", logo: "Red de voluntariado Regnum Christi.png" },
+  { name: "Basham, Ringe & Correa", logo: "sin-logo.jpg" },
+  { name: "Panamericana de patentes y marcas", logo: "sin-logo.jpg" },
+  { name: "Crepes & Waffles", logo: "sin-logo.jpg" },
+  { name: "Fundación Pas", logo: "sin-logo.jpg" },
+  { name: "Te protejo México", logo: "sin-logo.jpg" },
+];
+
+const allyLogoPath = (filename: string) =>
+  filename.startsWith("/") ? filename : `/images/allies/${encodeURIComponent(filename)}`;
 ---
 
-<div class="w-full mx-auto overflow-hidden relative py-8 min-h-[2rem]">
+<section class="w-full mx-auto overflow-hidden relative bg-white py-14 sm:py-20">
   <div class="max-w-7xl mx-auto relative px-4">
-    <h2 class="text-lg font-bold text-center text-[#214296]">NUESTROS ALIADOS</h2>
-  </div>
-  <div class="max-w-7xl mx-auto mt-6 px-4">
-    <div class="bg-white border-y-2 border-[#214296] py-4 px-2">
-      <AlliesMarquee />
+    <div class="text-center">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#214296]">
+        NUESTROS ALIADOS
+      </h2>
+      <img
+        src="/images/decores/2.png"
+        alt=""
+        class="w-auto h-10 sm:h-12 object-contain mx-auto -mt-2"
+        loading="lazy"
+      />
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:gap-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+      {allies.map((ally) => (
+        <figure class="ally-card flex flex-col items-center text-center bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow px-4 py-6">
+          <div class="ally-logo flex items-center justify-center h-20 sm:h-24 lg:h-28 w-full">
+            <img
+              src={allyLogoPath(ally.logo)}
+              alt={ally.name}
+              class="max-h-full w-auto object-contain"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-xs sm:text-sm font-semibold text-slate-700">
+            {ally.name}
+          </figcaption>
+        </figure>
+      ))}
     </div>
   </div>
-</div>
+</section>
