@@ -1,0 +1,341 @@
+---
+interface VolunteerNote {
+  name: string;
+  message: string;
+  accent: string;
+  image: string;
+  imageAlt: string;
+  imagePosition?: string;
+}
+
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  notes?: VolunteerNote[];
+}
+
+const defaultNotes: VolunteerNote[] = [
+  {
+    name: "MARCE",
+    message:
+      "Libera para mi es un sueno hecho realidad. Un lugar donde ninas y ninos que han sido victimas de la crueldad del ser humano, pueden al fin sentirse libres, amados y cuidados.",
+    accent: "#ff56bb",
+    image: "/images/voluntariado/Marcela%20San%20Juan.png",
+    imageAlt: "Foto de voluntariado de Marce",
+    imagePosition: "center 35%",
+  },
+  {
+    name: "ABRIL",
+    message:
+      "Libera para mi es una recarga para el corazon, un lugar en el que mi alma encuentra alivio y soy feliz!!",
+    accent: "#7ee34f",
+    image: "/images/voluntariado/Abril.png",
+    imageAlt: "Foto de voluntariado de Abril",
+    imagePosition: "center center",
+  },
+];
+
+const {
+  eyebrow = "Voluntariado",
+  title = "Voces que acompañan a Libera",
+  subtitle = "Un espacio para compartir lo que significa formar parte de esta red de cuidado.",
+  notes = defaultNotes,
+} = Astro.props as Props;
+
+const noteRotations = ["-2.2deg", "1.4deg", "-1deg", "2.3deg"];
+const tapeRotations = ["-9deg", "6deg", "-4deg", "8deg"];
+const tapeOffsets = [
+  { left: "1.8rem", top: "-0.4rem", width: "9.4rem" },
+  { left: "2.7rem", top: "-0.15rem", width: "8.8rem" },
+  { left: "2.2rem", top: "-0.3rem", width: "9rem" },
+  { left: "2.5rem", top: "-0.2rem", width: "9.2rem" },
+];
+const markRotations = ["8deg", "13deg", "10deg", "15deg"];
+const photoRotations = ["-4deg", "3.5deg", "-2deg", "5deg"];
+const styledNotes = notes.map((note, index) => ({
+  ...note,
+  noteRotation: noteRotations[index % noteRotations.length],
+  tapeRotation: tapeRotations[index % tapeRotations.length],
+  tapeOffset: tapeOffsets[index % tapeOffsets.length],
+  markRotation: markRotations[index % markRotations.length],
+  photoRotation: photoRotations[index % photoRotations.length],
+}));
+---
+
+<section class="voluntariado-section">
+  <div class="voluntariado-shell">
+    <div class="voluntariado-copy">
+      <p class="voluntariado-eyebrow">{eyebrow}</p>
+      <h1 class="voluntariado-title">{title}</h1>
+      <p class="voluntariado-subtitle">{subtitle}</p>
+    </div>
+
+    <div class="voluntariado-grid">
+      {styledNotes.map((note) => (
+        <article
+          class="voluntariado-note"
+          style={`--accent:${note.accent}; --rotation:${note.noteRotation}; --tape-rotation:${note.tapeRotation}; --tape-left:${note.tapeOffset.left}; --tape-top:${note.tapeOffset.top}; --tape-width:${note.tapeOffset.width}; --mark-rotation:${note.markRotation};`}
+        >
+          <img
+            src="/images/web_decore-6.webp"
+            alt=""
+            class="voluntariado-note__tape"
+            aria-hidden="true"
+          />
+          <div class="voluntariado-note__paper">
+            <div class="voluntariado-note__content">
+              <div class="voluntariado-note__text">
+                <h2 class="voluntariado-note__name">{note.name}</h2>
+                <p class="voluntariado-note__message">{note.message}</p>
+              </div>
+
+              <figure
+                class="voluntariado-note__photo"
+                style={`--photo-rotation:${note.photoRotation};`}
+              >
+                <img
+                  src={note.image}
+                  alt={note.imageAlt}
+                  class="voluntariado-note__photo-image"
+                  style={`object-position:${note.imagePosition ?? "center center"};`}
+                  loading="lazy"
+                />
+              </figure>
+            </div>
+          </div>
+          <img
+            src="/images/png-decore-7.png"
+            alt=""
+            class="voluntariado-note__mark"
+            aria-hidden="true"
+          />
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .voluntariado-section {
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 1.5rem 6rem;
+    background:
+      radial-gradient(circle at top left, rgba(255, 118, 173, 0.1), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(126, 227, 79, 0.12), transparent 26%),
+      linear-gradient(180deg, #fffef9 0%, #ffffff 100%);
+  }
+
+  .voluntariado-shell {
+    max-width: 78rem;
+    margin: 0 auto;
+  }
+
+  .voluntariado-copy {
+    max-width: 38rem;
+    margin-bottom: 3rem;
+  }
+
+  .voluntariado-eyebrow {
+    margin: 0 0 0.75rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #214296;
+  }
+
+  .voluntariado-title {
+    margin: 0;
+    color: #214296;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    line-height: 0.96;
+  }
+
+  .voluntariado-subtitle {
+    margin: 1rem 0 0;
+    max-width: 32rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #202020;
+  }
+
+  .voluntariado-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .voluntariado-note {
+    position: relative;
+    padding: 1.75rem 1.5rem 0;
+    height: 100%;
+  }
+
+  .voluntariado-note__paper {
+    position: relative;
+    min-height: 28rem;
+    height: 100%;
+    display: flex;
+    padding: 4.2rem 3.2rem 4rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 244, 236, 0.98)),
+      radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.85), transparent 30%);
+    clip-path: polygon(2% 5%, 12% 3%, 31% 4%, 50% 2%, 73% 4%, 97% 5%, 99% 18%, 98% 38%, 100% 52%, 98% 69%, 99% 83%, 96% 96%, 81% 98%, 62% 99%, 34% 97%, 16% 98%, 4% 95%, 1% 79%, 2% 59%, 0 37%, 2% 16%);
+    box-shadow:
+      0 30px 50px rgba(15, 23, 42, 0.12),
+      0 10px 18px rgba(15, 23, 42, 0.08);
+    transform: rotate(var(--rotation));
+  }
+
+  .voluntariado-note__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    gap: 2rem;
+  }
+
+  .voluntariado-note__text {
+    max-width: 28rem;
+  }
+
+  .voluntariado-note__paper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.95), transparent 18%),
+      radial-gradient(circle at 78% 74%, rgba(230, 224, 209, 0.55), transparent 24%),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(255, 255, 255, 0.1) 2px,
+        rgba(223, 218, 205, 0.08) 2px,
+        rgba(223, 218, 205, 0.08) 4px
+      );
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .voluntariado-note__name {
+    margin: 0 0 1.4rem;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    line-height: 0.92;
+    color: var(--accent);
+  }
+
+  .voluntariado-note__message {
+    margin: 0;
+    max-width: 28rem;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+    line-height: 1.7;
+    color: #161616;
+  }
+
+  .voluntariado-note__photo {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 0.5rem 0.8rem;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 1.15rem;
+    box-shadow:
+      0 18px 32px rgba(15, 23, 42, 0.12),
+      0 4px 10px rgba(15, 23, 42, 0.08);
+    transform: rotate(var(--photo-rotation));
+    align-self: center;
+  }
+
+  .voluntariado-note__photo-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0.85rem;
+  }
+
+  .voluntariado-note__tape {
+    position: absolute;
+    left: var(--tape-left);
+    top: var(--tape-top);
+    width: var(--tape-width);
+    height: auto;
+    object-fit: contain;
+    transform: rotate(var(--tape-rotation));
+    z-index: 2;
+    filter: drop-shadow(0 10px 16px rgba(15, 23, 42, 0.12));
+  }
+
+  .voluntariado-note__mark {
+    position: absolute;
+    right: 0.8rem;
+    bottom: -0.4rem;
+    width: 5.4rem;
+    height: auto;
+    transform: rotate(var(--mark-rotation));
+    z-index: 3;
+    filter: drop-shadow(0 12px 18px rgba(15, 23, 42, 0.15));
+  }
+
+  @media (max-width: 1023px) {
+    .voluntariado-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .voluntariado-copy {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .voluntariado-section {
+      padding-top: 7rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .voluntariado-note {
+      padding: 1.35rem 0.6rem 0;
+    }
+
+    .voluntariado-note__paper {
+      min-height: auto;
+      padding: 3.4rem 1.5rem 3rem;
+    }
+
+    .voluntariado-note__content {
+      gap: 1.5rem;
+    }
+
+    .voluntariado-note__message {
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: none;
+    }
+
+    .voluntariado-note__photo {
+      width: 100%;
+    }
+
+    .voluntariado-note__tape {
+      width: 8.5rem;
+      left: 1rem;
+      top: -0.1rem;
+    }
+
+    .voluntariado-note__mark {
+      right: 0.4rem;
+      width: 4rem;
+    }
+  }
+</style>

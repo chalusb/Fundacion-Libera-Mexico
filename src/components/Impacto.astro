@@ -1,0 +1,607 @@
+---
+interface ImpactStat {
+  value: string;
+  label: string;
+  image: string;
+  imageAlt: string;
+  imagePosition: string;
+  accentPrimary: string;
+  accentSecondary: string;
+  accentTertiary: string;
+}
+
+const asset = (path: string) => encodeURI(path);
+
+const impactStats: ImpactStat[] = [
+  {
+    value: "46",
+    label: "niñas, niños y adolescentes atendidos",
+    image: asset("/images/impacto/NNyA atendidos.JPG"),
+    imageAlt: "Grupo de niñas, niños y adolescentes en Libera México",
+    imagePosition: "center 38%",
+    accentPrimary: "/images/png-decore-4.png",
+    accentSecondary: "/images/png-decore-3.png",
+    accentTertiary: "/images/web_decore-11.webp",
+  },
+  {
+    value: "60,350",
+    label: "comidas servidas",
+    image: asset("/images/impacto/comidas servidas.png"),
+    imageAlt: "Niña recibiendo alimentos",
+    imagePosition: "center 28%",
+    accentPrimary: "/images/web_decore-7.webp",
+    accentSecondary: "/images/web_decore-14.webp",
+    accentTertiary: "/images/web_decore-10.webp",
+  },
+  {
+    value: "1,503",
+    label: "atenciones de salud mental",
+    image: asset("/images/impacto/Atenciones Salud mental.png"),
+    imageAlt: "Atención de salud mental en Fundación Libera México",
+    imagePosition: "center 22%",
+    accentPrimary: "/images/png-decore-1.png",
+    accentSecondary: "/images/png-decore-4.png",
+    accentTertiary: "/images/png-decore-6.png",
+  },
+  {
+    value: "375",
+    label: "consultas médicas",
+    image: asset("/images/impacto/Consultas Médicas.JPG"),
+    imageAlt: "Consulta médica en Fundación Libera México",
+    imagePosition: "center 22%",
+    accentPrimary: "/images/png-decore-11.png",
+    accentSecondary: "/images/web_decore-14.webp",
+    accentTertiary: "/images/png-decore-10.png",
+  },
+  {
+    value: "90",
+    label: "sesiones de rehabilitación",
+    image: asset("/images/impacto/Sesiones de rehabilitación.JPG"),
+    imageAlt: "Sesión de rehabilitación",
+    imagePosition: "center 20%",
+    accentPrimary: "/images/png-decore-4.png",
+    accentSecondary: "/images/png-decore-3.png",
+    accentTertiary: "/images/web_decore-12.webp",
+  },
+  {
+    value: "374",
+    label: "acompañamientos jurídicos",
+    image: asset("/images/impacto/A. Jurídicos.JPG"),
+    imageAlt: "Acompañamiento jurídico a un niño",
+    imagePosition: "center 34%",
+    accentPrimary: "/images/web_decore-7.webp",
+    accentSecondary: "/images/png-decore-1.png",
+    accentTertiary: "/images/png-decore-6.png",
+  },
+  {
+    value: "376",
+    label: "intervenciones educativas",
+    image: asset("/images/impacto/I. Educativas.JPG"),
+    imageAlt: "Intervención educativa con un niño",
+    imagePosition: "center 24%",
+    accentPrimary: "/images/png-decore-4.png",
+    accentSecondary: "/images/web_decore-14.webp",
+    accentTertiary: "/images/web_decore-10.webp",
+  },
+  {
+    value: "227",
+    label: "gestiones de trabajo social",
+    image: asset("/images/impacto/trabajo social.png"),
+    imageAlt: "Trabajo social con usuaria",
+    imagePosition: "center 28%",
+    accentPrimary: "/images/png-decore-11.png",
+    accentSecondary: "/images/png-decore-3.png",
+    accentTertiary: "/images/web_decore-12.webp",
+  },
+  {
+    value: "23,478",
+    label: "artículos de ropa, calzado e higiene entregados",
+    image: asset("/images/impacto/articulos ropa y calzado.png"),
+    imageAlt: "Entrega de artículos de ropa, calzado e higiene",
+    imagePosition: "center 32%",
+    accentPrimary: "/images/png-decore-6.png",
+    accentSecondary: "/images/web_decore-7.webp",
+    accentTertiary: "/images/png-decore-10.png",
+  },
+];
+
+const frameRotations = ["-4deg", "3deg", "-2deg", "2.5deg", "-3.5deg", "2deg", "-2.5deg", "3.5deg", "-1.5deg"];
+const offsets = ["0rem", "4rem", "1rem", "3rem", "0.5rem", "4.5rem", "1rem", "3.5rem", "0rem"];
+const styledStats = impactStats.map((item, index) => ({
+  ...item,
+  frameRotation: frameRotations[index % frameRotations.length],
+  offset: offsets[index % offsets.length],
+  reverse: index % 2 === 1,
+}));
+---
+
+<section
+  class="impacto-section"
+  style="background-image: url('/images/bg-paper.png'); background-size: cover; background-position: center;"
+>
+  <div class="impacto-decor" aria-hidden="true">
+    <img src="/images/png-decore-1.png" alt="" class="impacto-decor__spark impacto-decor__spark--left" />
+    <img src="/images/png-decore-3.png" alt="" class="impacto-decor__mini impacto-decor__mini--top" />
+    <img src="/images/png-decore-4.png" alt="" class="impacto-decor__butterfly" />
+    <img src="/images/web_decore-14.webp" alt="" class="impacto-decor__sun impacto-decor__sun--title" />
+    <img src="/images/web_decore-14.webp" alt="" class="impacto-decor__sun impacto-decor__sun--bottom" />
+    <img src="/images/web_decore-7.webp" alt="" class="impacto-decor__star" />
+  </div>
+
+  <div class="impacto-shell">
+    <header class="impacto-header">
+      <div class="impacto-header__titleWrap">
+        <h1 class="impacto-header__title">Nuestro Impacto</h1>
+      </div>
+      <p class="impacto-header__lead">
+        En <span>Libera México</span> hemos demostrado que la recuperación sí es posible
+        cuando existe un entorno seguro y atención especializada.
+      </p>
+    </header>
+
+    <div class="impacto-grid">
+      {styledStats.map((item) => (
+        <article
+          class:list={["impacto-item", item.reverse && "impacto-item--reverse"]}
+          style={`--item-offset:${item.offset}; --frame-rotation:${item.frameRotation};`}
+        >
+          <img
+            src={item.accentPrimary}
+            alt=""
+            class:list={["impacto-item__accent impacto-item__accent--primary", item.reverse && "impacto-item__accent--primary-reverse"]}
+            aria-hidden="true"
+          />
+          <img
+            src={item.accentSecondary}
+            alt=""
+            class:list={["impacto-item__accent impacto-item__accent--secondary", item.reverse && "impacto-item__accent--secondary-reverse"]}
+            aria-hidden="true"
+          />
+          <img
+            src={item.accentTertiary}
+            alt=""
+            class:list={["impacto-item__accent impacto-item__accent--tertiary", item.reverse && "impacto-item__accent--tertiary-reverse"]}
+            aria-hidden="true"
+          />
+
+          <figure class="impacto-item__figure">
+            <div class="impacto-item__frame">
+              <img
+                src={item.image}
+                alt={item.imageAlt}
+                class="impacto-item__image"
+                style={`object-position:${item.imagePosition};`}
+                loading="lazy"
+              />
+            </div>
+          </figure>
+
+          <div class="impacto-item__copy">
+            <p class="impacto-item__value">{item.value}</p>
+            <h2 class="impacto-item__label">{item.label}</h2>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .impacto-section {
+    position: relative;
+    overflow: hidden;
+    padding: 8.5rem 1.25rem 5rem;
+    background-color: #fffdfa;
+  }
+
+  .impacto-shell {
+    position: relative;
+    z-index: 1;
+    max-width: 84rem;
+    margin: 0 auto;
+  }
+
+  .impacto-header {
+    max-width: 60rem;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  .impacto-header__titleWrap {
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+  }
+
+  .impacto-header__title {
+    margin: 0;
+    color: #ea4f9f;
+    font-size: clamp(2.6rem, 6vw, 5.4rem);
+    line-height: 0.96;
+    text-transform: uppercase;
+  }
+
+  .impacto-header__lead {
+    margin: 1.2rem auto 0;
+    max-width: 54rem;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(1.05rem, 2vw, 1.8rem);
+    line-height: 1.45;
+    font-weight: 700;
+    color: #111111;
+  }
+
+  .impacto-header__lead span {
+    color: #214296;
+  }
+
+  .impacto-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.75rem;
+  }
+
+  .impacto-item {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 700px) minmax(16rem, 22rem);
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.25rem;
+    margin-top: var(--item-offset);
+    max-width: 78rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 2rem;
+  }
+
+  .impacto-item__figure {
+    order: 1;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    width: 700px;
+    max-width: 700px;
+    justify-self: start;
+  }
+
+  .impacto-item__copy {
+    order: 2;
+    position: relative;
+    z-index: 3;
+    max-width: 18rem;
+  }
+
+  .impacto-item--reverse .impacto-item__figure {
+    order: 2;
+    justify-self: end;
+  }
+
+  .impacto-item--reverse {
+    grid-template-columns: minmax(16rem, 22rem) minmax(0, 700px);
+  }
+
+  .impacto-item--reverse .impacto-item__copy {
+    order: 1;
+    justify-self: end;
+    text-align: right;
+  }
+
+  .impacto-item__frame {
+    width: 100%;
+    padding: 0.85rem;
+    background: linear-gradient(180deg, #f2ebe0 0%, #e8ddd0 100%);
+    border-radius: 46% 54% 48% 52% / 55% 46% 54% 45%;
+    transform: rotate(var(--frame-rotation));
+    box-shadow:
+      0 18px 30px rgba(90, 69, 49, 0.12),
+      0 6px 12px rgba(15, 23, 42, 0.08);
+  }
+
+  .impacto-item__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    clip-path: ellipse(48% 42% at 50% 50%);
+    border-radius: 46% 54% 48% 52% / 55% 46% 54% 45%;
+  }
+
+  .impacto-item__value {
+    margin: 0 0 0.35rem;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 0.95;
+    font-weight: 800;
+    color: #ea4f9f;
+  }
+
+  .impacto-item__label {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+    line-height: 1.08;
+    font-weight: 800;
+    color: #214296;
+  }
+
+  .impacto-item__accent {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    opacity: 0.95;
+  }
+
+  .impacto-item__accent--primary {
+    left: -2.5rem;
+    bottom: 1.25rem;
+    width: 336px;
+    transform: rotate(-12deg);
+  }
+
+  .impacto-item__accent--primary-reverse {
+    left: auto;
+    right: -2.25rem;
+    bottom: auto;
+    top: 0.75rem;
+    transform: rotate(12deg);
+  }
+
+  .impacto-item__accent--secondary {
+    right: 7%;
+    top: -0.8rem;
+    width: 263px;
+    transform: rotate(10deg);
+  }
+
+  .impacto-item__accent--secondary-reverse {
+    right: auto;
+    left: 9%;
+    top: auto;
+    bottom: -0.35rem;
+    transform: rotate(-10deg);
+  }
+
+  .impacto-item__accent--tertiary {
+    left: 18%;
+    top: -1.4rem;
+    width: 210px;
+    transform: rotate(-9deg);
+  }
+
+  .impacto-item__accent--tertiary-reverse {
+    left: auto;
+    right: 15%;
+    top: auto;
+    bottom: -1rem;
+    transform: rotate(9deg);
+  }
+
+  .impacto-decor img {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.96;
+  }
+
+  .impacto-decor__spark--left {
+    left: -2.5rem;
+    top: 10rem;
+    width: 386px;
+    transform: rotate(-20deg);
+  }
+
+  .impacto-decor__mini--top {
+    right: 12rem;
+    top: 5rem;
+    width: 250px;
+    transform: rotate(8deg);
+  }
+
+  .impacto-decor__butterfly {
+    right: -1rem;
+    bottom: 18rem;
+    width: 338px;
+    transform: rotate(-8deg);
+  }
+
+  .impacto-decor__sun--title {
+    left: 18%;
+    top: 3rem;
+    width: 330px;
+  }
+
+  .impacto-decor__sun--bottom {
+    left: 1rem;
+    bottom: 9rem;
+    width: 258px;
+    transform: rotate(18deg);
+  }
+
+  .impacto-decor__star {
+    right: -1.2rem;
+    bottom: 2rem;
+    width: 370px;
+    transform: rotate(12deg);
+  }
+
+  @media (max-width: 1199px) {
+    .impacto-item {
+      grid-template-columns: minmax(0, 620px) minmax(14rem, 20rem);
+      gap: 1.75rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .impacto-item--reverse {
+      grid-template-columns: minmax(14rem, 20rem) minmax(0, 620px);
+    }
+
+    .impacto-item__figure {
+      width: 620px;
+      max-width: 620px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .impacto-section {
+      padding-top: 7.5rem;
+    }
+
+    .impacto-item,
+    .impacto-item--reverse {
+      grid-template-columns: minmax(0, 520px) minmax(12rem, 18rem);
+      gap: 1.25rem;
+      margin-top: 0;
+      padding: 0.75rem 0.75rem 0.5rem;
+    }
+
+    .impacto-item--reverse {
+      grid-template-columns: minmax(12rem, 18rem) minmax(0, 520px);
+    }
+
+    .impacto-item__figure {
+      width: 520px;
+      max-width: 520px;
+    }
+
+    .impacto-item--reverse .impacto-item__figure {
+      order: 2;
+    }
+
+    .impacto-item--reverse .impacto-item__copy {
+      order: 1;
+      justify-self: end;
+      text-align: right;
+    }
+
+    .impacto-decor__spark--left {
+      top: 12rem;
+      width: 320px;
+    }
+
+    .impacto-decor__mini--top {
+      right: 2rem;
+      width: 190px;
+    }
+
+    .impacto-item__accent--primary {
+      left: -0.5rem;
+      width: 220px;
+    }
+
+    .impacto-item__accent--primary-reverse {
+      right: -0.4rem;
+      width: 220px;
+    }
+
+    .impacto-item__accent--secondary {
+      right: 1rem;
+      top: -0.35rem;
+      width: 170px;
+    }
+
+    .impacto-item__accent--secondary-reverse {
+      left: 1rem;
+      bottom: -0.25rem;
+      width: 170px;
+    }
+
+    .impacto-item__accent--tertiary,
+    .impacto-item__accent--tertiary-reverse {
+      width: 150px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .impacto-section {
+      padding: 7rem 1rem 4rem;
+    }
+
+    .impacto-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .impacto-item,
+    .impacto-item--reverse {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0.5rem 0 0.25rem;
+    }
+
+    .impacto-item__figure,
+    .impacto-item--reverse .impacto-item__figure {
+      order: 1;
+      justify-self: center;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .impacto-item__copy,
+    .impacto-item--reverse .impacto-item__copy {
+      order: 2;
+      justify-self: center;
+      max-width: 20rem;
+      text-align: center;
+    }
+
+    .impacto-item__frame {
+      padding: 0.7rem;
+    }
+
+    .impacto-item__accent--primary,
+    .impacto-item__accent--primary-reverse {
+      width: 140px;
+      left: -0.3rem;
+      right: auto;
+      top: auto;
+      bottom: 0.2rem;
+    }
+
+    .impacto-item__accent--secondary,
+    .impacto-item__accent--secondary-reverse {
+      width: 110px;
+      right: 0.5rem;
+      left: auto;
+      top: -0.15rem;
+      bottom: auto;
+    }
+
+    .impacto-item__accent--tertiary,
+    .impacto-item__accent--tertiary-reverse {
+      width: 100px;
+      left: 1rem;
+      right: auto;
+      top: 0.5rem;
+      bottom: auto;
+    }
+
+    .impacto-decor__spark--left,
+    .impacto-decor__mini--top,
+    .impacto-decor__butterfly {
+      display: none;
+    }
+
+    .impacto-decor__sun--title {
+      left: 50%;
+      top: 2.25rem;
+      width: 180px;
+      transform: translateX(-150%);
+    }
+
+    .impacto-decor__sun--bottom {
+      left: -0.8rem;
+      bottom: 7rem;
+      width: 150px;
+    }
+
+    .impacto-decor__star {
+      right: -1rem;
+      bottom: 1rem;
+      width: 178px;
+    }
+  }
+</style>
