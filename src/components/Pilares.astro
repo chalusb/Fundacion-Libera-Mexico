@@ -108,34 +108,36 @@ const pillarImagePath = (folder: string, filename: string) =>
               </p>
             </div>
 
-            <div class="pillar-slider" data-slider>
+            <div class="pillar-slider lg:justify-self-end" data-slider>
               <div class="flex items-center justify-between mb-4">
-                <div class="flex items-center gap-2 ml-auto">
-                  <button type="button" class="pillar-nav" data-prev aria-label="Anterior">
+                <p class="text-xs font-black uppercase tracking-[0.28em] text-slate-400">
+                  Galeria
+                </p>
+                <div class="flex items-center gap-2">
+                  <button type="button" class="pillar-nav" data-prev aria-label="Imagen anterior">
                     ‹
                   </button>
-                  <button type="button" class="pillar-nav" data-next aria-label="Siguiente">
+                  <button type="button" class="pillar-nav" data-next aria-label="Imagen siguiente">
                     ›
                   </button>
                 </div>
               </div>
 
-              <div class="relative">
+              <div class="pillar-viewport">
                 <div
-                  class="pillar-track flex gap-0 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4"
+                  class="pillar-track"
                   data-track
                 >
                   {pillar.images.map((image, imageIndex) => (
-                    <div
-                      class="pillar-slide snap-start shrink-0 w-full"
-                      data-slide
-                    >
-                      <img
-                        src={pillarImagePath(pillar.folder, image)}
-                        alt={`${pillar.title} ${imageIndex + 1}`}
-                        loading="lazy"
-                        class="w-full h-[260px] sm:h-[320px] lg:h-[360px] object-cover rounded-[28px] shadow-lg"
-                      />
+                    <div class="pillar-slide" data-slide>
+                      <div class="pillar-frame">
+                        <img
+                          src={pillarImagePath(pillar.folder, image)}
+                          alt={`${pillar.title} ${imageIndex + 1}`}
+                          loading="lazy"
+                          class="pillar-image"
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -245,6 +247,16 @@ const pillarImagePath = (folder: string, filename: string) =>
     border-bottom: 1px solid rgba(148, 163, 184, 0.3);
   }
 
+  .pillar-slider {
+    --pillar-slider-height: clamp(19rem, 78vw, 31rem);
+    width: min(100%, 24rem);
+    margin-inline: auto;
+  }
+
+  .pillar-viewport {
+    position: relative;
+  }
+
   .pillar-head {
     display: flex;
     flex-direction: column;
@@ -281,16 +293,48 @@ const pillarImagePath = (folder: string, filename: string) =>
   }
 
   .pillar-track {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
     overscroll-behavior-x: contain;
+    padding-bottom: 6px;
   }
 
   .pillar-track::-webkit-scrollbar {
     display: none;
+  }
+
+  .pillar-slide {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+  }
+
+  .pillar-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--pillar-slider-height);
+    padding: 14px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  }
+
+  .pillar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 22px;
+    background: #fff;
   }
 
   .pillar-dot {
@@ -320,6 +364,12 @@ const pillarImagePath = (folder: string, filename: string) =>
     transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
 
+  .pillar-nav[disabled] {
+    opacity: 0.45;
+    cursor: default;
+    pointer-events: none;
+  }
+
   .pillar-nav:hover {
     background: var(--accent);
     color: #fff;
@@ -335,6 +385,11 @@ const pillarImagePath = (folder: string, filename: string) =>
   @media (max-width: 640px) {
     .pillar-card {
       padding: 16px 0 8px;
+    }
+
+    .pillar-slider {
+      --pillar-slider-height: clamp(18rem, 82vw, 26rem);
+      width: min(100%, 21rem);
     }
 
     .pillar-title-row {
@@ -356,9 +411,13 @@ const pillarImagePath = (folder: string, filename: string) =>
       height: 8px;
     }
 
-    .pillar-slide img {
-      height: 220px;
-      border-radius: 22px;
+    .pillar-frame {
+      padding: 12px;
+      border-radius: 24px;
+    }
+
+    .pillar-image {
+      border-radius: 18px;
     }
   }
 </style>
