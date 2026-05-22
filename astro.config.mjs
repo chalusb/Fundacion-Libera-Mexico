@@ -15,7 +15,7 @@ export default defineConfig({
         'liberamexico.org',
         'fundacionliberamexico.org',
         'liberamexico.com',
-        'www.liberamexico.com'
+        'www.liberamexico.com',
       ],
     },
   },
