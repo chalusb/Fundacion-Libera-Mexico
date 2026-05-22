@@ -2,13 +2,16 @@
   "name": "libera-mexico",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "start": "node ./dist/server/entry.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "9.4.6",
     "astro": "^5.14.5",
     "nodemailer": "^7.0.10"
   },
