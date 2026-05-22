@@ -14,6 +14,8 @@ export default defineConfig({
         'fundacion-libera-mexico-production.up.railway.app',
         'liberamexico.org',
         'fundacionliberamexico.org',
+        'liberamexico.com',
+        'www.liberamexico.com'
       ],
     },
   },
